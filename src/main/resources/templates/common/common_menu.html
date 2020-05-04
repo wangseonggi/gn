@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul class="nav nav-list" th:fragment="common_menu">
+
+    <li sec:authorize-url="/xt" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/xt')} ? 'active open'">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-desktop"></i>
+
+            <span class="menu-text">
+								系统
+                <!--<span th:text="${#strings.contains(#httpServletRequest.getServletPath(), '/admin')}"></span>-->
+
+								<span class="badge badge-primary">4</span>
+							</span>
+
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/user'}?'active'">
+                <a th:href="@{/admin/user}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    用户管理
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/dept'}?'active'">
+                <a th:href="@{/admin/dept}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    行政区划维护
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/role'}?'active'">
+                <a th:href="@{/admin/role}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    角色管理
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/menu'}?'active'">
+                <a th:href="@{/admin/menu}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    菜单管理
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+
+
+    <li sec:authorize-url="/yw" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/yw')} ? 'active open'">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-desktop"></i>
+
+            <span class="menu-text">
+								业务
+								<span class="badge badge-primary">4</span>
+							</span>
+
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+
+        <b class="arrow"></b>
+
+        <ul class="submenu">
+            <li class="" sec:authorize-url="/yw/jt/index" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/jt')}?'active'">
+                <a th:href="@{/yw/jt/index}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    搬迁户家庭基本情况
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize-url="/yw/sr/index" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/sr')}?'active'">
+                <a th:href="@{/yw/sr/index}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    收入登记表
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="" sec:authorize-url="/yw/azd/index" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/azd')} ? 'active'">
+                <a th:href="@{/yw/azd/index}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    安置点
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+            <li class="" sec:authorize-url="/yw/bfr/index" th:class="${#strings.contains(#httpServletRequest.getServletPath(), '/bfr')}?'active'">
+                <a th:href="@{/yw/bfr/index}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    帮扶人
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize-url="/yx/index" th:class="${#httpServletRequest.getServletPath()=='/yx/index'}?'active'">
+                <a th:href="@{/yw/yx/index}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    影像化采集
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+            <li class="" sec:authorize="hasRole('ROLE_ADMIN')" th:class="${#httpServletRequest.getServletPath()=='/ym/img'}?'active'">
+                <a th:href="@{/yw/other/o}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    ROLE其他的菜单
+                </a>
+
+                <b class="arrow"></b>
+            </li>
+
+        </ul>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,2 @@
+
+SELECT id, aid, ld, dy, fh, mj, hx FROM ym_azd_fwxx WHERE 1 = 1

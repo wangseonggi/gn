@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .red {color: red}
+</style>
+<body>
+    <h1 class="red">Error Page</h1>
+    我是错误页面！
+    <div th:text="${session.getAttribute('msg')}">这里是异常信息显示的位置</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    username: ym_new
+    password: ym_new
+    url: jdbc:mysql://139.159.136.88:3306/ym_new?useUnicode=true&useAffectedRows=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+    chain:
+      cache: true
+  thymeleaf:
+    cache: true
+# mybatis 控制台打印sql
+logging:
+  level:
+    com.fovsoft.gn.mapper: debug
+server:
+  port: 8080

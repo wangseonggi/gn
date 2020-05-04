@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <!-- layui css -->
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
+
+    <div th:replace="common/common_headcontent :: headcontent"></div>
+</head>
+
+<body class="no-skin">
+<div th:replace="common/common_headline :: headline"></div>
+
+<form id="subform" action="/logout" method="post">
+    <!--<input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }"/>-->
+</form>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+
+    <div id="sidebar" class="sidebar                  responsive                    ace-save-state">
+        <script type="text/javascript">
+            try {
+                ace.settings.loadState('sidebar')
+            } catch (e) {
+            }
+        </script>
+
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                <button class="btn btn-success">
+                    <i class="ace-icon fa fa-signal"></i>
+                </button>
+
+                <button class="btn btn-info">
+                    <i class="ace-icon fa fa-pencil"></i>
+                </button>
+
+                <button class="btn btn-warning">
+                    <i class="ace-icon fa fa-users"></i>
+                </button>
+
+                <button class="btn btn-danger">
+                    <i class="ace-icon fa fa-cogs"></i>
+                </button>
+            </div>
+
+            <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mgini">
+                <span class="btn btn-success"></span>
+
+                <span class="btn btn-info"></span>
+
+                <span class="btn btn-warning"></span>
+
+                <span class="btn btn-danger"></span>
+            </div>
+        </div><!-- /.sidebar-shortcuts -->
+
+        <div th:replace="common/common_menu"></div>
+        <!-- /.nav-list -->
+
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state"
+               data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="#">主页</a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;">帮扶人</a>
+                    </li>
+                    <li class="active">帮扶人列表</li>
+                </ul><!-- /.breadcrumb -->
+
+                <div class="nav-search" id="nav-search">
+                    <form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input"
+                                           id="nav-search-input" autocomplete="off"/>
+									<i class="ace-icon fa fa-search nav-search-icon"></i>
+								</span>
+                    </form>
+                </div><!-- /.nav-search -->
+            </div>
+
+            <div class="page-content">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <table id="familyListTable" lay-filter="userList"></table>
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+
+    <div class="footer" th:include="common/common_footer :: copyright">
+    </div>
+
+    <div th:replace="common/common_footer :: #btn-scroll-up"></div>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+<script th:src="@{/assets/js/jquery-2.1.4.min.js}"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
+<![endif]-->
+<script type="text/javascript">
+    if ('ontouchstart' in document.documentElement) document.write("<script th:src='@{/assets/js/jquery.mobile.custom.min.js}'>" + "<" + "/script>");
+</script>
+<script th:src="@{/assets/js/bootstrap.min.js}"></script>
+
+<!-- page specific plugin scripts -->
+
+<!-- ace scripts -->
+<script th:src="@{/assets/js/ace-elements.min.js}"></script>
+<script th:src="@{/assets/js/ace.min.js}"></script>
+
+<!-- inline scripts related to this page -->
+
+<script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button sec:authorize-url="/yw/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
+        <button sec:authorize-url="/yw/jt/delAll" class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</button>
+
+        <input id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
+        <input id="search_gzdw" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入工作单位">
+        <input id="search_lxdh" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入联系电话">
+        <button id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
+    </div>
+</script>
+
+<!--<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">查看</a> 放上来-->
+<script type="text/html" id="barDemo">
+    <a sec:authorize-url="/yw/bfr/edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a sec:authorize-url="/yw/bfr/bfgx" class="layui-btn layui-btn-xs" lay-event="bfgx">帮扶关系</a>
+    <a sec:authorize-url="/yw/bfr/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script th:src="@{/assets/ym/bfr/index.js}"></script>
+</body>
+</html>
