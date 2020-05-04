@@ -24,8 +24,8 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/user'}?'active'">
-                <a th:href="@{/admin/user}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/user'}?'active'">
+                <a th:href="@{/xt/user}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     用户管理
                 </a>
@@ -33,8 +33,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/dept'}?'active'">
-                <a th:href="@{/admin/dept}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/dept'}?'active'">
+                <a th:href="@{/xt/dept}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     行政区划维护
                 </a>
@@ -42,8 +42,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/role'}?'active'">
-                <a th:href="@{/admin/role}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/role'}?'active'">
+                <a th:href="@{/xt/role}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     角色管理
                 </a>
@@ -51,8 +51,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/admin/menu'}?'active'">
-                <a th:href="@{/admin/menu}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/menu'}?'active'">
+                <a th:href="@{/xt/menu}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     菜单管理
                 </a>
