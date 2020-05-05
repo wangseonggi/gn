@@ -10,9 +10,6 @@ spring:
       cache: true
   thymeleaf:
     cache: true
-# mybatis 控制台打印sql
-logging:
-  level:
-    com.fovsoft.gn.mapper: debug
+
 server:
   port: 8080
