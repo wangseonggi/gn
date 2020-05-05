@@ -59,6 +59,8 @@ public class AzdRestController {
 
     @RequestMapping(value = "/fwxxAdd",  produces = "application/json;charset=UTF-8")
     public JsonResult fwxxAdd(@RequestBody AzdFwxxDo azdFwxxDo) {
+        String dy = (azdFwxxDo.getDy().equals("") || Integer.parseInt(azdFwxxDo.getDy())==0)? "0" : azdFwxxDo.getDy();
+        azdFwxxDo.setMc("#" + azdFwxxDo.getLd() + "-" + dy + "-" + azdFwxxDo.getFh());
         int affectRow = azdSerivce.fwxxAddOrUpdate(azdFwxxDo);
         return new JsonResult(affectRow);
     }
@@ -76,5 +78,27 @@ public class AzdRestController {
     public JsonResult getGLZHXX(int id) {
         BfgxXXHolder bfgxXXHolder = azdSerivce.getGLZHXX(id);
         return new JsonResult(bfgxXXHolder);
+    }
+
+    /**
+     * 入住
+     *
+     * 用于关联住房与家庭的关系
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/rz", produces = "application/json;charset=UTF-8")
+    public JsonResult rz(Integer fwid, Integer fid) {
+        int affectRow = azdSerivce.rz(fwid, fid);
+        return new JsonResult(affectRow);
+    }
+
+
+    @RequestMapping(value = "/del", method = RequestMethod.GET)
+    public JsonResult del(Integer id) {
+        int returnId = azdSerivce.del(id);
+
+        return new JsonResult(Integer.valueOf(returnId));
     }
 }

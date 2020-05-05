@@ -33,15 +33,6 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/dept'}?'active'">
-                <a th:href="@{/xt/dept}">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    行政区划维护
-                </a>
-
-                <b class="arrow"></b>
-            </li>
-
             <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/role'}?'active'">
                 <a th:href="@{/xt/role}">
                     <i class="menu-icon fa fa-caret-right"></i>

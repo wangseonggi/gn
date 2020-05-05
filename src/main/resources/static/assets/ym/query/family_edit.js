@@ -50,7 +50,7 @@ let family_edit = (function () {
         // 基本信息
         form.on('submit(base1)', function (data) {
             $.ajax({
-                url: '/yw/jt/add',
+                url: '/query/jt/add',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -80,7 +80,7 @@ let family_edit = (function () {
             data.field.fid = $("#baseid").val();
             data.field.id = $("#additionid").val();
             $.ajax({
-                url: '/yw/jt/addZpyy',
+                url: '/query/jt/addZpyy',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -108,7 +108,7 @@ let family_edit = (function () {
             data.field.fid = $("#baseid").val();
             data.field.id = $("#conditionid").val();
             $.ajax({
-                url: '/yw/jt/addScshtj',
+                url: '/query/jt/addScshtj',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -143,7 +143,7 @@ let family_edit = (function () {
                      */
                     table.render({
                         elem: '#tableMember'
-                        , url: '/yw/jt/getCyList'
+                        , url: '/query/jt/getCyList'
                         , toolbar: '#tableMemberToolbar' //开启头部工具栏，并为其绑定左侧模板
                         , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                             title: '提示'
@@ -341,7 +341,7 @@ let family_edit = (function () {
             if(data.index == 2) {
                 if(initTab2 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getZpyy',
+                        url : '/query/jt/getZpyy',
                         data : {fid : fid},
                         dataType: 'JSON',
                         success : function(res) {
@@ -366,7 +366,7 @@ let family_edit = (function () {
             if(data.index == 3) {
                 if(initTab3 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getScshtj',
+                        url : '/query/jt/getScshtj',
                         data : {fid : fid},
                         dataType: 'JSON',
                         success : function(res) {
@@ -414,7 +414,7 @@ let family_edit = (function () {
             if(data.index == 5) {
                 if(initTab5 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getNew',
+                        url : '/query/jt/getNew',
                         data : {id : fid},
                         dataType: 'JSON',
                         success : function(res) {
@@ -598,7 +598,7 @@ let family_edit = (function () {
                         type: 2,
                         skin: 'layui-layer-rim', //加上边框
                         area: ['70%', '60%'], //宽高
-                        content: '/yw/jt/cyAdd?id=0',
+                        content: '/query/jt/cyAdd?id=0',
                         success: function (layero, index) {
                             // 兄弟窗口传值
                             var baseid = $("#baseid").val();
@@ -642,7 +642,7 @@ let family_edit = (function () {
             else if (obj.event === 'del') {
                 layer.confirm('是否删除该记录？', function (index) {
                     $.ajax({
-                        url: '/yw/jt/delCy',
+                        url: '/query/jt/delCy',
                         method: 'get',
                         data: {id: obj.data.memberid},
                         contentType: "application/json",
@@ -661,7 +661,7 @@ let family_edit = (function () {
                     type: 2,
                     skin: 'layui-layer-rim', //加上边框
                     area: ['70%', '60%'], //宽高
-                    content: '/yw/jt/cyAdd?id=' + data.memberid,
+                    content: '/query/jt/cyAdd?id=' + data.memberid,
                     end: function () {
                         layui.table.reload('tableMember', {
                             where: {

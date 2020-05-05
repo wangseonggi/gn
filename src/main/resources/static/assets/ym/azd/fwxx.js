@@ -25,14 +25,14 @@ let fwxx = (function () {
                 , {field: 'ld', title: '楼栋'}
                 , {field: 'dy', title: '单元'}
                 , {field: 'fh', title: '房号'}
-                , {field: '', title: '住户信息'}
+                , {field: 'xm', title: '户主姓名'}
+                , {field: 'zjhm', title: '证件号码'}
                 // , {field: 'mj', title: '房屋面积'}
                 // , {field: 'hx', title: '户型'}
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right'}
             ]],
             skin: 'row'
         });
-
 
         // 表格上部工具条
         table.on('toolbar(userList)', function (obj) {
@@ -118,7 +118,7 @@ let fwxx = (function () {
             } else if (obj.event === 'del') {
                 layer.confirm('是否删除该记录？', function (index) {
                     $.ajax({
-                        url: '/azd/delFw',
+                        url: '/yw/azd/del',
                         method: 'get',
                         data: {id: data.id},
                         contentType: "application/json",
@@ -144,7 +144,7 @@ let fwxx = (function () {
                         iframe.setBaseId(data.id);
                     },
                     end: function () {
-                        parent.layui.table.reload('id','familyListTable');
+                        parent.layui.table.reload('familyListTable');
                     }
                 });
             }
@@ -163,7 +163,6 @@ let fwxx = (function () {
                         parent.layui.table.reload('familyListTable');
                     }
                 });
-
             }
         });
 

@@ -7,7 +7,7 @@ let family = (function () {
         var table = layui.table;
         var familyTabel = table.render({
             elem: '#familyListTable',
-            url: '/xt/menu/getList',
+            url: '/query/jt/getList',
             page: true,
             toolbar: '#toolbarDemo',
             limits: [10, 15, 20, 25],
@@ -17,16 +17,41 @@ let family = (function () {
             cols: [[
                 {type: 'checkbox'}
                 , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                , {field: 'pid', title: '父级id'}
-                , {field: 'mc', title: '名称'}
-                , {field: 'url', title: '路径'}
-                , {field: 'px', title: '排序'}
-                , {field: 'zt', title: '状态'}
-                , {field: 'cjsj', title: '创建时间'}
-                , {field: 'gxsj', title: '更新时间'}
+                , {field: 'zjhm', title: '证件号码'}
+                , {field: 'hzxm', title: '户主姓名', width: 120}
+                , {field: 'pkhsx', title: '贫困户属性'}
+                , {field: 'jhtpnd', title: '计划脱贫年度'}
+                , {field: 'sfbqh', title: '是否易地搬迁户'}
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
+                $("[data-field='pkhsx']").children().each(function () {
+                    if ($(this).text() == 1) {
+                        $(this).text("一般贫困户")
+                    } else if ($(this).text() == 2) {
+                        $(this).text("低保贫困户")
+                    } else if ($(this).text() == 3) {
+                        $(this).text("特困供养贫困户");
+                    }
+
+                    if($(this).text() == 0) {
+                        $(this).text("");
+                    }
+
+                });
+                $("[data-field='jhtpnd']").children().each(function () {
+                    if($(this).text() == 0) {
+                        $(this).text("");
+                    }
+
+                });
+                $("[data-field='sfbqh']").children().each(function () {
+                    if ($(this).text() == 1) {
+                        $(this).text("是")
+                    } else if ($(this).text() == 0) {
+                        $(this).text("否")
+                    }
+                });
             },
             skin: 'row'
         });
@@ -42,7 +67,7 @@ let family = (function () {
                         type: 2,
                         skin: 'layui-layer-rim', //加上边框
                         area: ['70%', '60%'], //宽高
-                        content: '/xt/menu/add',
+                        content: '/query/jt/add',
                         end: function () {
                             parent.layui.table.reload('familyListTable');
                         }
@@ -65,7 +90,7 @@ let family = (function () {
                         btn: ['是', '否'] //按钮
                     }, function () {
                         $.ajax({
-                            url: '/xt/menu/delAll',
+                            url: '/query/jt/delAll',
                             data: JSON.stringify(ids),
                             method: "POST",
                             contentType: 'application/json',
@@ -120,7 +145,7 @@ let family = (function () {
             } else if (obj.event === 'del') {
                 layer.confirm('是否删除该记录？', function (index) {
                     $.ajax({
-                        url: '/xt/menu/del',
+                        url: '/query/jt/del',
                         method: 'get',
                         data: {id: data.id},
                         contentType: "application/json",
@@ -139,7 +164,7 @@ let family = (function () {
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
                     area: ['70%', '60%'], //宽高
-                    content: '/xt/menu/edit',
+                    content: '/query/jt/edit',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
                         iframe.setBaseId(data.id);
@@ -164,7 +189,7 @@ let family = (function () {
 
             familyTabel.reload({
                 elem: '#familyListTable',
-                url: '/xt/menu/getList',
+                url: '/query/jt/getList',
                 page: true,
                 where : formData,
                 toolbar: '#toolbarDemo',
@@ -179,7 +204,6 @@ let family = (function () {
                     , {field: 'hzxm', title: '户主姓名', width: 120}
                     , {field: 'pkhsx', title: '贫困户属性'}
                     , {field: 'jhtpnd', title: '计划脱贫年度'}
-                    , {field: 'fpnd', title: '返贫年度'}
                     , {field: 'sfbqh', title: '是否易地搬迁户'}
                     , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
                 ]],
@@ -192,6 +216,9 @@ let family = (function () {
                         } else if ($(this).text() == 3) {
                             $(this).text("特困供养贫困户");
                         }
+                        else {
+                            $(this).text("");
+                        }
                     });
                     $("[data-field='sfbqh']").children().each(function () {
                         if ($(this).text() == 1) {
@@ -199,7 +226,11 @@ let family = (function () {
                         } else if ($(this).text() == 0) {
                             $(this).text("否")
                         }
+                        else {
+                            $(this).text("")
+                        }
                     });
+
                     $("#search_name").val(name);
                     $("#search_sfzhm").val(sfzhm);
                     bindClick();

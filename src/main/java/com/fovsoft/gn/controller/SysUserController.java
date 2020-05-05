@@ -14,4 +14,9 @@ public class SysUserController {
     public String index() {
         return "system/user/index";
     }
+
+    @RequestMapping(value = "/xt/user/edit")
+    public String edit() {
+        return "system/user/edit";
+    }
 }

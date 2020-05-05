@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{/assets/css/form.css}" media="all">
     <script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
     <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
-    <script th:src="@{/assets/ym/azd/glzh.js}"></script>
+    <script th:src="@{/assets/system/user/edit.js}"></script>
 </head>
 <style type="text/css">
     .layui-table-cell {
@@ -27,24 +27,46 @@
         box-sizing: border-box;
         overflow: auto;
     }
-    input {
-        text-align: center;
-    }
 </style>
 <body>
 <form class="layui-form" lay-filter="member11" style="margin-top: 10px" action="">
     <input name="id" type="hidden" id="id" th:value="${id}"/>
+    <input name="aid" type="hidden" id="aid" />
     <div style="padding: 20px 10px 0 10px">
         <table class="fp_zdtb" style=" border-collapse: collapse;" border=1 cellSpacing=0
                cellPadding=0>
             <tbody>
-            <tr id="fir">
-                <td class="fp_btbt" width="10%">搬迁家庭ID</td>
-                <td class="fp_btbt">被帮扶户主姓名</td>
-                <td class="fp_btbt">户主身份证号</td>
-                <td class="fp_btbt">家庭人口数</td>
-                <td class="fp_btbt">贫困户属性</td>
-                <!--<td class="fp_btbt" width="20%">操作</td>-->
+            <tr>
+                <td class="fp_btbt">账号</td>
+                <td class="fp_nrbt" colspan="3">
+                    <input id="username" name="username" class="layui-input ld" lay-filter="username" autocomplete="off"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="fp_btbt">密码</td>
+                <td class="fp_nrbt">
+                    <input id="password" name="password" type="password" class="layui-input ld" lay-filter="password" autocomplete="new-password"/>
+                </td>
+                <td class="fp_btbt">再次输入密码</td>
+                <td class="fp_nrbt">
+                    <input id="opassword" name="opassword" type="password" class="layui-input ld" lay-filter="opassword" autocomplete="off"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="fp_btbt">昵称</td>
+                <td class="fp_nrbt">
+                    <input id="nc" name="nc" class="layui-input ld" lay-filter="nc"/>
+                </td>
+                <td class="fp_btbt">联系电话</td>
+                <td class="fp_nrbt">
+                    <input id="dh" name="dh" class="layui-input ld" lay-filter="dh"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="fp_btbt">电子邮箱</td>
+                <td class="fp_nrbt" colspan="3">
+                    <input id="dzyx" name="dzyx" class="layui-input ld" lay-filter="dzyx"/>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -52,13 +74,14 @@
     <div class="layui-form-item" style="margin-top: 20px">
         <div class="layui-input-block">
             <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="member">提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
         </div>
     </div>
 </form>
 </body>
 
 <script type="text/javascript">
-    var setBaseId = function(id) {
+    var setBaseId = function (id) {
         $("#id").val(id);
     }
 </script>

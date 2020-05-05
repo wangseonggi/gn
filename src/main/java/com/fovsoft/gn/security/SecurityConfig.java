@@ -75,6 +75,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/xzqhdm/get")
                     .permitAll()
 
+                    .antMatchers("/query/**")
+                    .permitAll()
+
+
                     .antMatchers("/fun1/**","/family")
                     .hasAnyRole("admin")
 

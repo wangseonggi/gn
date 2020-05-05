@@ -10,16 +10,17 @@ var bfgx = (function () {
         var fwid = $('#id').val();
         // 先尝试加载已存在的住戶信息
         // 如果有，则列出关系，否则初始化表格
-        $.post('/yw/azd/getGLZHXX', {id: fwid}, function (res) {debugger;
-            if (res.data.id > 0) {
+        $.post('/yw/azd/getGLZHXX', {id: fwid}, function (res) {;
+            if (res.data) {
                 // 清空
                 $("tbody").html('<tr id="fir">' + $("#fir").html() + '</tr>');
                 var addedTr = "<tr class='bfrxx'>" +
-                    "<td class='fp_nrbt'><input name='jtid' class='layui-input' lay-filter='jtid' value='" + res.data.id + "'/></td>" +
+                    "<td class='fp_nrbt'><input name='jtid' class='layui-input' lay-filter='id' value='" + res.data.id + "'/></td>" +
                     "<td class='fp_nrxt'><input name='xm' class='layui-input' lay-filter='xm' value='" + res.data.xm + "' readonly/></td>" +
                     "<td class='fp_nrxt'><input name='zjhm' class='layui-input' lay-filter='zjhm' value='" + res.data.zjhm + "' readonly/></td>" +
-                    "<td class='fp_nrxt'><input name='jtrks' class='layui-input' lay-filter='jtrks' value='" + res.data.num + "' readonly/></td>" +
+                    "<td class='fp_nrxt'><input name='jtrks' class='layui-input' lay-filter='num' value='" + res.data.num + "' readonly/></td>" +
                     "<td class='fp_nrxt'><input name='pkhsx' class='layui-input' lay-filter='pkhsx' value='" + res.data.pkhsx + "' readonly/></td>" +
+                    "</tr>";
                     $("tbody").append(addedTr);
             }
             else {
@@ -27,6 +28,8 @@ var bfgx = (function () {
                 addRow();
             }
             blur();
+        }).error(function(xhr, status, info) {
+            alert(xhr.status);
         });
 
         form.on('submit(member)', function (data) {
@@ -50,8 +53,8 @@ var bfgx = (function () {
 
             // 有指定则更新
             $.ajax({
-                url: '/yw/bfr/zd',
-                data: {bfrid: parseInt(bfrid), bqhids: bqhids},
+                url: '/yw/azd/rz',
+                data: {fwid: $("#id").val(), fid: $("[name='jtid']").val()},
                 method: "post",
                 dataType: 'JSON',
                 success: function (res) {
@@ -64,21 +67,17 @@ var bfgx = (function () {
         });
     });
 
-    function addRow(obj) {
+    function addRow() {
         var addedTr = "<tr class='bfrxx'>" +
-            "<td class='fp_nrbt'><input name='jtid' class='layui-input' lay-filter='jtid' /></td>" +
+            "<td class='fp_nrbt'><input name='jtid' class='layui-input' lay-filter='id' /></td>" +
             "<td class='fp_nrxt'><input name='xm' class='layui-input' lay-filter='xm'  readonly/></td>" +
             "<td class='fp_nrxt'><input name='zjhm' class='layui-input' lay-filter='zjhm'  readonly/></td>" +
             "<td class='fp_nrxt'><input name='jtrks' class='layui-input' lay-filter='jtrks'  readonly/></td>" +
             "<td class='fp_nrxt'><input name='pkhsx' class='layui-input' lay-filter='pkhsx'  readonly/></td>" +
             "</tr>";
-        if (obj)
-            $(obj).parents('tr').after(addedTr);
-        else
-            $("#fir").after(addedTr);
-
+        $("tbody").append(addedTr);
         blur();
-    };
+    }
 
     function delRow(obj) {
         var ryRowNum = $(obj).parents('tbody').children('.bfrxx').size();

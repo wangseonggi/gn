@@ -17,31 +17,16 @@ let family = (function () {
             cols: [[
                 {type: 'checkbox'}
                 , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                , {field: 'zjhm', title: '证件号码'}
-                , {field: 'hzxm', title: '户主姓名', width: 120}
-                , {field: 'pkhsx', title: '贫困户属性'}
-                , {field: 'jhtpnd', title: '计划脱贫年度'}
-                , {field: 'fpnd', title: '返贫年度'}
-                , {field: 'sfbqh', title: '是否易地搬迁户'}
+                , {field: 'mc', title: '角色名'}
+                , {field: 'sm', title: '说明'}
+                , {field: 'bz', title: '备注'}
+                , {field: 'zt', title: '状态'}
+                , {field: 'cjsj', title: '创建时间'}
+                , {field: 'gxsj', title: '更新时间'}
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
-                $("[data-field='pkhsx']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("一般贫困户")
-                    } else if ($(this).text() == 2) {
-                        $(this).text("低保贫困户")
-                    } else if ($(this).text() == 3) {
-                        $(this).text("特困供养贫困户");
-                    }
-                });
-                $("[data-field='sfbqh']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("是")
-                    } else if ($(this).text() == 0) {
-                        $(this).text("否")
-                    }
-                });
+
             },
             skin: 'row'
         });

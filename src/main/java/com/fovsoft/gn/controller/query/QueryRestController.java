@@ -1,4 +1,4 @@
-package com.fovsoft.gn.controller.rest;
+package com.fovsoft.gn.controller.query;
 
 import com.fovsoft.common.JsonResult;
 import com.fovsoft.gn.entity.JtcyDO;
@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/yw/jt")
-public class JtjbqkRestController {
+@RequestMapping("/query/jt")
+public class QueryRestController {
     private final Log logger = LogFactory.getLog(this.getClass());
     @Autowired
     JTJBQKSerivce serivce;
@@ -59,25 +59,9 @@ public class JtjbqkRestController {
         return new JsonResult(jtjbxxDO);
     }
 
-    /**
-     *
-     * @return
-     */
-    @RequestMapping(value = "/addZpyy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResult addAddition(@RequestBody ZpyyDO zpyyDO) {
-        int id = serivce.addOrUpdateFamilyBaseAddition(zpyyDO);
-        return new JsonResult(Integer.valueOf(id));
-    }
 
-    /**
-     *
-     * @return
-     */
-    @RequestMapping(value = "/addScshtj", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResult addCondition(@RequestBody ScshtjDO scshtjDO) {
-        int id = serivce.addOrUpdateFamilyBaseCondition(scshtjDO);
-        return new JsonResult(Integer.valueOf(id));
-    }
+
+
 
     @RequestMapping(value = "/getCyList",  produces = "application/json;charset=UTF-8")
     public JsonResult getMemberList(Integer fid) {
@@ -98,36 +82,10 @@ public class JtjbqkRestController {
         return new JsonResult(Integer.valueOf(id));
     }
 
-    @RequestMapping(value = "/updateCy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResult updateMember(@RequestBody JtcyDO jtcyDO) {
-        int id = serivce.addOrUpdateFamilyBaseMember(jtcyDO);
-        return new JsonResult(Integer.valueOf(id));
-    }
 
-    @RequestMapping(value = "/delCy", method = RequestMethod.GET)
-    public JsonResult delMember(Integer id) {
-        int returnId = serivce.delMember(id);
-        return new JsonResult(Integer.valueOf(returnId));
-    }
 
-    /**
-     * 批量删除
-     *
-     * 多表批量删除，没加事务
-     *
-     * @return
-     */
-    @RequestMapping(value = "/delAll",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResult delAll(@RequestBody ArrayList<Integer> ids) {
-        String inStr = "";
-        for (int i:
-        ids) {
-            inStr += i + ",";
-        }
-        inStr = inStr.substring(0, inStr.length() - 1); logger.info(inStr);
-        serivce.delAll(inStr);
-        return new JsonResult();
-    }
+
+
 
     @RequestMapping(value = "/getZpyy",  produces = "application/json;charset=UTF-8")
     public JsonResult getAddiction(Integer fid) {

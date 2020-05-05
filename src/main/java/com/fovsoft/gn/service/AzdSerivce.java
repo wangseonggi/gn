@@ -3,6 +3,7 @@ package com.fovsoft.gn.service;
 
 import com.fovsoft.gn.entity.AzdDo;
 import com.fovsoft.gn.entity.AzdFwxxDo;
+import com.fovsoft.gn.entity.holder.AzdFwxxHzHolder;
 import com.fovsoft.gn.entity.holder.BfgxXXHolder;
 import com.fovsoft.gn.entity.holder.BfrBqhHolder;
 import com.fovsoft.gn.mapper.azd.AzdMapper;
@@ -10,6 +11,7 @@ import com.fovsoft.gn.mapper.bfr.BfrMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -32,7 +34,7 @@ public class AzdSerivce {
 
     public PageInfo getFwxxList(Integer page, Integer limit, Integer aid, String ld ,String dy ,String fh ,Double mjgt ,Double mjlt) {
         PageHelper.startPage(page, limit);
-        List<AzdFwxxDo> list = azdMapper.fwxxList(aid, ld, dy, fh, mjgt, mjlt);
+        List<AzdFwxxHzHolder> list = azdMapper.fwxxList(aid, ld, dy, fh);
         return new PageInfo(list);
     }
 
@@ -55,5 +57,24 @@ public class AzdSerivce {
 
     public BfgxXXHolder getGLZHXX(int id) {
         return azdMapper.getGLZHXX(id);
+    }
+
+    public int rz(int fwid, int fid) {
+        Object id = azdMapper.getRz(fwid);
+        if(id != null && Integer.parseInt(id.toString()) > 0) {
+            // 更新
+            return azdMapper.updateRz(Integer.parseInt(id.toString()), fwid, fid);
+        }
+        else {
+            return azdMapper.rz(fwid, fid);
+        }
+    }
+
+    @Transactional
+    public int del(int id) {
+        int fwid = azdMapper.del(id);
+        int rzid = azdMapper.delRz(id);
+
+        return rzid;
     }
 }
