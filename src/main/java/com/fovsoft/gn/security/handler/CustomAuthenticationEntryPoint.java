@@ -2,6 +2,7 @@ package com.fovsoft.gn.security.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fovsoft.gn.security.util.HTTPUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Locale;
 
+@Slf4j
 public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response,
@@ -38,6 +41,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         }
         else {
             // todo
+//            log.info(authException.getMessage());
             response.sendRedirect("/login");
         }
 

@@ -345,7 +345,6 @@ let family_edit = (function () {
                         data : {fid : fid},
                         dataType: 'JSON',
                         success : function(res) {
-                            // console.log(res.data);
                             if(res.data != null) {
                                 form.val('form3', {
                                     'additionid' : res.data.id,
@@ -418,7 +417,6 @@ let family_edit = (function () {
                         data : {id : fid},
                         dataType: 'JSON',
                         success : function(res) {
-                            console.log(res);
                             if(res.data == null)
                                 return;
                             form.val('form6', {
@@ -451,11 +449,6 @@ let family_edit = (function () {
                     initTab5 = 1;
                 }
             }
-
-            // console.log(this); //当前Tab标题所在的原始DOM元素
-            // console.log(data.index); //得到当前Tab的所在下标
-            // console.log(data.elem); //得到当前的Tab大容器
-            // console.log($("#"))
         });
         /* ***** tab切换事件结束 **** */
 
@@ -676,7 +669,6 @@ let family_edit = (function () {
 
     function settabheight() {
         var winheight = $(window).height();
-        console.log("winheight:" + winheight);
         var tabheight = winheight - 95;
         $("#t1").height(tabheight);
         $(".layui-tab-content").css("overflow", "auto");

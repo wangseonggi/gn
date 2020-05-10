@@ -5,6 +5,7 @@ import com.fovsoft.gn.security.bean.SysUser;
 import com.fovsoft.gn.security.service.SysUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,12 +30,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // 根据username查找用户，并检查有效性
         SysUser user = sysUserService.findUserByName(username);
-        if(user == null) {
-            throw new UsernameNotFoundException("没有这个用户");
-        }
-        if(user.getZt() != 1 && user.getZt() == 2) {
-            throw new UsernameNotFoundException("该账户已被禁用");
-        }
 
         // 获取用户权限，并构造返回
         List<GrantedAuthority> authorities = new ArrayList<>();
@@ -50,6 +46,16 @@ public class CustomUserDetailsService implements UserDetailsService {
         boolean accountNonExpired = true;
         boolean credentialsNonExpired = true;
         boolean accountNonLoscked = true;
+        if(user.getZt() == 2) {
+            accountNonLoscked = false;
+        }
+        Date now = new Date();
+        if(user.getZhyxq() != null) {
+            accountNonExpired = now.before(user.getZhyxq());
+        }
+        if(user.getMmyxq() != null) {
+            credentialsNonExpired = now.before(user.getMmyxq());
+        }
 
         return new User(user.getUsername(), user.getPassword(),
                 enabled, accountNonExpired, credentialsNonExpired, accountNonLoscked,

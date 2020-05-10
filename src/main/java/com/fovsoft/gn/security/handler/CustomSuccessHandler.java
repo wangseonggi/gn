@@ -24,6 +24,9 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
             response.sendRedirect("/");
         }
         else {
+            // todo
+            // 处理如果是非ajax请求，才跳转
+            // ajax请求不做跳转处理
             response.sendRedirect(savedRequest.getRedirectUrl());
         }
     }

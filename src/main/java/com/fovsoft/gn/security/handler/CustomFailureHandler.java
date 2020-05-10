@@ -12,6 +12,7 @@ import java.io.IOException;
 public class CustomFailureHandler extends SimpleUrlAuthenticationFailureHandler {
 
     public CustomFailureHandler() {
+//        this.setDefaultFailureUrl("/login?error=true");
         this.setDefaultFailureUrl("/login?error");
     }
 

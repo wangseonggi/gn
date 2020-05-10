@@ -57,10 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                     .loginPage("/login")
-                    .successHandler(getCustomSuccessHandler())
-                    .failureHandler(getCustomFailureHandler())
-//                    .successForwardUrl("/index")
                     .permitAll()
+                    .successHandler(getCustomSuccessHandler())
+
+
+//                    .failureHandler(getCustomFailureHandler())
+//                    .permitAll()
+//                    .successForwardUrl("/index")
+//                    .permitAll()
                     .and()
                 .logout()
                     .permitAll()

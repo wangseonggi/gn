@@ -418,7 +418,6 @@ let family_edit = (function () {
                         data : {id : fid},
                         dataType: 'JSON',
                         success : function(res) {
-                            console.log(res);
                             if(res.data == null)
                                 return;
                             form.val('form6', {
@@ -676,7 +675,6 @@ let family_edit = (function () {
 
     function settabheight() {
         var winheight = $(window).height();
-        console.log("winheight:" + winheight);
         var tabheight = winheight - 95;
         $("#t1").height(tabheight);
         $(".layui-tab-content").css("overflow", "auto");
