@@ -41,15 +41,21 @@ public interface JTJBXXMapper {
     JtjbxxDO get(int id);
 
     @Select({"<script>",
-            "SELECT a.id, a.fpnd, a.sfbqh, a.pkhsx, a.`jhtpnd`, b.xm AS hzxm, b.`zjhm` ",
-            "FROM ym_jtjbqk_jtjbxx a LEFT JOIN ym_jtjbqk_jtcy b ON a.id = b.`fid` WHERE b.yhzgx = 1 AND a.scbz = 0 ",
+            "SELECT * FROM ( ",
+            "SELECT a.`id`,a.`shi`,a.`xian`,a.`xzc`,a.`pkhsx`,b.`fid`,b.`xm` hzxm,b.`zjhm` FROM ym_jtjbqk_jtjbxx a ",
+            "LEFT JOIN ( ",
+            "SELECT fid,xm,xb,zjhm,scbz ",
+            "FROM ym_jtjbqk_jtcy WHERE yhzgx = '01' AND scbz = 0) b ",
+            "ON a.`id` = b.`fid` ",
+            "WHERE a.`scbz` = 0 ",
+            ") t WHERE 1 = 1 ",
             "<when test='name!=null'>",
-            "and b.xm like '%${name}%' ",
+            "and t.hzxm like '%${name}%' ",
             "</when>",
-            "<when test='sfzhm!=null'>",
-            "and b.zjhm like '%${sfzhm}%' ",
+            "<when test='sfzhm != null '>",
+            "and t.zjhm like '%${sfzhm}%' ",
             "</when>",
-            " ORDER BY a.id desc",
+            " ORDER BY t.id desc",
             "</script>"})
     List<JbxxHzHolder> list(@Param("name") String name, @Param("sfzhm")String sfzhm);
 

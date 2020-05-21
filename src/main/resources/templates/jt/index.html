@@ -74,24 +74,25 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="#">主页</a>
+                        <a href="#">首页</a>
                     </li>
 
                     <li>
-                        <a href="javascript:;">基础信息管理</a>
+                        <a href="javascript:;">业务</a>
                     </li>
                     <li class="active">贫困户家庭基本情况</li>
                 </ul><!-- /.breadcrumb -->
 
-                <div class="nav-search" id="nav-search">
-                    <form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input"
-                                           id="nav-search-input" autocomplete="off"/>
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-                    </form>
-                </div><!-- /.nav-search -->
+                <!--
+                                <div class="nav-search" id="nav-search">
+                                    <form class="form-search">
+                                                <span class="input-icon">
+                                                    <input type="text" placeholder="Search ..." class="nav-search-input"
+                                                           id="nav-search-input" autocomplete="off"/>
+                                                    <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                                </span>
+                                    </form>
+                                </div> /.nav-search -->
             </div>
 
             <div class="page-content">
@@ -99,7 +100,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <table id="familyListTable" lay-filter="userList"></table>
+                        <table id="indexTable" lay-filter="userList"></table>
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -143,9 +144,6 @@
     <div class="layui-btn-container">
         <button sec:authorize-url="/yw/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
         <button sec:authorize-url="/yw/jt/delAll" class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</button>
-        <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>-->
-        <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
-        <!--<button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>-->
 
         <input id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
         <input id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入身份找号码">
@@ -159,6 +157,6 @@
     <a sec:authorize-url="/yw/jt/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
-<script th:src="@{/assets/ym/family.js}"></script>
+<script th:src="@{/assets/ym/jt/index.js}"></script>
 </body>
 </html>

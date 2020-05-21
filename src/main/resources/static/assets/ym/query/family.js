@@ -25,33 +25,9 @@ let family = (function () {
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
-                $("[data-field='pkhsx']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("一般贫困户")
-                    } else if ($(this).text() == 2) {
-                        $(this).text("低保贫困户")
-                    } else if ($(this).text() == 3) {
-                        $(this).text("特困供养贫困户");
-                    }
-
-                    if($(this).text() == 0) {
-                        $(this).text("");
-                    }
-
-                });
-                $("[data-field='jhtpnd']").children().each(function () {
-                    if($(this).text() == 0) {
-                        $(this).text("");
-                    }
-
-                });
-                $("[data-field='sfbqh']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("是")
-                    } else if ($(this).text() == 0) {
-                        $(this).text("否")
-                    }
-                });
+                $("#search_name").unbind();
+                $("#search_sfzhm").unbind();
+                bindClick();
             },
             skin: 'row'
         });
@@ -177,9 +153,9 @@ let family = (function () {
             }
         });
 
-        bindClick();
         // 条件查询操作
-        function where() {
+        function where() { console.log("where");
+
             var formData = {};
 
             var name = $("#search_name").val();
@@ -187,68 +163,33 @@ let family = (function () {
             formData.name = name;
             formData.sfzhm = sfzhm;
 
-            familyTabel.reload({
-                elem: '#familyListTable',
-                url: '/query/jt/getList',
-                page: true,
+            table.reload('familyListTable', {
+                url : '/query/jt/getList',
                 where : formData,
-                toolbar: '#toolbarDemo',
-                limits: [10, 15, 20, 25],
-                limit: 10,
-                even: true,
-                title: '贫困户家庭基本情况',
-                cols: [[
-                    {type: 'checkbox'}
-                    , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                    , {field: 'zjhm', title: '证件号码'}
-                    , {field: 'hzxm', title: '户主姓名', width: 120}
-                    , {field: 'pkhsx', title: '贫困户属性'}
-                    , {field: 'jhtpnd', title: '计划脱贫年度'}
-                    , {field: 'sfbqh', title: '是否易地搬迁户'}
-                    , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
-                ]],
-                done: function (res, curr, count) {
-                    $("[data-field='pkhsx']").children().each(function () {
-                        if ($(this).text() == 1) {
-                            $(this).text("一般贫困户")
-                        } else if ($(this).text() == 2) {
-                            $(this).text("低保贫困户")
-                        } else if ($(this).text() == 3) {
-                            $(this).text("特困供养贫困户");
-                        }
-                        else {
-                            $(this).text("");
-                        }
-                    });
-                    $("[data-field='sfbqh']").children().each(function () {
-                        if ($(this).text() == 1) {
-                            $(this).text("是")
-                        } else if ($(this).text() == 0) {
-                            $(this).text("否")
-                        }
-                        else {
-                            $(this).text("")
-                        }
-                    });
-
+                page: {
+                    curr: 1
+                },
+                done : function() {
                     $("#search_name").val(name);
                     $("#search_sfzhm").val(sfzhm);
+                    $("#search_name").unbind();
+                    $("#search_sfzhm").unbind();
                     bindClick();
-                },
-                skin: 'row'
+                }
             });
         }
 
         // 绑定回车事件
         function bindClick() {
-            $("#search_name").bind("keypress", function(){
-                if (event.keyCode == 13){
-                    $("#search_btn").click();
+            $("#search_name").keydown(function(e){
+                if(e.keyCode==13){
+                    where();
                 }
             });
-            $("#search_sfzhm").bind("keypress", function(){
-                if (event.keyCode == 13){
-                    $("#search_btn").click();
+
+            $("#search_sfzhm").keydown(function(e){
+                if(e.keyCode==13){
+                    where();
                 }
             });
         }

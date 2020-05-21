@@ -50,7 +50,11 @@ public class JTJBQKSerivce {
      */
     public PageInfo getList(Integer page, Integer limit, String name, String sfzhm) {
         PageHelper.startPage(page, limit);
-        List<JbxxHzHolder> list =  jtjbxxMapper.list(name, sfzhm);
+
+        String name1 = name != null && !name.equals("") ? name : null;
+        String sfzhm1 = sfzhm != null && !sfzhm.equals("") ? sfzhm : null;
+
+        List<JbxxHzHolder> list =  jtjbxxMapper.list(name1, sfzhm1);
         return new PageInfo(list);
     }
 

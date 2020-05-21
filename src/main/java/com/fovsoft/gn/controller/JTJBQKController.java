@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * 贫困户家庭基本情况controller
+ * 家庭
+ *
+ *
  */
 @Controller
 @RequestMapping(value="/yw/jt")
@@ -13,17 +15,17 @@ public class JTJBQKController {
 
     @RequestMapping(value = "/index")
     public String index() {
-        return "pkhjtjbqk/index";
+        return "jt/index";
     }
 
     @RequestMapping(value = "/add")
     public String add() {
-        return "pkhjtjbqk/add";
+        return "jt/add";
     }
 
     @RequestMapping(value = "/edit")
-    public String familyEdit() {
-        return "pkhjtjbqk/edit";
+    public String edit() {
+        return "jt/edit";
     }
 
 
@@ -32,6 +34,6 @@ public class JTJBQKController {
         if(id > 0) {
             model.addAttribute("id", id);
         }
-        return "pkhjtjbqk/cy_add";
+        return "jt/cy_add";
     }
 }

@@ -200,12 +200,14 @@ let fwxx = (function () {
                 title: 'xxx房屋信息',
                 cols: [[
                     {type: 'checkbox'}
+                    // , {field: 'aid'}
                     , {field: 'id', title: 'ID', width: 60, sort: true}
                     , {field: 'mc', title: '名称'}
                     , {field: 'ld', title: '楼栋'}
                     , {field: 'dy', title: '单元'}
                     , {field: 'fh', title: '房号'}
-                    , {field: '', title: '住户信息'}
+                    , {field: 'xm', title: '户主姓名'}
+                    , {field: 'zjhm', title: '证件号码'}
                     // , {field: 'mj', title: '房屋面积'}
                     // , {field: 'hx', title: '户型'}
                     , {title: '操作', toolbar: '#barDemo', fixed: 'right'}

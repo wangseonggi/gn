@@ -29,7 +29,6 @@ public class JtjbqkRestController {
 
     @RequestMapping(value = "/getList")
     public Object index(Integer page, Integer limit, String name, String sfzhm) {
-        logger.info(page + " " + limit);
         PageInfo pageInfo = serivce.getList(page, limit, name, sfzhm);
 
         Map result = new HashMap();
@@ -81,7 +80,8 @@ public class JtjbqkRestController {
 
     @RequestMapping(value = "/getCyList",  produces = "application/json;charset=UTF-8")
     public JsonResult getMemberList(Integer fid) {
-        List<JtcyDO> list = serivce.getMemberList(fid);
+        Integer id = fid != null ? fid : 0;
+        List<JtcyDO> list = serivce.getMemberList(id);
 
         return new JsonResult(list);
     }
