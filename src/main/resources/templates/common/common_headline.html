@@ -19,7 +19,7 @@
         </button>
 
         <div class="navbar-header pull-left">
-            <a href="index.html" class="navbar-brand">
+            <a href="/" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
                     钦南区易地扶贫搬迁管理系统
@@ -310,9 +310,9 @@
                         </li>
 
                         <li>
-                            <a href="profile.html">
+                            <a href="javascript:void(0);" onclick="update()">
                                 <i class="ace-icon fa fa-user"></i>
-                                Profile
+                                个人
                             </a>
                         </li>
 
@@ -329,6 +329,23 @@
             </ul>
         </div>
     </div><!-- /.navbar-container -->
+
+    <!-- 包含在fragment内 -->
+    <script type="text/javascript">
+        function update() {
+            layer.open({
+                title: '个人信息',
+                type: 2,
+                area: ['622px', '261px'], //宽高
+                content: '/xt/user/edit?isProfile=1',
+                end: function () {
+                    window.location.reload();
+                }
+            });
+        }
+    </script>
 </div>
+
 </body>
+
 </html>

@@ -57,8 +57,15 @@ public class CustomUserDetailsService implements UserDetailsService {
             credentialsNonExpired = now.before(user.getMmyxq());
         }
 
-        return new User(user.getUsername(), user.getPassword(),
+        // 扩展的User
+        CustomUser customUser = new CustomUser(user.getUsername(), user.getPassword(),
                 enabled, accountNonExpired, credentialsNonExpired, accountNonLoscked,
                 authorities);
+        customUser.setEmail(user.getDzyx());
+        customUser.setNickname(user.getNc());
+        customUser.setSex(user.getXb());
+        customUser.setTel(user.getDh());
+        customUser.setId(user.getId());
+        return customUser;
     }
 }

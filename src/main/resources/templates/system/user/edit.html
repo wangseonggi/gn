@@ -30,7 +30,7 @@
 </style>
 <body>
 <form class="layui-form" lay-filter="member11" style="margin-top: 10px" action="">
-    <input name="id" type="hidden" id="id" th:value="${id}"/>
+    <input name="id" type="hidden" id="id" th:value="${user!=null?user.id:''}"/>
     <input name="aid" type="hidden" id="aid" />
     <div style="padding: 20px 10px 0 10px">
         <table class="fp_zdtb" style=" border-collapse: collapse;" border=1 cellSpacing=0
@@ -39,7 +39,7 @@
             <tr>
                 <td class="fp_btbt">账号</td>
                 <td class="fp_nrbt" colspan="3">
-                    <input id="username" name="username" class="layui-input ld" lay-filter="username" autocomplete="off"/>
+                    <input id="username" name="username" class="layui-input ld" lay-filter="username" autocomplete="off" readonly="readonly" th:value="${user!=null?user.username:''}"/>
                 </td>
             </tr>
             <tr>
@@ -55,17 +55,17 @@
             <tr>
                 <td class="fp_btbt">昵称</td>
                 <td class="fp_nrbt">
-                    <input id="nc" name="nc" class="layui-input ld" lay-filter="nc"/>
+                    <input id="nc" name="nc" class="layui-input ld" lay-filter="nc" th:value="${user!=null?user.nickname:''}"/>
                 </td>
                 <td class="fp_btbt">联系电话</td>
                 <td class="fp_nrbt">
-                    <input id="dh" name="dh" class="layui-input ld" lay-filter="dh"/>
+                    <input id="dh" name="dh" class="layui-input ld" lay-filter="dh" th:value="${user!=null?user.tel:''}"/>
                 </td>
             </tr>
             <tr>
                 <td class="fp_btbt">电子邮箱</td>
                 <td class="fp_nrbt" colspan="3">
-                    <input id="dzyx" name="dzyx" class="layui-input ld" lay-filter="dzyx"/>
+                    <input id="dzyx" name="dzyx" class="layui-input ld" lay-filter="dzyx" th:value="${user!=null?user.email:''}"/>
                 </td>
             </tr>
             </tbody>
