@@ -1,14 +1,14 @@
 $(document).ready(function () {
     family_edit.onload();
 });
-let family_edit = (function () {
+var family_edit = (function () {
 
     // 首次更新标志
-    let initTab1 = 0;
-    let initTab2 = 0;
-    let initTab3 = 0;
+    var initTab1 = 0;
+    var initTab2 = 0;
+    var initTab3 = 0;
 
-    let initTab5 = 0;
+    var initTab5 = 0;
 
     layui.use(['form', 'element', 'laydate', 'table'], function () {
         var element, laydate, form, table;
@@ -134,7 +134,7 @@ let family_edit = (function () {
 
         /* ***** tab切换事件开始 **** */
         element.on('tab(addBaseInfo)', function(data){
-            let fid = $("#baseid").val();
+            var fid = $("#baseid").val();
             // 家庭成员
             if(data.index == 1) {
                 if(initTab1 == 0) {
@@ -163,8 +163,8 @@ let family_edit = (function () {
                             , {field: 'mz', title: '民族'}
                             , {field: 'zzmm', title: '政治面貌'}
                             , {field: 'whcd', title: '文化程度'}
-                            , {field: 'zxszk', title: '在校生情况'}
-                            , {field: 'sxyy', title: '失学或辍学原因'}
+                            , {field: 'zxsqk', title: '在校生情况'}
+                            , {field: 'sxhcxyy', title: '失学或辍学原因'}
                             , {field: 'jkzk', title: '健康状况'}
                             , {field: 'ldjn', title: '劳动技能'}
                             , {field: 'sfhjpth', title: '是否会讲普通话'}
@@ -216,7 +216,7 @@ let family_edit = (function () {
                                 }
                             });
 
-                            $("[data-field='zxszk']").children().each(function () {
+                            $("[data-field='zxsqk']").children().each(function () {
                                 if ($(this).text() == 1) {
                                     $(this).text("非在校生")
                                 } else if ($(this).text() == 2) {
@@ -240,7 +240,7 @@ let family_edit = (function () {
                                 }
                             });
 
-                            $("[data-field='sxyy']").children().each(function () {
+                            $("[data-field='sxhcxyy']").children().each(function () {
                                 if ($(this).text() == 1) {
                                     $(this).text("因病")
                                 } else if ($(this).text() == 2) {
@@ -583,7 +583,7 @@ let family_edit = (function () {
 
         // 新增家庭成员
         table.on('toolbar(tableMember)', function (obj) {
-            let checkStatus = table.checkStatus(obj.config.id);
+            var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
                     parent.layer.open({

@@ -89,6 +89,7 @@ public class JTJBQKSerivce {
             id = jtjbxxDO.getId();
         }
         else {
+            jtjbxxDO.setXgrq(new Date());
             jtjbxxMapper.update(jtjbxxDO);
             id = jtjbxxDO.getId();
         }
@@ -174,5 +175,9 @@ public class JTJBQKSerivce {
 
     public int getHz(int fid) {
         return jtjbxxMapper.getHz(fid);
+    }
+
+    public int updateQTXX(JtjbxxDO jtjbxxDO) {
+        return jtjbxxMapper.updateQTXX(jtjbxxDO);
     }
 }

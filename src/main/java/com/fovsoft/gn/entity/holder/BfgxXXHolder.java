@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class BfgxXXHolder {
     private int id;
-    private int pkhsx;
+    private String pkhsx;
     private String xm;
     private String zjhm; // 证件号码
     private int num;    // 家庭人口

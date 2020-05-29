@@ -68,7 +68,7 @@ var jt = (function () {
                     layer.open({
                         title: '新增贫困户家庭基本信息',
                         type: 2,
-                        area: ['70%', '60%'], //宽高
+                        area: ['100%', '100%'], //宽高
                         content: '/yw/jt/add',
                         end: function () {
                             parent.layui.table.reload('indexTable'); // 刷新index页表格
@@ -165,7 +165,7 @@ var jt = (function () {
                     title: '编辑贫困户家庭基本信息',
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
-                    area: ['70%', '60%'], //宽高
+                    area: ['100%', '100%'], //宽高
                     content: '/yw/jt/edit',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];

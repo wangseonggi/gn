@@ -30,10 +30,18 @@ public class JTJBQKController {
 
 
     @RequestMapping(value = "/cyAdd")
-    public String memberAdd(Model model, int id) {
-        if(id > 0) {
+    public String cyAdd(Model model, Integer id) {
+        if(id != null && id > 0) {
             model.addAttribute("id", id);
         }
-        return "jt/cy_add";
+        return "jt/cyAdd";
     }
+
+//    @RequestMapping(value = "/cyAdd")
+//    public String memberAdd(Model model, int id) {
+//        if(id > 0) {
+//            model.addAttribute("id", id);
+//        }
+//        return "jt/cy_add";
+//    }
 }

@@ -5,11 +5,13 @@ import com.fovsoft.gn.entity.JtcyDO;
 import com.fovsoft.gn.entity.JtjbxxDO;
 import com.fovsoft.gn.entity.ScshtjDO;
 import com.fovsoft.gn.entity.ZpyyDO;
+import com.fovsoft.gn.security.component.CustomUser;
 import com.fovsoft.gn.service.JTJBQKSerivce;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,6 +43,9 @@ public class JtjbqkRestController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult add(@RequestBody JtjbxxDO jtjbxxDO) {
+        // 获取当前登录人id
+        CustomUser loginUser = (CustomUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        jtjbxxDO.setLrrdm(loginUser.getId());
         int id = serivce.addOrUpdateFamilyBase(jtjbxxDO);
         return new JsonResult(Integer.valueOf(id));
     }
@@ -155,6 +160,17 @@ public class JtjbqkRestController {
     @RequestMapping(value = "/getHz", produces = "application/json;charset=UTF-8")
     public JsonResult getHz(Integer id) {
         int num = serivce.getHz(id);
+        return new JsonResult(num);
+    }
+
+    /**
+     *
+     * @param jtjbxxDO
+     * @return
+     */
+    @RequestMapping(value = "/updateQTXX",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult updateQTXX(@RequestBody JtjbxxDO jtjbxxDO) {
+        int num = serivce.updateQTXX(jtjbxxDO);
         return new JsonResult(num);
     }
 }

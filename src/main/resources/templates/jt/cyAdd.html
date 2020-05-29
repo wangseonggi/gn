@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <!--<meta name="_csrf" th:content="${_csrf.token}"/>-->
+    <!--<meta name="_csrf_header" th:content="${_csrf.headerName}"/>-->
+    <!-- layui css -->
+    <link rel="stylesheet" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/assets/css/form.css}" media="all">
+    <script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
+    <script th:src="@{/assets/ym/jt/cyAdd.js}"></script>
+</head>
+<style type="text/css">
+    .ness {
+        color: red;
+    }
+</style>
+<body>
+<!--  -->
+<div>
+    <form class="layui-form" lay-filter="member11" style="margin-top: 10px" action="">
+        <input name="memberid" type="hidden" id="memberid" th:value="${id}"/>
+        <input name="fid" class="fid" type="hidden" id="fid" th:value="${fid}"/>
+        <div style="padding: 20px 10px 0 10px">
+            <table width="100%" class="fp_zdtb" style=" border-collapse: collapse;" border=1 cellSpacing=0
+                   cellPadding=0>
+                <tbody>
+                <tr>
+                    <td class="jg_btbt_title" colspan="6">家庭成员基本信息</td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">姓名<span class="ness"> *</span></td>
+                    <td class="fp_nrbt">
+                        <input id="xm" name="xm" class="layui-input xm" lay-filter="xm" lay-verify="required"/>
+                    </td>
+                    <td class="fp_btbt">性别<span class="ness"> *</span></td>
+                    <td class="fp_nrbt">
+                        <select name="xb" id="xb" class="layui-input" lay-filter="xb" lay-verify="required" style="width: 60px">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">证件号码<span class="ness"> *</span></td>
+                    <td class="fp_nrbt">
+                        <input id="zjhm" name="zjhm" class="layui-input" lay-filter="zjhm" lay-verify="required" style=""/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">联系电话<span class="ness"> *</span></td>
+                    <td class="fp_nrbt" colspan="5">
+                        <input id="lxdh" type="avillage" name="lxdh" lay-verify="required"  lay-filter="lxdh"
+                               autocomplete="off" class="layui-input"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">与户主关系</td>
+                    <td class="fp_nrbt">
+                        <select id="yhzgx" name="yhzgx" class="layui-input" lay-filter="yhzgx" lay-search required>
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">民族</td>
+                    <td class="fp_nrbt">
+                        <select id="mz" name="mz" lay-filter="mz" class="layui-input" lay-search required>
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">政治面貌</td>
+                    <td class="fp_nrbt">
+                        <select id="zzmm" name="zzmm" lay-filter="zzmm" class="layui-input" lay-search required>
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="fp_btbt">文化程度</td>
+                    <td class="fp_nrbt">
+                        <select id="whcd" name="whcd" lay-filter="whcd" class="layui-input">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">在校生情况</td>
+                    <td class="fp_nrbt">
+                        <select id="zxsqk" name="zxsqk" lay-filter="zxsqk" class="layui-input">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">失学或辍学原因</td>
+                    <td class="fp_nrbt">
+                        <select id="sxhcxyy" name="sxhcxyy" lay-filter="sxhcxyy" class="layui-input">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">健康状况</td>
+                    <td class="fp_nrbt">
+                        <select id="jkzk" name="jkzk" lay-filter="jkzk" class="layui-input">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">劳动技能</td>
+                    <td class="fp_nrbt">
+                        <select id="ldjn" name="ldjn" lay-filter="ldjn" class="layui-input">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">是否会讲普通话</td>
+                    <td class="fp_nrbt">
+                        <select id="sfhjpth" name="sfhjpth" lay-filter="sfhjpth" class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">是否参加城乡居民基本医疗保险</td>
+                    <td class="fp_nrbt">
+                        <select id="sfcjcxjmjbytlbx" name="sfcjcxjmjbytlbx" lay-filter="sfcjcxjmjbytlbx"
+                                class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">是否参加商业补充医疗保险</td>
+                    <td class="fp_nrbt">
+                        <select id="sfcjsybcylbx" name="sfcjsybcylbx" lay-filter="sfcjsybcylbx" class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">是否享受农村居民最低生活保障</td>
+                    <td class="fp_nrbt">
+                        <select id="sfxsncjmzjshbz" name="sfxsncjmzjshbz" lay-filter="sfxsncjmzjshbz"
+                                class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">是否参加城乡居民基本养老保险</td>
+                    <td class="fp_nrbt">
+                        <select id="sfcjcxjmybyanglbx" name="sfcjcxjmybyanglbx" lay-filter="sfcjcxjmybyanglbx"
+                                class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">是否享受人身意外保险补贴</td>
+                    <td class="fp_nrbt">
+                        <select id="sfxsrsywbxbt" name="sfxsrsywbxbt" lay-filter="sfxsrsywbxbt" class="layui-input">
+                            <option value="">请选择</option>
+                            <option value="N">否</option>
+                            <option value="Y">是</option>
+                        </select>
+                    </td>
+                    <td class="fp_nrxt" colspan="4"></td>
+                </tr>
+
+                <tr>
+                <tr>
+                    <td class="jg_btbt_title" colspan="6">附加信息</td>
+                </tr>
+                </tr>
+
+                <tr>
+                    <td class="fp_btbt">生活状态<span class="ness"> *</span></td>
+                    <td class="fp_nrbt">
+                        <select name="shzt" id="shzt" class="layui-input" lay-filter="shzt" lay-verify="required" style="width: 60px">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">人口类型<span class="ness"> *</span></td>
+                    <td class="fp_nrbt">
+                        <select name="rklx" id="rklx" class="layui-input" lay-filter="rklx" lay-verify="required">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">在读情况</td>
+                    <td class="fp_nrbt">
+                        <select name="zdqk" id="zdqk" class="layui-input" lay-filter="zdqk">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">在校就读学校</td>
+                    <td class="fp_nrbt" colspan="5">
+                        <input id="zxjdxx" name="zxjdxx" class="layui-input" lay-filter="zxjdxx" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">残疾证号</td>
+                    <td class="fp_nrbt">
+                        <input id="cjzh" name="cjzh" class="layui-input" lay-filter="cjzh" />
+                    </td>
+                    <td class="fp_btbt">残疾等级</td>
+                    <td class="fp_nrbt">
+                        <select name="cjdj" id="cjdj" class="layui-input" lay-filter="cjdj" >
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">登记并获得慢性病卡</td>
+                    <td class="fp_nrbt">
+                        <input id="djbhdmxbk" name="djbhdmxbk" class="layui-input" lay-filter="djbhdmxbk" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">慢性病说明</td>
+                    <td class="fp_nrbt" colspan="5">
+                        <input id="mxbsm" name="mxbsm" class="layui-input" lay-filter="mxbsm" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">大病救助</td>
+                    <td class="fp_nrbt">
+                        <select name="dbjz" id="dbjz" class="layui-input" lay-filter="dbjz" >
+                            <option value="">请选择</option>
+                            <option value="Y">有</option>
+                            <option value="N">无</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">是否享受政策兜底</td>
+                    <td class="fp_nrbt">
+                        <select name="sfxszcdd" id="sfxszcdd" class="layui-input" lay-filter="sfxszcdd" >
+                            <option value="">请选择</option>
+                            <option value="Y">是</option>
+                            <option value="N">否</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">就业意愿</td>
+                    <td class="fp_nrbt">
+                        <select name="jyyy" id="jyyy" class="layui-input" lay-filter="jyyy" >
+                            <option value="">请选择</option>
+                            <option value="Y">有</option>
+                            <option value="N">无</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">就业情况</td>
+                    <td class="fp_nrbt">
+                        <select name="jyqk" id="jyqk" class="layui-input" lay-filter="jyqk" >
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">就业、创业单位</td>
+                    <td class="fp_nrbt" colspan="3">
+                        <input id="jycydw" name="jycydw" class="layui-input" lay-filter="jycydw" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fp_btbt">稳定就业、创业地域</td>
+                    <td class="fp_nrbt">
+                        <select name="wdjycydy" id="wdjycydy" class="layui-input" lay-filter="wdjycydy" >
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">养老保险类型</td>
+                    <td class="fp_nrbt">
+                        <select name="ylbxlx" id="ylbxlx" class="layui-input" lay-filter="ylbxlx" >
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                    <td class="fp_btbt">身故年月</td>
+                    <td class="fp_nrbt">
+                        <input id="sgny" name="sgny" class="layui-input" lay-filter="sgny"
+                               autocomplete="off"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="layui-form-item" style="margin-top: 20px">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="member">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+<script type="text/javascript">
+    function child(obj) {
+        console.log(obj);//获取父界面的传值
+    }
+</script>
+</html>
+

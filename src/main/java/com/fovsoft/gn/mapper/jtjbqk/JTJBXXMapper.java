@@ -14,8 +14,8 @@ import java.util.List;
 public interface JTJBXXMapper {
 
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    @Insert("INSERT INTO ym_jtjbqk_jtjbxx(shi,xian,zhen,xzc,zrct,lxdh,khyh,yhkh,pkhsx,jhtpnd,fpnd,fpyy,sfjls,sfbqh,bqfs,bqdz,lrrq,xgrq,lrrdm,scbz) VALUES " +
-            "(#{shi},#{xian},#{zhen},#{xzc},#{zrct},#{lxdh},#{khyh},#{yhkh},#{pkhsx},#{jhtpnd},#{fpnd},#{fpyy},#{sfjls},#{sfbqh},#{bqfs},#{bqdz},#{lrrq},#{xgrq},#{lrrdm},#{scbz})"
+    @Insert("INSERT INTO ym_jtjbqk_jtjbxx(shi,xian,zhen,xzc,zrct,lxdh,khyh,yhkh,pkhsx,jhtpnd,fpnd,fpyy,sfjls,sfbqh,bqfs,bqdz,lrrq,lrrdm) VALUES " +
+            "(#{shi},#{xian},#{zhen},#{xzc},#{zrct},#{lxdh},#{khyh},#{yhkh},#{pkhsx},#{jhtpnd},#{fpnd},#{fpyy},#{sfjls},#{sfbqh},#{bqfs},#{bqdz},#{lrrq},#{lrrdm})"
     )
     int add(JtjbxxDO jtjbxxDO);
 
@@ -34,7 +34,7 @@ public interface JTJBXXMapper {
     int delAll(@RequestParam(name = "inStr") String inStr);
 
 
-    @Update("UPDATE ym_jtjbqk_jtjbxx set shi=#{shi},xian=#{xian},zhen=#{zhen},xzc=#{xzc},zrct=#{zrct},lxdh=#{lxdh},khyh=#{khyh},yhkh=#{yhkh},pkhsx=#{pkhsx},jhtpnd=#{jhtpnd},fpnd=#{fpnd},fpyy=#{fpyy},sfjls=#{sfjls},sfbqh=#{sfbqh},bqfs=#{bqfs},bqdz=#{bqdz},lrrq=#{lrrq},xgrq=#{xgrq},lrrdm=#{lrrdm},scbz=#{scbz} WHERE id=#{id}")
+    @Update("UPDATE ym_jtjbqk_jtjbxx set shi=#{shi},xian=#{xian},zhen=#{zhen},xzc=#{xzc},zrct=#{zrct},lxdh=#{lxdh},khyh=#{khyh},yhkh=#{yhkh},pkhsx=#{pkhsx},jhtpnd=#{jhtpnd},fpnd=#{fpnd},fpyy=#{fpyy},sfjls=#{sfjls},sfbqh=#{sfbqh},bqfs=#{bqfs},bqdz=#{bqdz},xgrq=#{xgrq} WHERE id=#{id}")
     int update(JtjbxxDO jtjbxxDO);
 
     @Select("select id,shi,xian,zhen,xzc,zrct,lxdh,khyh,yhkh,pkhsx,jhtpnd,fpnd,fpyy,sfjls,sfbqh,bqfs,bqdz,lrrq,xgrq,lrrdm,scbz FROM ym_jtjbqk_jtjbxx WHERE id = #{id}")
@@ -45,7 +45,7 @@ public interface JTJBXXMapper {
             "SELECT a.`id`,a.`shi`,a.`xian`,a.`xzc`,a.`pkhsx`,b.`fid`,b.`xm` hzxm,b.`zjhm` FROM ym_jtjbqk_jtjbxx a ",
             "LEFT JOIN ( ",
             "SELECT fid,xm,xb,zjhm,scbz ",
-            "FROM ym_jtjbqk_jtcy WHERE yhzgx = '01' AND scbz = 0) b ",
+            "FROM ym_jtjbqk_jtcy WHERE yhzgx = '02' AND scbz = 0) b ",
             "ON a.`id` = b.`fid` ",
             "WHERE a.`scbz` = 0 ",
             ") t WHERE 1 = 1 ",
@@ -86,5 +86,9 @@ public interface JTJBXXMapper {
 
     @Select("SELECT COUNT(1) FROM ym_jtjbqk_jtcy WHERE fid = #{fid} AND  yhzgx = '01' ")
     int getHz(int fid);
+
+
+    @Update("UPDATE ym_jtjbqk_jtjbxx SET azd=#{azd},ldfh=#{ldfh},ndbqrw=#{ndbqrw},qcdxxdz=#{qcdxxdz},qcdlx=#{qcdlx},jtsyrk=#{jtsyrk},zfmj=#{zfmj},zczj=#{zczj},bqrzsj=#{bqrzsj},sjrzsj=#{sjrzsj},yyzf=#{yyzf},yyzfmj=#{yyzfmj},ccjf=#{ccjf},bhzfzl=#{bhzfzl},ccsj=#{ccsj},ccjfmj=#{ccjfmj},dxcfjl=#{dxcfjl},fkflqk=#{fkflqk},cyfcxm=#{cyfcxm},nnhdcyfczj=#{nnhdcyfczj},tpqk=#{tpqk},hkqy=#{hkqy},fczblhq=#{fczblhq} WHERE id = #{id}")
+    int updateQTXX(JtjbxxDO jtjbxxDO);
 }
 

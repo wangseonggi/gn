@@ -1,7 +1,7 @@
 $(document).ready(function () {
     family_add.onload();
 });
-let family_add = (function () {
+var family_add = (function () {
 
     layui.use(['form', 'element', 'laydate', 'table'], function () {
         var element, laydate, form, table;
@@ -267,8 +267,8 @@ let family_add = (function () {
                 , {field: 'mz', title: '民族'}
                 , {field: 'zzmm', title: '政治面貌'}
                 , {field: 'whcd', title: '文化程度'}
-                , {field: 'zxszk', title: '在校生情况'}
-                , {field: 'sxyy', title: '失学或辍学原因'}
+                , {field: 'zxsqk', title: '在校生情况'}
+                , {field: 'sxhcxyy', title: '失学或辍学原因'}
                 , {field: 'jkzk', title: '健康状况'}
                 , {field: 'ldjn', title: '劳动技能'}
                 , {field: 'sfhjpth', title: '是否会讲普通话'}
@@ -344,7 +344,7 @@ let family_add = (function () {
                     }
                 });
 
-                $("[data-field='zxszk']").children().each(function () {
+                $("[data-field='zxsqk']").children().each(function () {
                     if ($(this).text() == 1) {
                         $(this).text("非在校生")
                     } else if ($(this).text() == 2) {
@@ -366,7 +366,7 @@ let family_add = (function () {
                     }
                 });
 
-                $("[data-field='sxyy']").children().each(function () {
+                $("[data-field='sxhcxyy']").children().each(function () {
                     if ($(this).text() == 1) {
                         $(this).text("因病")
                     } else if ($(this).text() == 2) {
@@ -458,7 +458,7 @@ let family_add = (function () {
 
         // 新增家庭成员
         table.on('toolbar(tableMember)', function (obj) {
-            let checkStatus = table.checkStatus(obj.config.id);
+            var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
                     parent.layer.open({

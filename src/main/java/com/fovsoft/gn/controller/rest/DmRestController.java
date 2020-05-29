@@ -7,11 +7,9 @@ import com.fovsoft.gn.entity.holder.BfgxXXHolder;
 import com.fovsoft.gn.service.AzdSerivce;
 import com.fovsoft.gn.service.common.DmService;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +22,17 @@ public class DmRestController {
 
     @Autowired
     private DmService dmService;
+
+    /**
+     * 批量获取下拉列表的方法
+     * @param param 下拉列表名数组
+     * @return
+     */
+    @RequestMapping(value = "/getDmByNames", produces = "application/json;charset=UTF-8", method = RequestMethod.POST )
+    public JsonResult getDmByNames(@RequestParam(value="param[]") List<String> param) {
+        Map result = dmService.getDmByNames(param);
+        return new JsonResult(result);
+    }
 
     /**
      * 返贫原因
@@ -113,5 +122,101 @@ public class DmRestController {
     @RequestMapping("/zyrllx")
     public JsonResult zyrllx() {
         return new JsonResult(dmService.zyrllx());
+    }
+
+    /**
+     * 性别
+     * @return
+     */
+    @RequestMapping("/xb")
+    public JsonResult xb() {
+        return new JsonResult(dmService.xb());
+    }
+
+    /**
+     * 民族
+     * @return
+     */
+    @RequestMapping("/mz")
+    public JsonResult mz() {
+        return new JsonResult(dmService.mz());
+    }
+
+    /**
+     * 政治面貌
+     * @return
+     */
+    @RequestMapping("/zzmm")
+    public JsonResult zzmm() {
+        return new JsonResult(dmService.zzmm());
+    }
+
+    /**
+     * 文化程度
+     * @return
+     */
+    @RequestMapping("/whcd")
+    public JsonResult whcd() {
+        return new JsonResult(dmService.whcd());
+    }
+
+    /**
+     * 生活状态
+     * @return
+     */
+    @RequestMapping("/shzt")
+    public JsonResult shzt() {
+        return new JsonResult(dmService.shzt());
+    }
+
+    /**
+     * 人口类型
+     * @return
+     */
+    @RequestMapping("/rklx")
+    public JsonResult rklx() {
+        return new JsonResult(dmService.rklx());
+    }
+    /**
+     * 在读情况
+     * @return
+     */
+    @RequestMapping("/zdqk")
+    public JsonResult zdqk() {
+        return new JsonResult(dmService.zdqk());
+    }
+    /**
+     * 残疾等级
+     * @return
+     */
+    @RequestMapping("/cjdj")
+    public JsonResult cjdj() {
+        return new JsonResult(dmService.cjdj());
+    }
+    /**
+     * 就业情况
+     * @return
+     */
+    @RequestMapping("/jyqk")
+    public JsonResult jyqk() {
+        return new JsonResult(dmService.jyqk());
+    }
+
+    /**
+     * 稳定就业、创业地域
+     * @return
+     */
+    @RequestMapping("/wdjycydy")
+    public JsonResult wdjycydy() {
+        return new JsonResult(dmService.wdjycydy());
+    }
+
+    /**
+     * 养老保险类型
+     * @return
+     */
+    @RequestMapping("/ylbxlx")
+    public JsonResult ylbxlx() {
+        return new JsonResult(dmService.ylbxlx());
     }
 }

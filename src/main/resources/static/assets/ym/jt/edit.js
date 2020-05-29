@@ -37,6 +37,29 @@ var family_edit = (function () {
             trigger: 'click'
         });
 
+        laydate.render({
+            elem: '#bqrzsj',
+            trigger: 'click'
+        });
+
+        laydate.render({
+            elem: '#sjrzsj',
+            trigger: 'click'
+        });
+
+        laydate.render({
+            elem: '#ccsj',
+            type: 'month',
+            trigger: 'click'
+        });
+
+        // 危改年度
+        laydate.render({
+            elem: '#wgnd',
+            type: 'year',
+            trigger: 'click'
+        });
+
         // 加载js初始化市的下拉框，待优化
         // $.get("/getRegion", function (data) {
         //     $.each(data, function (index, item) {
@@ -109,6 +132,33 @@ var family_edit = (function () {
             data.field.id = $("#conditionid").val();
             $.ajax({
                 url: '/yw/jt/addScshtj',
+                method: 'post',
+                data: JSON.stringify(data.field),
+                contentType: "application/json",
+                dataType: 'JSON',
+                // beforeSend: function (xhr) {
+                //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
+                // },
+                success: function (res) {
+                    if (res.code = '0') {
+                        $("#conditionid").val(res.data);
+                        layer.msg("✔ 保存成功!");
+                    }
+                    else {
+                        layer.msg("× 保存失败");
+                    }
+                },
+                error: function (data) {
+
+                }
+            });
+        });
+
+        // 其他信息
+        form.on('submit(base6)', function (data) {
+            data.field.baseid = $("#baseid").val();
+            $.ajax({
+                url: '/yw/jt/updateQTXX',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -656,7 +706,7 @@ var family_edit = (function () {
                 });
             } else if (obj.event === 'edit') {
                 parent.layer.open({
-                    title: '编辑贫困户家庭基本信息',
+                    title: '编辑家庭成员基本信息',
                     type: 2,
                     skin: 'layui-layer-rim', //加上边框
                     area: ['70%', '60%'], //宽高

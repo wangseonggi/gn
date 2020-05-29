@@ -20,6 +20,7 @@ public interface XZQHMapper {
             "select xzqhmz,xzqhdm from ty_xzqh where 1=1 " +
             "<if test=\"sjxzqhdm != null\"> and sjxzqhdm = #{sjxzqhdm}</if>" +
             "<if test=\"sjxzqhdm == null\"> and sjxzqhdm = '450100000000'</if>" +
+            " AND zt = 'Y' AND xy = 'Y'" +
             "</script>")
     List<XzqhDO> get(String sjxzqhdm);
 }

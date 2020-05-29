@@ -1,10 +1,10 @@
 $(document).ready(function () {
     member_add.onload();
 });
-let member_add = (function () {
+ var member_add = (function () {
     layui.use(['form'], function () {
 
-        let form = layui.form;
+         var form = layui.form;
 
         layui.form.render('select');
 
@@ -27,8 +27,8 @@ let member_add = (function () {
                         'zjhm': res.data.zjhm,
                         'zzmm': res.data.zzmm,
                         'whcd': res.data.whcd,
-                        'zxszk': res.data.zxszk,
-                        'sxyy': res.data.sxyy,
+                        'zxsqk': res.data.zxsqk,
+                        'sxhcxyy': res.data.sxhcxyy,
                         'jkzk': res.data.jkzk,
                         'ldjn': res.data.ldjn,
                         'sfhjpth': res.data.sfhjpth,

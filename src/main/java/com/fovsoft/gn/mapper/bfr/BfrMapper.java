@@ -76,25 +76,27 @@ public interface BfrMapper {
             "ON aa.id = bb.id")
     List<BfgxXXHolder> getBBfrxx(@Param("bfrid")int bfrid);
 
-    @Select("SELECT aa.*,bb.num\n" +
-            "FROM \n" +
-            "(\n" +
-            "SELECT t.id,t.pkhsx, d.`xm`,d.`zjhm`\n" +
-            "FROM \n" +
-            "(\n" +
-            "SELECT c.id,c.`pkhsx`\n" +
-            "FROM \n" +
-            "ym_jtjbqk_jtjbxx c\n" +
-            "WHERE c.id = #{bqhid}\n" +
-            ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid`\n" +
-            "WHERE d.yhzgx = '01'\n" +
-            ") aa\n" +
-            "LEFT JOIN\n" +
-            "(\n" +
-            "SELECT c.id,COUNT(1) num FROM\n" +
-            "ym_jtjbqk_jtjbxx c, ym_jtjbqk_jtcy d\n" +
-            "WHERE c.id = #{bqhid} AND d.`fid` = c.id\n" +
-            ") bb\n" +
+    @Select("SELECT aa.*,bb.num " +
+            "FROM " +
+            "(" +
+            "SELECT t.id,t.pkhsx, d.`xm`,d.`zjhm` " +
+            "FROM " +
+            "(" +
+            "SELECT so.id,d.`name` AS pkhsx FROM (" +
+            "SELECT c.id,c.`pkhsx` " +
+            "FROM " +
+            "ym_jtjbqk_jtjbxx c " +
+            "WHERE c.id = #{bqhid} " +
+            ") so LEFT JOIN dm_ym_pkhsx d ON so.pkhsx = d.id" +
+            ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid` " +
+            "WHERE d.yhzgx = '01' " +
+            ") aa " +
+            "LEFT JOIN " +
+            "(" +
+            "SELECT c.id,COUNT(1) num FROM " +
+            "ym_jtjbqk_jtjbxx c, ym_jtjbqk_jtcy d " +
+            "WHERE c.id = #{bqhid} AND d.`fid` = c.id " +
+            ") bb " +
             "ON aa.id = bb.id")
     BfgxXXHolder getBqh(@Param("bqhid")int id);
 

@@ -15,7 +15,7 @@ import java.util.List;
 @Mapper
 public interface DmMapper {
 
-    @Select("SELECT id,NAME,dm FROM ${table} WHERE zt = 'Y' AND xy = 'Y'")
+    @Select("SELECT NAME,dm FROM ${table} WHERE zt = 'Y' AND xy = 'Y'")
     List<DmDo> getDm(@Param("table") String table);
 
 }
