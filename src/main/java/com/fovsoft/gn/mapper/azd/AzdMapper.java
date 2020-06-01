@@ -35,7 +35,7 @@ public interface AzdMapper {
             "</when>",
             ") t",
             " LEFT JOIN ym_azd_fwxx_rz m ON t.id = m.fwid",
-            " LEFT JOIN (SELECT a.id,b.xm,b.zjhm FROM ym_jtjbqk_jtjbxx a LEFT JOIN ym_jtjbqk_jtcy b ON a.id = b.fid WHERE b.yhzgx = '01') tt ON m.fid = tt.id ORDER BY t.id DESC",
+            " LEFT JOIN (SELECT a.id,b.xm,b.zjhm FROM ym_jtjbqk_jtjbxx a LEFT JOIN ym_jtjbqk_jtcy b ON a.id = b.fid WHERE b.yhzgx = '02') tt ON m.fid = tt.id ORDER BY t.id DESC",
             "</script>"})
     public List<AzdFwxxHzHolder> fwxxList(@Param("aid")int aid, @Param("ld")String ld , @Param("dy")String dy , @Param("fh") String fh);
 
@@ -55,7 +55,7 @@ public interface AzdMapper {
             "FROM ( " +
             "SELECT c.id,c.`pkhsx` FROM " +
             "ym_jtjbqk_jtjbxx c WHERE c.id = (SELECT fid FROM ym_azd_fwxx_rz WHERE fwid = #{id}) " +
-            ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid` WHERE d.yhzgx = '01' " +
+            ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid` WHERE d.yhzgx = '02' " +
             ") aa " +
             "LEFT JOIN  " +
             "( " +

@@ -86,7 +86,7 @@ public interface JTJBXXMapper {
             "fczblhq FROM ym_jtjbqk_jtjbxx WHERE id = #{id}")
     JtjbxxDO getNew(int id);
 
-    @Select("SELECT COUNT(1) FROM ym_jtjbqk_jtcy WHERE fid = #{fid} AND  yhzgx = '01' ")
+    @Select("SELECT COUNT(1) FROM ym_jtjbqk_jtcy WHERE fid = #{fid} AND  yhzgx = '02' ")
     int getHz(int fid);
 
 

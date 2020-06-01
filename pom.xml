@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.fovsoft</groupId>
     <artifactId>gn</artifactId>
-    <version>1.8-SNAPSHOT</version>
+    <version>1.9-SNAPSHOT</version>
 
     <name>gn Maven Webapp</name>
     <!-- FIXME change it to the project's website -->

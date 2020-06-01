@@ -65,7 +65,7 @@ public interface BfrMapper {
             "WHERE a.id = b.`bid` AND b.`fid` = c.`id`  " +
             "AND a.id = #{bfrid} " +
             ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid` " +
-            "WHERE d.yhzgx = '01' " +
+            "WHERE d.yhzgx = '02' " +
             ") aa " +
             "LEFT JOIN " +
             "( " +
@@ -89,7 +89,7 @@ public interface BfrMapper {
             "WHERE c.id = #{bqhid} " +
             ") so LEFT JOIN dm_ym_pkhsx d ON so.pkhsx = d.id" +
             ") t LEFT JOIN ym_jtjbqk_jtcy d ON t.id = d.`fid` " +
-            "WHERE d.yhzgx = '01' " +
+            "WHERE d.yhzgx = '02' " +
             ") aa " +
             "LEFT JOIN " +
             "(" +
