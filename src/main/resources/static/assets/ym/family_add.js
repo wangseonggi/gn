@@ -275,7 +275,7 @@ var family_add = (function () {
                 , {field: 'sfcjcxjmjbytlbx', title: '是否参加城乡居民医疗保险'}
                 , {field: 'sfcjsybcylbx', title: '是否参加商业补充医疗保险'}
                 , {field: 'sfxsncjmzjshbz', title: '是否享受农村居民最低生活保障'}
-                , {field: 'sfcjcxjmybyanglbx', title: '是否参加农村居民基本养老保险'}
+                , {field: 'sfcjcxjmybyanglbx', title: '是否参加城乡居民基本养老保险'}
                 , {field: 'sfxsrsywbxbt', title: '是否享受人身意外保险补贴'}
                 , {field: 'tel', title: '联系电话',minWidth:130}
                 , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}

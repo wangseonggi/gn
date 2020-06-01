@@ -1,9 +1,6 @@
 package com.fovsoft.gn.service;
 
-import com.fovsoft.gn.entity.JtcyDO;
-import com.fovsoft.gn.entity.JtjbxxDO;
-import com.fovsoft.gn.entity.ScshtjDO;
-import com.fovsoft.gn.entity.ZpyyDO;
+import com.fovsoft.gn.entity.*;
 import com.fovsoft.gn.entity.holder.JbxxHzHolder;
 import com.fovsoft.gn.mapper.jtjbqk.*;
 import com.github.pagehelper.PageHelper;
@@ -12,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -137,17 +135,13 @@ public class JTJBQKSerivce {
     }
 
     public int addOrUpdateFamilyBaseMember(JtcyDO jtcyDO) {
-        int id = 0;
         if(jtcyDO.getId() == 0) {
-            // 插入
             jtcyMapper.add(jtcyDO);
-            id = jtcyDO.getId();
         }
         else {
-            // 更新
             jtcyMapper.update(jtcyDO);
-            id = jtcyDO.getId();
         }
+        int id = jtcyDO.getId();
         return id;
     }
 
@@ -179,5 +173,24 @@ public class JTJBQKSerivce {
 
     public int updateQTXX(JtjbxxDO jtjbxxDO) {
         return jtjbxxMapper.updateQTXX(jtjbxxDO);
+    }
+
+    public int addBgqksm(BgqksmDO bgqksmDO) {
+
+        if(bgqksmDO.getId() == 0) {
+            bgqksmDO.setLrrq(new Date());
+            bgqksmMapper.add(bgqksmDO);
+        }
+        else {
+            bgqksmDO.setLrrq(new Date());
+            bgqksmMapper.update(bgqksmDO);
+        }
+        int id = bgqksmDO.getId();
+        return id;
+    }
+
+    public BgqksmDO getBgqksm(Integer fid) {
+        BgqksmDO bgqksmDO = bgqksmMapper.get(fid);
+        return bgqksmDO;
     }
 }

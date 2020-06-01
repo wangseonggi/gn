@@ -135,16 +135,16 @@
                         <td class="fp_nrbt">
                             <select name="sfjls" id="sfjls" lay-filter="sfjls">
                                 <option value="">请选择</option>
-                                <option value="N">否</option>
                                 <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">是否易地扶贫搬迁户<span class="ness"> *</span></td>
                         <td class="fp_nrbt">
                             <select name="sfbqh" id="sfbqh" lay-verify="required" autocomplete="off" lay-filter="sfbqh">
                                 <option value="">请选择</option>
-                                <option value="N">否</option>
                                 <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">搬迁方式</td>
@@ -190,8 +190,7 @@
                             <td class="fp_btbt">致贫原因1<span style="color: red">（必填）</span></td>
                             <td class="fp_nrbt">
                                 <select id="zpyy1" name="zpyy1"
-                                        class="layui-unselect layui-form-select" style="width: 100%;"
-                                        lay-verify="required" lay-filter="zpyy1">
+                                        class="layui-unselect layui-form-select" style="width: 100%;" lay-filter="zpyy1">
                                     <option value="">请选择</option>
                                 </select>
                             </td>
@@ -479,7 +478,21 @@
                         <td class="fp_btbt">脱贫情况</td>
                         <td class="fp_nrbt"><input id="tpqk" name="tpqk" lay-filter="tpqk" type="text"/></td>
                         <td class="fp_btbt">户口迁移</td>
-                        <td class="fp_nrbt" colspan="3"><input id="hkqy" name="hkqy" lay-filter="hkqy" type="text"/></td>
+                        <td class="fp_nrbt">
+                            <select name="hkqy" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
+                        <td class="fp_btbt">房产证办理获取</td>
+                        <td class="fp_nrbt">
+                            <select name="fczblhq" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
                 <div class="layui-form-item" style="margin-top: 20px">

@@ -21,15 +21,15 @@ public interface JTJBXXMapper {
 
     @Update({"UPDATE ym_jtjbqk_jtjbxx SET scbz = 1 WHERE id = #{id}; " +
             "UPDATE ym_jtjbqk_jtcy SET scbz = 1 WHERE fid = #{id}; " +
-            "UPDATE ym_jtjbqk_zpyy SET scbz = 1 WHERE fid = #{id}; " +
-            "UPDATE ym_jtjbqk_scshtj SET scbz = 1 WHERE fid = #{id}; "
+            "UPDATE ym_jtjbqk_zpyy SET scbz = 'Y' WHERE fid = #{id}; " +
+            "UPDATE ym_jtjbqk_scshtj SET scbz = 'Y' WHERE fid = #{id}; "
     })
     int delete(Integer id);
 
-    @Update({"UPDATE ym_jtjbqk_jtjbxx SET scbz = 1 WHERE id IN ( ${inStr} );" +
-            "UPDATE ym_jtjbqk_jtcy SET scbz = 1 WHERE fid IN ( ${inStr} );" +
-            "UPDATE ym_jtjbqk_zpyy SET scbz = 1 WHERE fid IN ( ${inStr} );" +
-            "UPDATE ym_jtjbqk_scshtj SET scbz = 1 WHERE fid IN ( ${inStr} );"
+    @Update({"UPDATE ym_jtjbqk_jtjbxx SET scbz = 'Y' WHERE id IN ( ${inStr} );" +
+            "UPDATE ym_jtjbqk_jtcy SET scbz = 'Y' WHERE fid IN ( ${inStr} );" +
+            "UPDATE ym_jtjbqk_zpyy SET scbz = 'Y' WHERE fid IN ( ${inStr} );" +
+            "UPDATE ym_jtjbqk_scshtj SET scbz = 'Y' WHERE fid IN ( ${inStr} );"
     })
     int delAll(@RequestParam(name = "inStr") String inStr);
 
@@ -42,12 +42,14 @@ public interface JTJBXXMapper {
 
     @Select({"<script>",
             "SELECT * FROM ( ",
-            "SELECT a.`id`,a.`shi`,a.`xian`,a.`xzc`,a.`pkhsx`,b.`fid`,b.`xm` hzxm,b.`zjhm` FROM ym_jtjbqk_jtjbxx a ",
+            "SELECT a.`id`,a.`shi`,a.`xian`,a.`xzc`," +
+                    "(SELECT `name` FROM dm_ym_pkhsx WHERE dm = a.`pkhsx`)  pkhsx," +
+                    "b.`fid`,b.`xm` hzxm,b.`zjhm` FROM ym_jtjbqk_jtjbxx a ",
             "LEFT JOIN ( ",
             "SELECT fid,xm,xb,zjhm,scbz ",
-            "FROM ym_jtjbqk_jtcy WHERE yhzgx = '02' AND scbz = 0) b ",
+            "FROM ym_jtjbqk_jtcy WHERE yhzgx = '02' AND scbz = 'N') b ",
             "ON a.`id` = b.`fid` ",
-            "WHERE a.`scbz` = 0 ",
+            "WHERE a.`scbz` = 'N' ",
             ") t WHERE 1 = 1 ",
             "<when test='name!=null'>",
             "and t.hzxm like '%${name}%' ",

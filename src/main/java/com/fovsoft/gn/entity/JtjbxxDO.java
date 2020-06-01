@@ -58,7 +58,7 @@ public class JtjbxxDO {
     private double yyzfmj;
     private String ccjf;
     private String bhzfzl;
-    @JsonFormat(pattern="yyyy-MM-dd",timezone = "GMT+8")
+    @JsonFormat(pattern="yyyy-MM",timezone = "GMT+8")
     private Date ccsj;
     private double ccjfmj;
     private double dxcfjl;

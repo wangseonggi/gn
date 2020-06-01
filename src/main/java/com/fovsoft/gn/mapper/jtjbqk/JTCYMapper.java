@@ -21,7 +21,7 @@ public interface JTCYMapper {
     )
     int add(JtcyDO jtcyDO);
 
-    @Update("UPDATE ym_jtjbqk_jtcy SET scbz = 1 WHERE id = #{id}")
+    @Update("UPDATE ym_jtjbqk_jtcy SET scbz = 'Y' WHERE id = #{id}")
     int delete(int id);
 
     @Select("SELECT id,fid,xm,xb,zjhm,yhzgx,mz,zzmm,whcd,zxsqk,sxhcxyy,jkzk,ldjn,sfhjpth,sfcjcxjmjbytlbx,sfcjsybcylbx,sfxsncjmzjshbz,sfcjcxjmybyanglbx,sfxsrsywbxbt,lxdh" +

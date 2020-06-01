@@ -71,8 +71,8 @@
                         </td>
                         <td class="fp_btbt">自然村（屯）</td>
                         <td class="fp_nrbt">
-                            <input type="zrct" name="zrct" lay-verify="required" autocomplete="off"
-                                   value="测试自然村屯"
+                            <input type="zrct" name="zrct" autocomplete="off"
+                                   value=""
                                    class="layui-input" lay-filter="zrct"/>
                         </td>
                         <td class="fp_btbt">联系电话</td>
@@ -102,14 +102,11 @@
                         <td class="fp_nrbt">
                             <select name="pkhsx" id="pkhsx" lay-verify="required" lay-filter="pkhsx">
                                 <option value=""></option>
-                                <option value="1">一般贫困户</option>
-                                <option value="2">低保贫困户</option>
-                                <option value="3">特困供养贫困户</option>
                             </select>
                         </td>
                         <td class="fp_btbt">计划脱贫年度</td>
                         <td class="fp_nrbt">
-                            <input id="jhtpnd" type="text" name="jhtpnd" lay-verify="required"
+                            <input id="jhtpnd" type="text" name="jhtpnd"
                                    autocomplete="off" value="2020"
                                    class="layui-input"  lay-filter="jhtpnd">
                         </td>
@@ -123,32 +120,31 @@
                         </td>
                         <td class="fp_btbt">返贫原因</td>
                         <td class="fp_nrbt">
-                            <input type="text" id="fpyy" name="fpyy"
-                                   autocomplete="off" value=""
-                                   class="layui-input" lay-filter="fpyy">
+                            <select name="fpyy" id="fpyy" lay-verify="required" lay-filter="fpyy">
+                                <option value=""></option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">是否军烈属</td>
                         <td class="fp_nrbt">
-                            <select name="sfjls" id="sfjls" lay-verify="required" lay-filter="sfjls">
+                            <select name="sfjls" id="sfjls"  lay-filter="sfjls">
                                 <option value="">请选择</option>
-                                <option value="1">是</option>
-                                <option value="0">否</option>
-
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">是否易地扶贫搬迁户</td>
                         <td class="fp_nrbt">
-                            <select name="sfbqh" id="sfbqh" lay-verify="required" autocomplete="off" lay-filter="sfbqh">
+                            <select name="sfbqh" id="sfbqh"  autocomplete="off" lay-filter="sfbqh">
                                 <option value="">请选择</option>
-                                <option value="1">是</option>
-                                <option value="0">否</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">搬迁方式</td>
                         <td class="fp_nrbt">
-                            <input type="text" id="bqfs" name="bqfs" lay-verify="required"
+                            <input type="text" id="bqfs" name="bqfs"
                                    autocomplete="off"
                                    class="layui-input" value="测试搬迁方式" lay-filter="bqfs"/>
                         </td>
@@ -156,7 +152,7 @@
                     <tr>
                         <td class="fp_btbt">搬迁地址</td>
                         <td class="fp_nrbt" colspan="5">
-                            <input type="text" id="bqdz" name="bqdz" lay-verify="required"
+                            <input type="text" id="bqdz" name="bqdz"
                                    placeholder="" autocomplete="off"
                                    class="layui-input" value="测试搬迁地址" lay-filter="bqdz"/>
                         </td>
@@ -189,21 +185,8 @@
                             <td class="fp_nrbt">
                                 <select id="zpyy1" name="zpyy1"
                                         class="layui-unselect layui-form-select" style="width: 100%;"
-                                        lay-verify="required" lay-filter="zpyy1">
+                                         lay-filter="zpyy1">
                                     <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">致贫原因2（选填）</td>
@@ -212,19 +195,6 @@
                                         class="layui-unselect layui-form-select" style="width: 100%;"
                                         lay-filter="zpyy2">
                                     <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">致贫原因3（选填）</td>
@@ -233,19 +203,6 @@
                                         class="layui-unselect layui-form-select" style="width: 100%;"
                                         lay-filter="zpyy3">
                                     <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
                                 </select>
                             </td>
                         </tr>
@@ -312,53 +269,60 @@
                         <tr>
                             <td class="fp_btbt">是否加入农民专业合作社</td>
                             <td class="fp_nrbt">
-                                <select name="sfjrnmzyhzs" class="layui-input" lay-verify="required">
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                <select name="sfjrnmzyhzs" class="layui-input">
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">是否有龙头企业带动</td>
                             <td class="fp_nrbt">
-                                <select name="sfyltqybz" class="layui-input"  lay-verify="required">
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                <select name="sfyltqybz" class="layui-input">
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">是否有致富带头人带动</td>
                             <td class="fp_nrbt">
                                 <select name="sfycyzfdtrdd" class="layui-input" >
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">是否通生活用电</td>
                             <td class="fp_nrbt">
                                 <select name="sftshyd" class="layui-input" >
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="fp_btbt">是否通广播电视</td>
                             <td class="fp_nrbt">
-                                <select name="sftgbds" class="layui-input" lay-verify="required">
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                <select name="sftgbds" class="layui-input">
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">是否解决安全饮用水</td>
                             <td class="fp_nrbt">
-                                <select name="sfjjaqyys" class="layui-input"  lay-verify="required">
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                <select name="sfjjaqyys" class="layui-input">
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">是否有卫生厕所</td>
                             <td class="fp_nrbt">
                                 <select name="sfywscs" class="layui-input" >
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                             <td class="fp_nrxt" colspan="2"></td>
@@ -372,9 +336,6 @@
                             <td class="fp_nrbt">
                                 <select name="rhllx" class="layui-input" style="width: 100px">
                                     <option value=""></option>
-                                    <option value="1" selected>泥土路</option>
-                                    <option value="2">砂石路</option>
-                                    <option value="3">硬化路</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">住房面积（㎡）</td>
@@ -384,19 +345,17 @@
                             <td class="fp_btbt">是否危房户</td>
                             <td class="fp_nrbt">
                                 <select name="sfwf" class="layui-input" style="width: 60px">
-                                    <option value="0" selected>否</option>
-                                    <option value="1">是</option>
+                                    <option value="">请选择</option>
+                                    <option value="Y">是</option>
+                                    <option value="N">否</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td class="fp_btbt">危房级别</td>
                             <td class="fp_nrbt">
-                                <select name="wfdj" class="layui-input" style="width: 60px">
-                                    <option value="1" selected>A级</option>
-                                    <option value="2">B级</option>
-                                    <option value="3">C级</option>
-                                    <option value="4">D级</option>
+                                <select name="wfjb" class="layui-input" style="width: 60px">
+                                    <option value="">请选择</option>
                                 </select>
                             </td>
                             <td class="fp_btbt">危改年度</td>
@@ -438,7 +397,7 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">变更情况说明</label>
                     <div class="layui-input-block">
-                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="nr" placeholder="请输入内容" class="layui-textarea"></textarea>
                     </div>
                 </div>
                 <div class="layui-form-item" style="margin-top: 20px">
@@ -517,7 +476,21 @@
                         <td class="fp_btbt">脱贫情况</td>
                         <td class="fp_nrbt"><input id="tpqk" name="tpqk" lay-filter="tpqk" type="text"/></td>
                         <td class="fp_btbt">户口迁移</td>
-                        <td class="fp_nrbt" colspan="3"><input id="hkqy" name="hkqy" lay-filter="hkqy" type="text"/></td>
+                        <td class="fp_nrbt">
+                            <select name="hkqy" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
+                        <td class="fp_btbt">房产证办理获取</td>
+                        <td class="fp_nrbt">
+                            <select name="fczblhq" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
                 <div class="layui-form-item" style="margin-top: 20px">
@@ -535,85 +508,6 @@
     // 赋值函数供父页面调用
     function setBaseId(id) {
         $("#baseid").val(id);
-        layui.use(['form'], function () {
-            let form = layui.form;
-            $.ajax({
-                url: '/yw/jt/get',
-                data: {id: id},
-                async: false,
-                success: function (res) {
-                    let resData = res.data;
-                    $.ajax({
-                        url: "/xzqhdm/get",
-                        async: false,
-                        dataType: 'JSON',
-                        success: function (data) {
-                            $.each(data, function (index, item) {
-                                $("#shi").append(new Option(item.xzqhmz, item.xzqhdm));
-                            });
-                        }
-                    });
-
-                    $.ajax({
-                        url: "/xzqhdm/get",
-                        async: false,
-                        dataType: 'JSON',
-                        data: {sjxzqhdm: resData.shi},
-                        success: function (data) {
-                            $.each(data, function (index, item) {
-                                $("#xian").append(new Option(item.xzqhmz, item.xzqhdm));
-                            });
-                        }
-                    });
-
-                    $.ajax({
-                        url: "/xzqhdm/get",
-                        async: false,
-                        dataType: 'JSON',
-                        data: {sjxzqhdm: resData.xian},
-                        success: function (data) {
-                            $.each(data, function (index, item) {
-                                $("#zhen").append(new Option(item.xzqhmz, item.xzqhdm));
-                            });
-                        }
-                    });
-
-                    $.ajax({
-                        url: "/xzqhdm/get",
-                        async: false,
-                        dataType: 'JSON',
-                        data: {sjxzqhdm: resData.zhen},
-                        success: function (data) {
-                            $.each(data, function (index, item) {
-                                $("#xzc").append(new Option(item.xzqhmz, item.xzqhdm));
-                            });
-                        }
-                    });
-
-                    form.val('form1', {
-                        'shi': resData.shi,
-                        'xian': resData.xian,
-                        'zhen': resData.zhen,
-                        'xzc': resData.xzc,
-                        'zrct': resData.zrct,
-                        'lxdh': resData.lxdh,
-                        'khyh': resData.khyh,
-                        'yhkh': resData.yhkh,
-                        'pkhsx': resData.pkhsx,
-                        'jhtpnd': resData.jhtpnd,
-                        'fpnd': resData.fpnd,
-                        'fpyy': resData.fpyy,
-                        'sfjls': resData.sfjls,
-                        'sfbqh': resData.sfbqh,
-                        'bqfs': resData.bqfs,
-                        'bqdz': resData.bqdz
-                    });
-
-                    form.render();
-                }
-            });
-        });
-
     }
 </script>
 

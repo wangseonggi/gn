@@ -1,10 +1,7 @@
 package com.fovsoft.gn.controller.rest;
 
 import com.fovsoft.common.JsonResult;
-import com.fovsoft.gn.entity.JtcyDO;
-import com.fovsoft.gn.entity.JtjbxxDO;
-import com.fovsoft.gn.entity.ScshtjDO;
-import com.fovsoft.gn.entity.ZpyyDO;
+import com.fovsoft.gn.entity.*;
 import com.fovsoft.gn.security.component.CustomUser;
 import com.fovsoft.gn.service.JTJBQKSerivce;
 import com.github.pagehelper.PageInfo;
@@ -27,11 +24,11 @@ import java.util.Map;
 public class JtjbqkRestController {
     private final Log logger = LogFactory.getLog(this.getClass());
     @Autowired
-    JTJBQKSerivce serivce;
+    JTJBQKSerivce service;
 
     @RequestMapping(value = "/getList")
     public Object index(Integer page, Integer limit, String name, String sfzhm) {
-        PageInfo pageInfo = serivce.getList(page, limit, name, sfzhm);
+        PageInfo pageInfo = service.getList(page, limit, name, sfzhm);
 
         Map result = new HashMap();
         result.put("data", pageInfo.getList());
@@ -46,20 +43,20 @@ public class JtjbqkRestController {
         // 获取当前登录人id
         CustomUser loginUser = (CustomUser)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         jtjbxxDO.setLrrdm(loginUser.getId());
-        int id = serivce.addOrUpdateFamilyBase(jtjbxxDO);
+        int id = service.addOrUpdateFamilyBase(jtjbxxDO);
         return new JsonResult(Integer.valueOf(id));
     }
 
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public JsonResult del(Integer id) {
-        int returnId = serivce.del(id);
+        int returnId = service.del(id);
 
         return new JsonResult(Integer.valueOf(returnId));
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public JsonResult get(Integer id) {
-        JtjbxxDO jtjbxxDO = serivce.get(id);
+        JtjbxxDO jtjbxxDO = service.get(id);
         return new JsonResult(jtjbxxDO);
     }
 
@@ -69,7 +66,7 @@ public class JtjbqkRestController {
      */
     @RequestMapping(value = "/addZpyy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addAddition(@RequestBody ZpyyDO zpyyDO) {
-        int id = serivce.addOrUpdateFamilyBaseAddition(zpyyDO);
+        int id = service.addOrUpdateFamilyBaseAddition(zpyyDO);
         return new JsonResult(Integer.valueOf(id));
     }
 
@@ -79,39 +76,39 @@ public class JtjbqkRestController {
      */
     @RequestMapping(value = "/addScshtj", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addCondition(@RequestBody ScshtjDO scshtjDO) {
-        int id = serivce.addOrUpdateFamilyBaseCondition(scshtjDO);
+        int id = service.addOrUpdateFamilyBaseCondition(scshtjDO);
         return new JsonResult(Integer.valueOf(id));
     }
 
     @RequestMapping(value = "/getCyList",  produces = "application/json;charset=UTF-8")
     public JsonResult getMemberList(Integer fid) {
         Integer id = fid != null ? fid : 0;
-        List<JtcyDO> list = serivce.getMemberList(id);
+        List<JtcyDO> list = service.getMemberList(id);
 
         return new JsonResult(list);
     }
 
     @RequestMapping(value = "/getCy", produces = "application/json;charset=UTF-8")
     public JsonResult getMember(Integer id) {
-        JtcyDO member = serivce.getMember(id);
+        JtcyDO member = service.getMember(id);
         return new JsonResult(member);
     }
 
     @RequestMapping(value = "/addCy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addMember(@RequestBody JtcyDO jtcyDO) {
-        int id = serivce.addOrUpdateFamilyBaseMember(jtcyDO);
+        int id = service.addOrUpdateFamilyBaseMember(jtcyDO);
         return new JsonResult(Integer.valueOf(id));
     }
 
     @RequestMapping(value = "/updateCy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult updateMember(@RequestBody JtcyDO jtcyDO) {
-        int id = serivce.addOrUpdateFamilyBaseMember(jtcyDO);
+        int id = service.addOrUpdateFamilyBaseMember(jtcyDO);
         return new JsonResult(Integer.valueOf(id));
     }
 
     @RequestMapping(value = "/delCy", method = RequestMethod.GET)
     public JsonResult delMember(Integer id) {
-        int returnId = serivce.delMember(id);
+        int returnId = service.delMember(id);
         return new JsonResult(Integer.valueOf(returnId));
     }
 
@@ -130,25 +127,25 @@ public class JtjbqkRestController {
             inStr += i + ",";
         }
         inStr = inStr.substring(0, inStr.length() - 1); logger.info(inStr);
-        serivce.delAll(inStr);
+        service.delAll(inStr);
         return new JsonResult();
     }
 
     @RequestMapping(value = "/getZpyy",  produces = "application/json;charset=UTF-8")
-    public JsonResult getAddiction(Integer fid) {
-        ZpyyDO zpyyDO = serivce.getAddiction(fid);
+    public JsonResult getZpyy(Integer fid) {
+        ZpyyDO zpyyDO = service.getAddiction(fid);
         return new JsonResult(zpyyDO);
     }
 
     @RequestMapping(value = "/getScshtj",  produces = "application/json;charset=UTF-8")
     public JsonResult getCondition(Integer fid) {
-        ScshtjDO scshtjDO = serivce.getCondition(fid);
+        ScshtjDO scshtjDO = service.getCondition(fid);
         return new JsonResult(scshtjDO);
     }
 
     @RequestMapping(value = "/getNew",  produces = "application/json;charset=UTF-8")
     public JsonResult getNew(Integer id) {
-        JtjbxxDO jtjbxxDO = serivce.getNew(id);
+        JtjbxxDO jtjbxxDO = service.getNew(id);
         return new JsonResult(jtjbxxDO);
     }
 
@@ -159,7 +156,7 @@ public class JtjbqkRestController {
      */
     @RequestMapping(value = "/getHz", produces = "application/json;charset=UTF-8")
     public JsonResult getHz(Integer id) {
-        int num = serivce.getHz(id);
+        int num = service.getHz(id);
         return new JsonResult(num);
     }
 
@@ -170,7 +167,19 @@ public class JtjbqkRestController {
      */
     @RequestMapping(value = "/updateQTXX",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult updateQTXX(@RequestBody JtjbxxDO jtjbxxDO) {
-        int num = serivce.updateQTXX(jtjbxxDO);
+        int num = service.updateQTXX(jtjbxxDO);
         return new JsonResult(num);
+    }
+
+    @RequestMapping(value = "/addBgqksm",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult addBgqksm(@RequestBody BgqksmDO bgqksmDO) {
+        int num = service.addBgqksm(bgqksmDO);
+        return new JsonResult(num);
+    }
+
+    @RequestMapping(value = "/getBgqksm", produces = "application/json;charset=UTF-8")
+    public JsonResult getBgqksm(Integer fid) {
+        BgqksmDO bgqksmDO = service.getBgqksm(fid);
+        return new JsonResult(bgqksmDO);
     }
 }

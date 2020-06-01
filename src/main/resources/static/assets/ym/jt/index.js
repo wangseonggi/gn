@@ -25,20 +25,6 @@ var jt = (function () {
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
-                $("[data-field='pkhsx']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("一般贫困户")
-                    } else if ($(this).text() == 2) {
-                        $(this).text("低保贫困户")
-                    } else if ($(this).text() == 3) {
-                        $(this).text("特困供养贫困户");
-                    }
-
-                    if($(this).text() == 0) {
-                        $(this).text("");
-                    }
-
-                });
                 $("[data-field='jhtpnd']").children().each(function () {
                     if($(this).text() == 0) {
                         $(this).text("");

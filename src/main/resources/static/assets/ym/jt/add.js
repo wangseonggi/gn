@@ -29,7 +29,6 @@ var family_add = (function () {
             }
         });
 
-
         laydate.render({
             elem: '#jhtpnd',
             type: 'year',
@@ -76,7 +75,7 @@ var family_add = (function () {
         // 贫困户属性
         $.get("/dm/pkhsx", function (res) {
             $.each(res.data, function (index, item) {
-                $("#pkhsx").append(new Option(item.name, item.id));
+                $("#pkhsx").append(new Option(item.name, item.dm));
             });
             layui.form.render('select');
         });
@@ -84,10 +83,10 @@ var family_add = (function () {
         // 返贫原因
         $.get("/dm/fpyy", function (res) {
             $.each(res.data, function (index, item) {
-                $("#fpyy").append(new Option(item.name, item.id));
-                $("#zpyy1").append(new Option(item.name, item.id));
-                $("#zpyy2").append(new Option(item.name, item.id));
-                $("#zpyy3").append(new Option(item.name, item.id));
+                $("#fpyy").append(new Option(item.name, item.dm));
+                $("#zpyy1").append(new Option(item.name, item.dm));
+                $("#zpyy2").append(new Option(item.name, item.dm));
+                $("#zpyy3").append(new Option(item.name, item.dm));
             });
             layui.form.render('select');
         });
@@ -95,7 +94,7 @@ var family_add = (function () {
         // 入戶路类型
         $.get("/dm/rhllx", function (res) {
             $.each(res.data, function (index, item) {
-                $("#rhllx").append(new Option(item.name, item.id));
+                $("#rhllx").append(new Option(item.name, item.dm));
             });
             layui.form.render('select');
         });
@@ -103,7 +102,7 @@ var family_add = (function () {
         // 危房级别
         $.get("/dm/wfjb", function (res) {
             $.each(res.data, function (index, item) {
-                $("#wfjb").append(new Option(item.name, item.id));
+                $("#wfjb").append(new Option(item.name, item.dm));
             });
             layui.form.render('select');
         });
@@ -111,7 +110,7 @@ var family_add = (function () {
         // 主要燃料类型
         $.get("/dm/zyrllx", function (res) {
             $.each(res.data, function (index, item) {
-                $("#zyrllx").append(new Option(item.name, item.id));
+                $("#zyrllx").append(new Option(item.name, item.dm));
             });
             layui.form.render('select');
         });
@@ -131,7 +130,7 @@ var family_add = (function () {
                 // },
                 success: function (res) {
                     console.log(res);
-                    if (res.code == 0) {
+                    if (res.code == '0') {
                         if (res.data) {
                             $("#baseid").val(res.data);
                         }
@@ -160,7 +159,7 @@ var family_add = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         console.log(res.data);
                         $("#additionid").val(res.data);
                         layer.msg("✔ 保存成功!");
@@ -188,7 +187,7 @@ var family_add = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         $("#conditionid").val(res.data);
                         layer.msg("✔ 保存成功!");
                     }
@@ -216,7 +215,7 @@ var family_add = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         $("#conditionid").val(res.data);
                         layer.msg("✔ 保存成功!");
                     }
@@ -373,7 +372,7 @@ var family_add = (function () {
                 , {field: 'sfcjcxjmjbytlbx', title: '是否参加城乡居民医疗保险'}
                 , {field: 'sfcjsybcylbx', title: '是否参加商业补充医疗保险'}
                 , {field: 'sfxsncjmzjshbz', title: '是否享受农村居民最低生活保障'}
-                , {field: 'sfcjcxjmybyanglbx', title: '是否参加农村居民基本养老保险'}
+                , {field: 'sfcjcxjmybyanglbx', title: '是否参加城乡居民基本养老保险'}
                 , {field: 'sfxsrsywbxbt', title: '是否享受人身意外保险补贴'}
                 , {field: 'lxdh', title: '联系电话',minWidth:130}
                 , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}

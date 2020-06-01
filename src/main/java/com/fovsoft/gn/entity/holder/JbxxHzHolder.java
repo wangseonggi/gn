@@ -18,7 +18,7 @@ public class JbxxHzHolder {
     private int id;
     private String fpnd;
     private int sfydbqh;
-    private Integer pkhsx;
+    private String pkhsx;
     private Integer jhtpnd;
     private String hzxm;
     private String zjhm;

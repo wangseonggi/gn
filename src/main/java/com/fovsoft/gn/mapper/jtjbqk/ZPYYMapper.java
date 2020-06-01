@@ -13,7 +13,7 @@ public interface ZPYYMapper {
     @Update("UPDATE ym_jtjbqk_zpyy SET zpyy1=#{zpyy1},zpyy2=#{zpyy2},zpyy3=#{zpyy3},ncjtrks=#{ncjtrks},nmjtrks=#{nmjtrks} WHERE fid = #{fid}")
     int update(ZpyyDO zpyyDO);
 
-    @Select("SELECT zpyy1,zpyy2,zpyy3,ncjtrks,nmjtrks FROM ym_jtjbqk_zpyy WHERE fid = #{fid}")
+    @Select("SELECT id,zpyy1,zpyy2,zpyy3,ncjtrks,nmjtrks FROM ym_jtjbqk_zpyy WHERE fid = #{fid}")
     ZpyyDO get(int fid);
 }
 

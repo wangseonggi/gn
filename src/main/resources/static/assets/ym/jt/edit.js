@@ -7,7 +7,7 @@ var family_edit = (function () {
     var initTab1 = 0;
     var initTab2 = 0;
     var initTab3 = 0;
-
+    var initTab4 = 0;
     var initTab5 = 0;
 
     layui.use(['form', 'element', 'laydate', 'table'], function () {
@@ -17,6 +17,108 @@ var family_edit = (function () {
         form = layui.form;
         table = layui.table;
 
+        // 先加载下拉
+        var selectArr = ['rhllx', 'wfjb', 'pkhsx', 'rhllx', 'fpyy'];
+        $.post("/dm/getDmByNames",
+            {param: selectArr},
+            function (res) {
+                $.each(res.data, function (key, val) {
+                    $.each(val, function (index, item) {
+                        $("#" + key).append(new Option(item.name, item.dm));
+                    });
+                });
+                layui.form.render('select');
+
+                var id = $("#baseid").val();
+                $.ajax({
+                    url: '/yw/jt/get',
+                    data: {id: id},
+                    async: false,
+                    success: function (res) {
+                        var resData = res.data;
+                        $.ajax({
+                            url: "/xzqhdm/get",
+                            async: false,
+                            dataType: 'JSON',
+                            success: function (data) {
+                                $.each(data, function (index, item) {
+                                    $("#shi").append(new Option(item.xzqhmz, item.xzqhdm));
+                                });
+                            }
+                        });
+
+                        $.ajax({
+                            url: "/xzqhdm/get",
+                            async: false,
+                            dataType: 'JSON',
+                            data: {sjxzqhdm: resData.shi},
+                            success: function (data) {
+                                $.each(data, function (index, item) {
+                                    $("#xian").append(new Option(item.xzqhmz, item.xzqhdm));
+                                });
+                            }
+                        });
+
+                        $.ajax({
+                            url: "/xzqhdm/get",
+                            async: false,
+                            dataType: 'JSON',
+                            data: {sjxzqhdm: resData.xian},
+                            success: function (data) {
+                                $.each(data, function (index, item) {
+                                    $("#zhen").append(new Option(item.xzqhmz, item.xzqhdm));
+                                });
+                            }
+                        });
+
+                        $.ajax({
+                            url: "/xzqhdm/get",
+                            async: false,
+                            dataType: 'JSON',
+                            data: {sjxzqhdm: resData.zhen},
+                            success: function (data) {
+                                $.each(data, function (index, item) {
+                                    $("#xzc").append(new Option(item.xzqhmz, item.xzqhdm));
+                                });
+                            }
+                        });
+
+                        form.val('form1', {
+                            'shi': resData.shi,
+                            'xian': resData.xian,
+                            'zhen': resData.zhen,
+                            'xzc': resData.xzc,
+                            'zrct': resData.zrct,
+                            'lxdh': resData.lxdh,
+                            'khyh': resData.khyh,
+                            'yhkh': resData.yhkh,
+                            'pkhsx': resData.pkhsx,
+                            'jhtpnd': resData.jhtpnd,
+                            'fpnd': resData.fpnd,
+                            'fpyy': resData.fpyy,
+                            'sfjls': resData.sfjls,
+                            'sfbqh': resData.sfbqh,
+                            'bqfs': resData.bqfs,
+                            'bqdz': resData.bqdz
+                        });
+
+                        form.render();
+                    }
+                });
+
+            }
+        );
+        // 单独处理
+        // 致贫/返贫原因
+        $.get("/dm/fpyy", function (res) {
+            $.each(res.data, function (index, item) {
+                $("#fpyy").append(new Option(item.name, item.dm));
+                $("#zpyy1").append(new Option(item.name, item.dm));
+                $("#zpyy2").append(new Option(item.name, item.dm));
+                $("#zpyy3").append(new Option(item.name, item.dm));
+            });
+            layui.form.render('select');
+        });
 
         var zpyy1_value, zpyy2_value, zpyy3_value;
 
@@ -36,23 +138,19 @@ var family_edit = (function () {
             type: 'year',
             trigger: 'click'
         });
-
         laydate.render({
             elem: '#bqrzsj',
             trigger: 'click'
         });
-
         laydate.render({
             elem: '#sjrzsj',
             trigger: 'click'
         });
-
         laydate.render({
             elem: '#ccsj',
             type: 'month',
             trigger: 'click'
         });
-
         // 危改年度
         laydate.render({
             elem: '#wgnd',
@@ -60,13 +158,14 @@ var family_edit = (function () {
             trigger: 'click'
         });
 
-        // 加载js初始化市的下拉框，待优化
-        // $.get("/getRegion", function (data) {
-        //     $.each(data, function (index, item) {
-        //         $("#city").append(new Option(item.name, item.id));
-        //     });
-        //     layui.form.render('select');
-        // });
+
+        // 主要燃料类型
+        $.get("/dm/zyrllx", function (res) {
+            $.each(res.data, function (index, item) {
+                $("#zyrllx").append(new Option(item.name, item.dm));
+            });
+            layui.form.render('select');
+        });
 
         /* ***** 表单提交开始 **** */
 
@@ -82,7 +181,7 @@ var family_edit = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code == 0) {
+                    if (res.code == '0') {
                         if (res.data) {
                             $("#baseid").val(res.data);
                         }
@@ -112,7 +211,7 @@ var family_edit = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         $("#additionid").val(res.data);
                         layer.msg("✔ 保存成功!");
                     }
@@ -140,7 +239,7 @@ var family_edit = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         $("#conditionid").val(res.data);
                         layer.msg("✔ 保存成功!");
                     }
@@ -154,8 +253,31 @@ var family_edit = (function () {
             });
         });
 
+        // 变更情况说明
+        form.on('submit(base5)', function(data) {
+            data.field.fid = $("#baseid").val();
+            data.field.id = $("#changeid").val();
+            $.ajax({
+                url: '/yw/jt/addBgqksm',
+                method: 'post',
+                data: JSON.stringify(data.field),
+                contentType: "application/json",
+                dataType: 'JSON',
+                success: function(res) {
+                    if(res.code == '0') {
+                        $("#changeid").val(res.data);
+                        layer.msg("✔ 保存成功!");
+                    }
+                    else {
+                        layer.msg("× 保存失败");
+                    }
+                }
+            });
+        });
+
         // 其他信息
         form.on('submit(base6)', function (data) {
+            console.log(data);
             data.field.baseid = $("#baseid").val();
             $.ajax({
                 url: '/yw/jt/updateQTXX',
@@ -167,7 +289,7 @@ var family_edit = (function () {
                 //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
                 // },
                 success: function (res) {
-                    if (res.code = '0') {
+                    if (res.code == '0') {
                         $("#conditionid").val(res.data);
                         layer.msg("✔ 保存成功!");
                     }
@@ -183,11 +305,11 @@ var family_edit = (function () {
         /* ***** 表单提交结束 **** */
 
         /* ***** tab切换事件开始 **** */
-        element.on('tab(addBaseInfo)', function(data){
+        element.on('tab(addBaseInfo)', function (data) {
             var fid = $("#baseid").val();
             // 家庭成员
-            if(data.index == 1) {
-                if(initTab1 == 0) {
+            if (data.index == 1) {
+                if (initTab1 == 0) {
                     /**
                      * 家庭成员列表
                      */
@@ -206,9 +328,9 @@ var family_edit = (function () {
                         , title: '家庭成员表'
                         , cols: [[
                             {field: 'memberid', title: 'ID'}
-                            , {field: 'xm', title: '姓名',minWidth:90}
+                            , {field: 'xm', title: '姓名', minWidth: 90}
                             , {field: 'xb', title: '性别'}
-                            , {field: 'zjhm', title: '证件号码',minWidth:195}
+                            , {field: 'zjhm', title: '证件号码', minWidth: 195}
                             , {field: 'yhzgx', title: '与户主关系'}
                             , {field: 'mz', title: '民族'}
                             , {field: 'zzmm', title: '政治面貌'}
@@ -221,166 +343,13 @@ var family_edit = (function () {
                             , {field: 'sfcjcxjmjbytlbx', title: '是否参加城乡居民医疗保险'}
                             , {field: 'sfcjsybcylbx', title: '是否参加商业补充医疗保险'}
                             , {field: 'sfxsncjmzjshbz', title: '是否享受农村居民最低生活保障'}
-                            , {field: 'sfcjcxjmybyanglbx', title: '是否参加农村居民基本养老保险'}
+                            , {field: 'sfcjcxjmybyanglbx', title: '是否参加城乡居民基本养老保险'}
                             , {field: 'sfxsrsywbxbt', title: '是否享受人身意外保险补贴'}
-                            , {field: 'lxdh', title: '联系电话',minWidth:130}
-                            , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}
+                            , {field: 'lxdh', title: '联系电话', minWidth: 130}
+                            , {title: '操作', toolbar: '#tableMemberBar', minWidth: 130}
                         ]]
                         , page: false
                         , done: function (res, curr, count) {
-
-                            $("[data-field='xb']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("男")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("女");
-                                }
-                            });
-
-                            $("[data-field='yhzgx']").children().each(function () {
-                                var s = {'01':'户主', '10':'配偶', '20':'之子', '27':'养子或继子', '28':'女婿', '30':'之女', '37':'养女或继女', '38':'儿媳', '41':'孙子', '42':'孙女', '43':'外孙子', '44':'外孙女', '47':'曾孙子或外曾孙子', '48':'曾孙女或外曾孙女', '51':'父亲', '52':'母亲', '53':'公公', '54':'婆婆', '55':'岳父', '56':'岳母', '57':'继父或养父', '58':'继母或养母', '59':'其他父母关系', '61':'祖父', '62':'祖母', '63':'外祖父', '64':'外祖母', '66':'曾祖父', '67':'曾祖母', '68':'配偶的曾祖父母、外曾祖父母', '69':'其他祖父母或外祖父母关系', '71':'兄', '72':'嫂', '73':'弟', '74':'弟媳', '75':'姐姐', '76':'姐夫', '77':'妹妹', '78':'妹夫', '80':'其他', '81':'伯父', '82':'伯母', '83':'叔父', '84':'叔母', '85':'舅父', '86':'舅母', '87':'姨父', '88':'姨母', '89':'姑父', '90':'姑母', '93':'侄子', '94':'侄女', '95':'外甥', '96':'外甥女',};
-                                $(this).text(s[$(this).text()]);
-                            });
-
-                            $("[data-field='mz']").children().each(function () {
-                                var s = {'01' :'汉族', '02' :'蒙古族', '03' :'回族', '04' :'藏族', '05' :'维吾尔族', '06' :'苗族', '07' :'彝族', '08' :'壮族', '09' :'布依族', '10' :'朝鲜族', '11' :'满族', '12' :'侗族', '13' :'瑶族', '14' :'白族', '15' :'土家族', '16' :'哈尼族', '17' :'哈萨克族', '18' :'傣族', '19' :'黎族', '20' :'傈僳族', '21' :'佤族', '22' :'畲族', '23' :'高山族', '24' :'拉祜族', '25' :'水族', '26' :'东乡族', '27' :'纳西族', '28' :'景颇族', '29' :'柯尔克孜族', '30' :'土族', '31' :'达斡尔族', '32' :'仫佬族', '33' :'羌族', '34' :'布朗族', '35' :'撒拉族', '36' :'毛难族', '37' :'仡佬族', '38' :'锡伯族', '39' :'阿昌族', '40' :'普米族', '41' :'塔吉克族', '42' :'怒族', '43' :'乌孜别克族', '44' :'俄罗斯族', '45' :'鄂温克族', '46' :'崩龙族', '47' :'保安族', '48' :'裕固族', '49' :'京族', '50' :'塔塔尔族', '51' :'独龙族', '52' :'鄂伦春族', '53' :'赫哲族', '54' :'门巴族', '55' :'珞巴族', '56' :'基诺族', '57' :'其他', '58' :'外国血统中国人士'};
-                                $(this).text(s[$(this).text()]);
-                            });
-
-                            $("[data-field='zzmm']").children().each(function () {
-                                var s = {'01':'中共党员', '02':'中共预备党员', '03':'共青团员', '12':'无党派民主人士', '13':'群众'};
-                                $(this).text(s[$(this).text()]);
-                            });
-
-                            $("[data-field='whcd']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("文盲")
-                                } else if ($(this).text() == 2) {
-                                    $(this).text("小学");
-                                } else if ($(this).text() == 3) {
-                                    $(this).text("初中");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("高中");
-                                } else if ($(this).text() == 5) {
-                                    $(this).text("本科");
-                                }
-                            });
-
-                            $("[data-field='zxsqk']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("非在校生")
-                                } else if ($(this).text() == 2) {
-                                    $(this).text("学前教育");
-                                } else if ($(this).text() == 3) {
-                                    $(this).text("七年级");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("八年级");
-                                } else if ($(this).text() == 5) {
-                                    $(this).text("九年级");
-                                } else if ($(this).text() == 6) {
-                                    $(this).text("高一");
-                                } else if ($(this).text() == 7) {
-                                    $(this).text("高二");
-                                } else if ($(this).text() == 8) {
-                                    $(this).text("高三");
-                                } else if ($(this).text() == 9) {
-                                    $(this).text("中职一");
-                                } else if ($(this).text() == 0){
-                                    $(this).text("");
-                                }
-                            });
-
-                            $("[data-field='sxhcxyy']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("因病")
-                                } else if ($(this).text() == 2) {
-                                    $(this).text("因疾");
-                                } else if ($(this).text() == 3) {
-                                    $(this).text("厌学");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("其他");
-                                } else if ($(this).text() == 0){
-                                    $(this).text("");
-                                }
-                            });
-
-                            $("[data-field='jkzk']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("健康")
-                                } else if ($(this).text() == 2) {
-                                    $(this).text("残疾");
-                                } else if ($(this).text() == 3) {
-                                    $(this).text("大病");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("长期慢性病");
-                                } else if ($(this).text() == 0){
-                                    $(this).text("");
-                                }
-                            });
-
-                            $("[data-field='ldjn']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("普通劳动力")
-                                } else if ($(this).text() == 2) {
-                                    $(this).text("技能劳动力");
-                                } else if ($(this).text() == 3) {
-                                    $(this).text("弱劳动力或半劳动力");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("丧失劳动力");
-                                } else if ($(this).text() == 4) {
-                                    $(this).text("无劳动力");
-                                } else if ($(this).text() == 0){
-                                    $(this).text("");
-                                }
-                            });
-
-                            $("[data-field='sfhjpth']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
-
-                            $("[data-field='sfcjcxjmjbytlbx']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
-
-                            $("[data-field='sfxsncjmzjshbz']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
-
-                            $("[data-field='sfcjsybcylbx']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
-
-                            $("[data-field='sfcjcxjmybyanglbx']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
-
-                            $("[data-field='sfxsrsywbxbt']").children().each(function () {
-                                if ($(this).text() == 1) {
-                                    $(this).text("是")
-                                } else if ($(this).text() == 0) {
-                                    $(this).text("否");
-                                }
-                            });
                         }
                     });
 
@@ -388,70 +357,69 @@ var family_edit = (function () {
                 }
             }
             // 致贫原因
-            if(data.index == 2) {
-                if(initTab2 == 0) {
+            if (data.index == 2) {
+                if (initTab2 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getZpyy',
-                        data : {fid : fid},
+                        url: '/yw/jt/getZpyy',
+                        data: {fid: fid},
                         dataType: 'JSON',
-                        success : function(res) {
-                            // console.log(res.data);
-                            if(res.data != null) {
+                        success: function (res) {
+                            if (res.data != null) {
                                 form.val('form3', {
-                                    'additionid' : res.data.id,
-                                    'zpyy1' : res.data.zpyy1,
-                                    'zpyy2' : res.data.zpyy2,
-                                    'zpyy3' : res.data.zpyy3,
-                                    'ncjtrks' : res.data.ncjtrks,
-                                    'nmjtrks' : res.data.nmjtrks
+                                    'additionid': res.data.additionid,
+                                    'zpyy1': res.data.zpyy1,
+                                    'zpyy2': res.data.zpyy2,
+                                    'zpyy3': res.data.zpyy3,
+                                    'ncjtrks': res.data.ncjtrks,
+                                    'nmjtrks': res.data.nmjtrks
                                 });
-                                form.render();
                             }
                         }
                     });
+                    layui.form.render('select');
                     initTab2 = 1;
                 }
             }
             // 生产生活条件
-            if(data.index == 3) {
-                if(initTab3 == 0) {
+            if (data.index == 3) {
+                if (initTab3 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getScshtj',
-                        data : {fid : fid},
+                        url: '/yw/jt/getScshtj',
+                        data: {fid: fid},
                         dataType: 'JSON',
-                        success : function(res) {
-                            if(res.data == null)
+                        success: function (res) {
+                            if (res.data == null)
                                 return;
                             // 单独处理燃料的其他项
-                            if(res.data.zyrllx == 5) {
+                            if (res.data.zyrllx == 5) {
                                 $("#label_jtrlmc").css("color", '');
                                 $("#jtrlmc").removeClass("layui-disabled");
                                 $("#jtrlmc").attr("disabled", false);
                                 $("#jtrlmc").attr("lay-verify", "required");
                             }
                             form.val('form4', {
-                                'conditionid' : res.data.id,
-                                'gdmj' : res.data.gdmj,
-                                'ldmj' : res.data.ldmj,
-                                'tghlmj' : res.data.tghlmj,
-                                'lgmj' : res.data.lgmj,
-                                'mcdmj' : res.data.mcdmj,
-                                'smmj' : res.data.smmj,
-                                'sfjrnmzyhzs' : res.data.sfjrnmzyhzs,
-                                'sfyltqybz' : res.data.sfyltqybz,
-                                'sfycyzfdtrdd' : res.data.sfycyzfdtrdd,
-                                'sftshyd' : res.data.sftshyd,
-                                'sftgbds' : res.data.sftgbds,
-                                'sfjjaqyys' : res.data.sfjjaqyys,
-                                'sfywscs' : res.data.sfywscs,
-                                'yczgljl' : res.data.yczgljl,
-                                'rhllx' : res.data.rhllx,
-                                'zfmj' : res.data.zfmj,
-                                'sfwf' : res.data.sfwf,
-                                'wfdj' : res.data.wfdj,
-                                'wgnd' : res.data.wgnd,
-                                'zyrllx' : res.data.zyrllx,
-                                'jtrlmc' : res.data.jtrlmc
+                                'conditionid': res.data.conditionid,
+                                'gdmj': res.data.gdmj,
+                                'ldmj': res.data.ldmj,
+                                'tghlmj': res.data.tghlmj,
+                                'lgmj': res.data.lgmj,
+                                'mcdmj': res.data.mcdmj,
+                                'smmj': res.data.smmj,
+                                'sfjrnmzyhzs': res.data.sfjrnmzyhzs,
+                                'sfyltqybz': res.data.sfyltqybz,
+                                'sfycyzfdtrdd': res.data.sfycyzfdtrdd,
+                                'sftshyd': res.data.sftshyd,
+                                'sftgbds': res.data.sftgbds,
+                                'sfjjaqyys': res.data.sfjjaqyys,
+                                'sfywscs': res.data.sfywscs,
+                                'yczgljl': res.data.yczgljl,
+                                'rhllx': res.data.rhllx,
+                                'zfmj': res.data.zfmj,
+                                'sfwf': res.data.sfwf,
+                                'wfjb': res.data.wfjb,
+                                'wgnd': res.data.wgnd,
+                                'zyrllx': res.data.zyrllx,
+                                'jtrlmc': res.data.jtrlmc
                             });
                             form.render();
                         }
@@ -459,40 +427,59 @@ var family_edit = (function () {
                     initTab3 = 1;
                 }
             }
+            // 变更说明
+            if(data.index == 4) {
+                if(initTab4 == 0) {
+                    $.ajax({
+                        url: '/yw/jt/getBgqksm',
+                        data: {fid: fid},
+                        dataType: 'JSON',
+                        success: function(res){
+                            form.val('form5',{
+                                'changeid': res.data.changeid,
+                                'nr': res.data.nr
+                            });
+                            form.render();
+                        }
+                    });
+                }
+                initTab4 = 1;
+            }
 
             // 新增字段
-            if(data.index == 5) {
-                if(initTab5 == 0) {
+            if (data.index == 5) {
+                if (initTab5 == 0) {
                     $.ajax({
-                        url : '/yw/jt/getNew',
-                        data : {id : fid},
+                        url: '/yw/jt/getNew',
+                        data: {id: fid},
                         dataType: 'JSON',
-                        success : function(res) {
-                            if(res.data == null)
+                        success: function (res) {
+                            if (res.data == null)
                                 return;
                             form.val('form6', {
-                                'azd' : res.data.azd,
-                                'ldfh' : res.data.ldfh,
-                                'ndbqrw' : res.data.ndbqrw,
-                                'qcdxxdz' : res.data.qcdxxdz,
-                                'qcdlx' : res.data.qcdlx,
-                                'jtsyrk' : res.data.jtsyrk,
-                                'zfmj' : res.data.zfmj,
-                                'zczj' : res.data.zczj,
-                                'bqrzsj' : res.data.bqrzsj,
-                                'sjrzsj' : res.data.sjrzsj,
-                                'yyzf' : res.data.yyzf,
-                                'yyzfmj' : res.data.yyzfmj,
-                                'ccjf' : res.data.ccjf,
-                                'bhzfzl' : res.data.bhzfzl,
-                                'ccsj' : res.data.ccsj,
-                                'ccjfmj' : res.data.ccjfmj,
-                                'dxcfjl' : res.data.dxcfjl,
-                                'fkflqk' : res.data.fkflqk,
-                                'cyfcxm' : res.data.cyfcxm,
-                                'nnhdcyfczj' : res.data.nnhdcyfczj,
-                                'tpqk' : res.data.tpqk,
-                                'hkqy' : res.data.hkqy
+                                'azd': res.data.azd,
+                                'ldfh': res.data.ldfh,
+                                'ndbqrw': res.data.ndbqrw,
+                                'qcdxxdz': res.data.qcdxxdz,
+                                'qcdlx': res.data.qcdlx,
+                                'jtsyrk': res.data.jtsyrk,
+                                'zfmj': res.data.zfmj,
+                                'zczj': res.data.zczj,
+                                'bqrzsj': res.data.bqrzsj,
+                                'sjrzsj': res.data.sjrzsj,
+                                'yyzf': res.data.yyzf,
+                                'yyzfmj': res.data.yyzfmj,
+                                'ccjf': res.data.ccjf,
+                                'bhzfzl': res.data.bhzfzl,
+                                'ccsj': res.data.ccsj,
+                                'ccjfmj': res.data.ccjfmj,
+                                'dxcfjl': res.data.dxcfjl,
+                                'fkflqk': res.data.fkflqk,
+                                'cyfcxm': res.data.cyfcxm,
+                                'nnhdcyfczj': res.data.nnhdcyfczj,
+                                'tpqk': res.data.tpqk,
+                                'hkqy': res.data.hkqy,
+                                'fczblhq': res.data.fczblhq
                             });
                             form.render();
                         }
