@@ -20,13 +20,14 @@ var income = (function () {
             cols: [[
                 {type: 'checkbox'}
                 , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                , {field: 'zjhm', title: '证件号码'}
-                , {field: 'hzxm', title: '户主姓名', width: 120}
-                , {field: 'pkhsx', title: '贫困户属性'}
-                , {field: 'jhtpnd', title: '计划脱贫年度'}
-                , {field: 'fpnd', title: '返贫年度',}
-                , {field: 'sfydbqh', title: '是否易地搬迁户'}
-                , {title: '操作', toolbar: '#barDemo'}
+                , {field: 'zjhm', title: '证件号码',width: 200}
+                , {field: 'hzxm', title: '户主姓名', width: 100}
+                // , {field: 'pkhsx', title: '贫困户属性'}
+                , {field: 'pkhsx', title: '收入登记表年度'}
+                // , {field: 'jhtpnd', title: '计划脱贫年度'}
+                // , {field: 'fpnd', title: '返贫年度',}
+                // , {field: 'sfydbqh', title: '是否易地搬迁户'}
+                , {title: '操作', toolbar: '#barDemo',fixed: 'right',width: 160}
             ]],
             done: function (res, curr, count) {
                 $("#search_name").unbind();
@@ -54,7 +55,7 @@ var income = (function () {
             // 弹框选择年份
             layer.ready(function() {
                 layer.open({
-                    title: '选择年份',
+                    title: '选择登记表所属年份',
                     type: 1,
                     skin: 'layui-layer-rim',
                     area: ['600px', '200px'], //根据自己要求调整
@@ -85,10 +86,6 @@ var income = (function () {
 
                 });
             });
-
-            // if (obj.event === 'edit') {
-            //
-            // }
         });
 
 

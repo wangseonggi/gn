@@ -36,7 +36,7 @@ public interface BfrMapper {
             "LEFT JOIN (",
             "SELECT jt.id,jt.pkhsx,cy.xm ",
             "FROM ym_jtjbqk_jtjbxx jt LEFT JOIN ym_jtjbqk_jtcy cy ON jt.id = cy.fid ",
-            "WHERE cy.yhzgx = 1) t ON c.fid = t.id WHERE 1 = 1 ",
+            "WHERE cy.yhzgx = '02') t ON c.fid = t.id WHERE 1 = 1 ",
             "<when test='name!=null'>",
             "and bfr.xm like '%${name}%' ",
             "</when>",
@@ -56,10 +56,10 @@ public interface BfrMapper {
     @Select("SELECT aa.*,bb.num " +
             "FROM  " +
             "( " +
-            "SELECT t.id,t.pkhsx, d.`xm`,d.`zjhm` " +
+            "SELECT t.id,IFNULL(t.pkhsx,'') pkhsx, d.`xm`,d.`zjhm` " +
             "FROM  " +
             "( " +
-            "SELECT c.id,c.`pkhsx` " +
+            "SELECT c.id,(SELECT sx.`name` FROM dm_ym_pkhsx sx WHERE sx.dm = c.`pkhsx` ) AS pkhsx " +
             "FROM  " +
             "ym_bfr a, ym_mid_bfr_jtjbqk b, ym_jtjbqk_jtjbxx c " +
             "WHERE a.id = b.`bid` AND b.`fid` = c.`id`  " +

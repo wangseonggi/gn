@@ -8,12 +8,13 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class SystemMenuService {
 
-    @Autowired
+    @Resource
     private SystemMenuMapper systemMenuMapper;
 
     public PageInfo list(Integer page, Integer limit, Integer pid, String mc, Integer zt) {

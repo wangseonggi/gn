@@ -48,9 +48,12 @@ var bfgx = (function () {
             });
             // 如果没有指定，则加一行，结束
             if(bqhids.length == 0) {
-                layer.msg("无数据提交");
+                // layer.msg("无数据提交");
                 addRow();
-                return;
+                // return;
+
+
+                bqhids.push(0); // 删除所有，推个0
             }
 
             // 有指定则更新
@@ -97,6 +100,8 @@ var bfgx = (function () {
 
     // 绑定失去焦点事件
     var blur = function() {
+        $("[name='jtid']").unbind('blur');
+
         $("[name='jtid']").blur(function () {
             var obj = $(this);
             var jtid = obj.val();

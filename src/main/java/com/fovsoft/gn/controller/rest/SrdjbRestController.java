@@ -134,10 +134,12 @@ public class SrdjbRestController {
         result.put("d", map);
 
         Map jtwdzsr = srdjbSerivce.getJTWDZSR(fidNFHolder);
-        result.put("jtwdzsr", jtwdzsr.get("total"));
+        if(jtwdzsr != null)
+            result.put("jtwdzsr", jtwdzsr.get("total"));
 
         Map jtzzc = srdjbSerivce.getJTZZC(fidNFHolder);
-        result.put("jtzzc", jtzzc.get("total"));
+        if(jtzzc != null)
+            result.put("jtzzc", jtzzc.get("total"));
 
         return new JsonResult(result);
     }

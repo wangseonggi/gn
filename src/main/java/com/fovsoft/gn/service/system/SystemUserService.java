@@ -8,11 +8,12 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class SystemUserService {
-    @Autowired
+    @Resource
     private SystemUserMapper systemUserMapper;
 
     public PageInfo list(Integer page, Integer limit, String username) {

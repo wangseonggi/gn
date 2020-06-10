@@ -39,11 +39,10 @@ let family = (function () {
             switch (obj.event) {
                 case 'add':
                     layer.open({
-                        title: '新增管理员',
+                        title: '新增用户',
                         type: 2,
-                        skin: 'layui-layer-rim', //加上边框
                         area: ['622px', '261px'], //宽高
-                        content: '/xt/user/add',
+                        content: '/xt/user/edit',
                         end: function () {
                             parent.layui.table.reload('familyListTable');
                         }

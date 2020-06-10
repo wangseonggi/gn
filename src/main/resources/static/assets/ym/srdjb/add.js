@@ -246,9 +246,11 @@ var income_add = (function () {
                             // var num = data.data.jtwdzsr.num; // 家庭成员数
                             //
                             // 填总收入
-                            $("#jtwdzsr").val(jtwdzsr.toFixed(2));
+                            if(jtwdzsr)
+                                $("#jtwdzsr").val(jtwdzsr.toFixed(2));
                             // 填纯收入
-                            $("#jtwdcsr").val((jtwdzsr - jtzzc).toFixed(2));
+                            if(jtzzc)
+                                $("#jtwdcsr").val((jtwdzsr - jtzzc).toFixed(2));
                             // // 填人均纯收入
                             // if(num) {
                             //     $("#rjcsr2019").val(((jtwdzsr2019 - jtwdzzc2019) / num).toFixed(2));

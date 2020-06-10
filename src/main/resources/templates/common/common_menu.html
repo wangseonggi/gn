@@ -24,8 +24,8 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/user'}?'active'">
-                <a th:href="@{/xt/user}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/user/index'}?'active'">
+                <a th:href="@{/xt/user/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     用户管理
                 </a>
@@ -33,8 +33,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/role'}?'active'">
-                <a th:href="@{/xt/role}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/role/index'}?'active'">
+                <a th:href="@{/xt/role/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     角色管理
                 </a>
@@ -42,8 +42,8 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/menu'}?'active'">
-                <a th:href="@{/xt/menu}">
+            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/menu/index'}?'active'">
+                <a th:href="@{/xt/menu/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     菜单管理
                 </a>

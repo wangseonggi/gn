@@ -5,15 +5,13 @@ import com.fovsoft.gn.entity.AzdDo;
 import com.fovsoft.gn.entity.AzdFwxxDo;
 import com.fovsoft.gn.entity.holder.AzdFwxxHzHolder;
 import com.fovsoft.gn.entity.holder.BfgxXXHolder;
-import com.fovsoft.gn.entity.holder.BfrBqhHolder;
 import com.fovsoft.gn.mapper.azd.AzdMapper;
-import com.fovsoft.gn.mapper.bfr.BfrMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**

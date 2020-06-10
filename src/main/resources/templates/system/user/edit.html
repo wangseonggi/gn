@@ -39,7 +39,7 @@
             <tr>
                 <td class="fp_btbt">账号</td>
                 <td class="fp_nrbt" colspan="3">
-                    <input id="username" name="username" class="layui-input ld" lay-filter="username" autocomplete="off" readonly="readonly" th:value="${user!=null?user.username:''}"/>
+                    <input id="username" name="username" class="layui-input ld" lay-filter="username" autocomplete="off" th:readonly="${user!=null}?'11':'222'"  th:value="${user!=null?user.username:''}"/>
                 </td>
             </tr>
             <tr>

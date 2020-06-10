@@ -28,17 +28,18 @@ var bfr = (function () {
             ]],
             done: function (res, curr, count) {
                 $("[data-field='xb']").children().each(function () {
-                    if ($(this).text() == 0) {
-                        $(this).text('');
+                    if ($(this).text() == '') {
+                        $(this).text('***');
                     }
                 });
                 $("[data-field='hzxm']").children().each(function () {
                     if ($(this).text() == '') {
-                        $(this).text('******');
+                        $(this).css('color', 'red');
+                        $(this).text('未指定');
                     }
                 });
                 $("[data-field='fid']").children().each(function () {
-                    if ($(this).text() == '0') {
+                    if (!$(this).text()) {
                         $(this).css('color', 'red');
                         $(this).text('未指定');
                     }
@@ -137,12 +138,9 @@ var bfr = (function () {
                 layer.open({
                     title: '编辑帮扶人',
                     type: 2,
-                    // skin: 'layui-layer-rim', //加上边框
                     area: ['30%', '30%'], //宽高
-                    content: '/yw/bfr/add',
+                    content: '/yw/bfr/add?id=' + data.id,
                     success : function(layero, index) {
-                        var iframe = window['layui-layer-iframe' + index];
-                        iframe.setBaseId(data.id);
                     },
                     end: function () {
                         parent.layui.table.reload('id','familyListTable');
@@ -156,10 +154,8 @@ var bfr = (function () {
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
                     area: ['50%', '40%'], //宽高
-                    content: '/yw/bfr/bfgx',
+                    content: '/yw/bfr/bfgx?id=' + data.id,
                     success : function(layero, index) {
-                        var iframe = window['layui-layer-iframe' + index];
-                        iframe.setBaseId(data.id);
                     },
                     end: function () {
                         parent.layui.table.reload('id','familyListTable');

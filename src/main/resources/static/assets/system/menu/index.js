@@ -2,7 +2,7 @@ $(document).ready(function () {
     family.onload();
 });
 
-let family = (function () {
+var family = (function () {
     layui.use('table', function () {
         var table = layui.table;
         var familyTabel = table.render({
@@ -34,7 +34,7 @@ let family = (function () {
 
         //工具栏事件
         table.on('toolbar(userList)', function (obj) {
-            let checkStatus = table.checkStatus(obj.config.id);
+            var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
                     layer.open({

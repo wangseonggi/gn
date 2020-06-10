@@ -71,7 +71,7 @@ public class BfrRestController {
      * @return
      */
     @RequestMapping(value = "getBBfrXX", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    public JsonResult getBBfrXX(int bfrid) {
+    public JsonResult getBBfrXX(Integer bfrid) {
         List<BfgxXXHolder> list = bfrSerivce.getBBfrXX(bfrid);
         return new JsonResult(list);
     }

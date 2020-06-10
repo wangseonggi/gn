@@ -13,14 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 @Controller
+@RequestMapping(value = "/xt/user")
 public class SysUserController {
 
-    @RequestMapping(value = "/xt/user")
+    @RequestMapping(value = "/index")
     public String index() {
         return "system/user/index";
     }
 
-    @RequestMapping(value = "/xt/user/edit")
+    @RequestMapping(value = "/edit")
     public Object edit(Integer isProfile) {
         // 处理个人信息
         if(isProfile != null && isProfile == 1) {

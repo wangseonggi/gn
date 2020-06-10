@@ -16,29 +16,29 @@ import java.util.Map;
 @Service
 public class DmService {
 
-    private final String FPYY = "DM_YM_FPYY";
-    private final String JKZK = "DM_YM_JKZK";
-    private final String LDJN = "DM_YM_LDJN";
-    private final String PKHSX = "DM_YM_PKHSX";
-    private final String RHLLX = "DM_YM_RHLLX";
-    private final String SXHCXYY = "DM_YM_SXHCXYY";
-    private final String WFJB = "DM_YM_WFJB";
-    private final String YHZGX = "DM_YM_YHZGX";
-    private final String ZXSQK = "DM_YM_ZXSQK";
-    private final String ZYRLLX = "DM_YM_ZYRLLX";
-    private final String XB = "DM_YM_XB";
-    private final String MZ = "DM_YM_MZ";
-    private final String ZZMM = "DM_YM_ZZMM";
-    private final String WHCD = "DM_YM_WHCD";
-    private final String SHZT = "DM_YM_SHZT";
-    private final String RKLX = "DM_YM_RKLX";
-    private final String ZDQK = "DM_YM_ZDQK";
-    private final String JYQK = "DM_YM_JYQK";
-    private final String WDJYCYDY = "DM_YM_WDJYCYDY";
-    private final String YLBXLX = "DM_YM_YLBXLX";
-    private final String CJDJ = "DM_YM_CJDJ";
+    private final String FPYY = "dm_ym_fpyy";
+    private final String JKZK = "dm_ym_jkzk";
+    private final String LDJN = "dm_ym_ldjn";
+    private final String PKHSX = "dm_ym_pkhsx";
+    private final String RHLLX = "dm_ym_rhllx";
+    private final String SXHCXYY = "dm_ym_sxhcxyy";
+    private final String WFJB = "dm_ym_wfjb";
+    private final String YHZGX = "dm_ym_yhzgx";
+    private final String ZXSQK = "dm_ym_zxsqk";
+    private final String ZYRLLX = "dm_ym_zyrllx";
+    private final String XB = "dm_ym_xb";
+    private final String MZ = "dm_ym_mz";
+    private final String ZZMM = "dm_ym_zzmm";
+    private final String WHCD = "dm_ym_whcd";
+    private final String SHZT = "dm_ym_shzt";
+    private final String RKLX = "dm_ym_rklx";
+    private final String ZDQK = "dm_ym_zdqk";
+    private final String JYQK = "dm_ym_jyqk";
+    private final String WDJYCYDY = "dm_ym_wdjycydy";
+    private final String YLBXLX = "dm_ym_ylbxlx";
+    private final String CJDJ = "dm_ym_cjdj";
 
-    private final String[] tableNames = new String[]{"DM_YM_FPYY", "DM_YM_JKZK", "DM_YM_LDJN", "DM_YM_PKHSX", "DM_YM_RHLLX", "DM_YM_SXHCXYY", "DM_YM_WFJB", "DM_YM_YHZGX", "DM_YM_ZXSQK", "DM_YM_ZYRLLX", "DM_YM_XB", "DM_YM_MZ", "DM_YM_ZZMM", "DM_YM_WHCD", "DM_YM_SHZT", "DM_YM_RKLX", "DM_YM_ZDQK", "DM_YM_JYQK", "DM_YM_WDJYCYDY", "DM_YM_YLBXLX", "DM_YM_CJDJ"};
+    private final String[] tableNames = new String[]{"dm_ym_fpyy", "dm_ym_jkzk", "dm_ym_ldjn", "dm_ym_pkhsx", "dm_ym_rhllx", "dm_ym_sxhcxyy", "dm_ym_wfjb", "dm_ym_yhzgx", "dm_ym_zxsqk", "dm_ym_zyrllx", "dm_ym_xb", "dm_ym_mz", "dm_ym_zzmm", "dm_ym_whcd", "dm_ym_shzt", "dm_ym_rklx", "dm_ym_zdqk", "dm_ym_jyqk", "dm_ym_wdjycydy", "dm_ym_ylbxlx", "dm_ym_cjdj"};
 
 
     @Resource

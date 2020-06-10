@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<link rel="stylesheet" th:href="@{/assets/layui/dist/css/layui.css}" media="all">-->
+
+    <link rel="stylesheet" th:href="@{/assets/zTree/css/zTreeStyle/zTreeStyle.css}" type="text/css">
+    <script src="/assets/js/jquery-1.11.3.min.js" th:href="@{/assets/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/assets/zTree/js/jquery.ztree.all.js}"></script>
+
+    <!--<script src="/assets/layui/dist/layui.js" th:href="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>-->
+</head>
+<body>
+    <input name="id" type="hidden" id="id" th:value="${id}"/>
+    <!--<div id="menuTree"></div>-->
+
+    <div>
+        <ul id="menuTree" class="ztree"></ul>
+    </div>
+</body>
+
+
+<script th:src="@{/assets/system/role/grant.js}"></script>
+</html>

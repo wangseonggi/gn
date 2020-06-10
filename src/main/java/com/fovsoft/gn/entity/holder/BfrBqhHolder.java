@@ -15,6 +15,6 @@ public class BfrBqhHolder {
     private String gzdw;
     private String zw;
     private String fid;
-    private int pkhsx;
+    private String pkhsx;
     private String hzxm;
 }

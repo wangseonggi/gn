@@ -157,6 +157,12 @@ var family_edit = (function () {
             type: 'year',
             trigger: 'click'
         });
+        // 年度搬迁任务
+        laydate.render({
+            elem: '#ndbqrw',
+            type: 'year',
+            trigger: 'click'
+        });
 
 
         // 主要燃料类型

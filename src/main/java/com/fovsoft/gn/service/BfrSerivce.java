@@ -57,10 +57,14 @@ public class BfrSerivce {
     }
 
     public int zd(int bid, int[] fids) {
+
+        // fids[0]=0时说明删除所有帮扶关系
+
         bfrMapper.deleteZd(bid);
-
-        int rows = bfrMapper.zd(bid, fids);
-
+        int rows = 0;
+        if(fids[0] != 0) {
+            rows = bfrMapper.zd(bid, fids);
+        }
         return rows;
     }
 }

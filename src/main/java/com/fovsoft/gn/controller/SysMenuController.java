@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
+@RequestMapping(value = "/xt/menu")
 public class SysMenuController {
 
-    @RequestMapping(value = "/xt/menu")
+    @RequestMapping(value = "/index")
     public String index() {
         return "system/menu/index";
     }

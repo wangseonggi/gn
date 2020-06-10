@@ -20,22 +20,22 @@ var jt = (function () {
                 , {field: 'pkhsx', title: '贫困户属性'}
                 , {field: 'hzxm', title: '户主姓名', width: 120}
                 , {field: 'zjhm', title: '户主证件号码'}
-                // , {field: 'jhtpnd', title: '计划脱贫年度'}
-                // , {field: 'sfbqh', title: '是否易地搬迁户'}
+                , {field: 'tpqk', title: '脱贫情况'}
+                , {field: 'ndbqrw', title: '年度搬迁任务'}
+                , {field: 'sjrzsj', title: '实际入住时间'}
+                , {field: 'zfmj', title: '住房面积m²'}
+                , {field: 'syrk', title: '受益人口'}
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
-                $("[data-field='jhtpnd']").children().each(function () {
+                $("[data-field='pkhsx']").children().each(function () {
+                    if($(this).text() == '') {
+                        $(this).html("<span style='color: red'>未填写</span>")
+                    }
+                });
+                $("[data-field='zfmj']").children().each(function () {
                     if($(this).text() == 0) {
                         $(this).text("");
-                    }
-
-                });
-                $("[data-field='sfbqh']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("是")
-                    } else if ($(this).text() == 0) {
-                        $(this).text("否")
                     }
                 });
                 $("#search_name").unbind();
@@ -161,7 +161,6 @@ var jt = (function () {
                         parent.layui.table.reload('indexTable');
                     }
                 });
-
             }
         });
 
@@ -181,6 +180,18 @@ var jt = (function () {
                     curr: 1
                 },
                 done : function() {
+
+                    $("[data-field='pkhsx']").children().each(function () {
+                        if($(this).text() == '') {
+                            $(this).html("<span style='color: red'>未填写</span>")
+                        }
+                    });
+                    $("[data-field='zfmj']").children().each(function () {
+                        if($(this).text() == 0) {
+                            $(this).text("");
+                        }
+                    });
+
                     $("#search_name").val(name);
                     $("#search_sfzhm").val(sfzhm);
                     $("#search_name").unbind();
