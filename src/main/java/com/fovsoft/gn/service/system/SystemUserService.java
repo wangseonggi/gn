@@ -1,6 +1,7 @@
 package com.fovsoft.gn.service.system;
 
 import com.fovsoft.gn.entity.SystemUserDO;
+import com.fovsoft.gn.entity.holder.RoleHasHolder;
 import com.fovsoft.gn.entity.holder.SystemUserHolder;
 import com.fovsoft.gn.mapper.system.SystemUserMapper;
 import com.github.pagehelper.PageHelper;
@@ -27,8 +28,26 @@ public class SystemUserService {
         return systemUserMapper.update(systemUserHolders);
     }
 
+    public int add(SystemUserHolder systemUserHolder) {
+        return systemUserMapper.add(systemUserHolder);
+    }
 
     public SystemUserDO get(Integer id) {
         return systemUserMapper.get(id);
+    }
+
+    public List<RoleHasHolder> listRole(Integer id) {
+        return systemUserMapper.listRole(id);
+    }
+
+    public int setRole(Integer roleid, Boolean status, Integer userid) {
+        int result = 0;
+        if(status) {
+            result = systemUserMapper.setRole(roleid,userid);
+        }
+        else {
+            result = systemUserMapper.removeRole(roleid,userid);
+        }
+        return result;
     }
 }

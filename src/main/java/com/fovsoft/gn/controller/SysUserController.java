@@ -4,6 +4,7 @@ import com.fovsoft.gn.security.component.CustomUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,5 +35,11 @@ public class SysUserController {
         else {
             return "system/user/edit";
         }
+    }
+
+    @RequestMapping(value = "/setRole")
+    public Object setRole(Model model, Integer id) {
+        model.addAttribute("userid", id);
+        return "system/user/setRole";
     }
 }

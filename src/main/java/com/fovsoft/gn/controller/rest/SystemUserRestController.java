@@ -2,15 +2,14 @@ package com.fovsoft.gn.controller.rest;
 
 import com.fovsoft.common.JsonResult;
 import com.fovsoft.gn.entity.SystemUserDO;
+import com.fovsoft.gn.entity.holder.RoleHasHolder;
 import com.fovsoft.gn.entity.holder.SystemUserHolder;
 import com.fovsoft.gn.service.system.SystemUserService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -56,7 +55,13 @@ public class SystemUserRestController {
                 systemUserHolders.setPassword(encodeString);
             }
         }
-        int affectRow = systemUserService.update(systemUserHolders);
+        int affectRow = 0;
+        if(systemUserHolders.getId() != 0) {
+            systemUserService.update(systemUserHolders);
+        }
+        else {
+            systemUserService.add(systemUserHolders);
+        }
         return new JsonResult(affectRow);
     }
 
@@ -64,5 +69,17 @@ public class SystemUserRestController {
     public JsonResult get(Integer id) {
         SystemUserDO systemUserDO = systemUserService.get(id);
         return new JsonResult(systemUserDO);
+    }
+
+    @RequestMapping(value = "/listRole", produces = "application/json;charset=UTF-8")
+    public JsonResult listRole(Integer id) {
+        List<RoleHasHolder> result = systemUserService.listRole(id);
+        return new JsonResult(result);
+    }
+
+    @RequestMapping(value = "/setRole2", method = RequestMethod.POST)
+    public JsonResult setRole(@RequestParam(name = "roleid")Integer roleid, @RequestParam(name = "status")Boolean status, @RequestParam(name =  "userid")Integer userid) {
+        int result = systemUserService.setRole(roleid, status, userid);
+        return new JsonResult(result);
     }
 }

@@ -3,13 +3,26 @@ $(document).ready(function () {
 });
 let edit = (function () {
 
-    layui.use(['form', 'element',  'table'], function () {
+    layui.use(['form', 'element',  'table', 'laydate'], function () {
         var element, laydate, form, table;
         element = layui.element;
         form = layui.form;
         table = layui.table;
+        laydate = layui.laydate;
 
         var id = $("#id").val();
+
+        laydate.render({
+            elem: '#zhyxq',
+            type: 'datetime',
+            trigger: 'click'
+        });
+        laydate.render({
+            elem: '#mmyxq',
+            type: 'datetime',
+            trigger: 'click'
+        });
+
         // 编辑时初始化表单
         if(id) {
             // 禁用用户名input
@@ -20,7 +33,10 @@ let edit = (function () {
                     'username': res.data.username,
                     'nc': res.data.nc,
                     'dh': res.data.dh,
-                    'dzyx': res.data.dzyx
+                    'dzyx': res.data.dzyx,
+                    'zhyxq': res.data.zhyxq,
+                    'mmyxq': res.data.mmyxq,
+                    'zt': res.data.zt
                 });
                 form.render();
             });

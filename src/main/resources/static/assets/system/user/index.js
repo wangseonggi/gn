@@ -17,17 +17,24 @@ let family = (function () {
             cols: [[
                 {type: 'checkbox'}
                 , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                , {field: 'username', title: '账号'}
+                , {field: 'username', title: '账号', width: 120}
                 , {field: 'nc', title: '昵称', width: 120}
-                , {field: 'dh', title: '电话'}
+                , {field: 'dh', title: '电话', width: 140}
                 , {field: 'dzyx', title: '电子邮箱'}
                 , {field: 'zhyxq', title: '账户有效期'}
                 , {field: 'mmyxq', title: '密码有效期'}
-                , {field: 'zt', title: '状态'}
-                , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
+                , {field: 'zt', title: '状态', width: 80}
+                , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 200}
             ]],
             done: function (res, curr, count) {
-
+                $("[data-field='zt']").children().each(function () {
+                    if($(this).text() == '1') {
+                        $(this).html("<span style='color: green'>启用</span>")
+                    }
+                    if($(this).text() == '0') {
+                        $(this).html("<span style='color: red'>禁用</span>")
+                    }
+                });
             },
             skin: 'row'
         });
@@ -41,7 +48,7 @@ let family = (function () {
                     layer.open({
                         title: '新增用户',
                         type: 2,
-                        area: ['622px', '261px'], //宽高
+                        area: ['622px', '461px'], //宽高
                         content: '/xt/user/edit',
                         end: function () {
                             parent.layui.table.reload('familyListTable');
@@ -90,7 +97,7 @@ let family = (function () {
                 layer.open({
                     title: '编辑管理员信息',
                     type: 2,
-                    area: ['622px', '261px'], //宽高
+                    area: ['622px', '461px'], //宽高
                     content: '/xt/user/edit',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
@@ -101,6 +108,18 @@ let family = (function () {
                     }
                 });
 
+            } else if(obj.event === 'setRole') {
+                layer.open({
+                    title: '授权',
+                    type: 2,
+                    area: ['40%', '30%'], //宽高
+                    content: '/xt/user/setRole?id=' + data.id,
+                    success : function(layero, index) {
+                    },
+                    end: function () {
+                        parent.layui.table.reload('familyListTable');
+                    }
+                });
             }
         });
 
