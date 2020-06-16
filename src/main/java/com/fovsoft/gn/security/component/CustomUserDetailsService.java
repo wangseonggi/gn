@@ -31,6 +31,10 @@ public class CustomUserDetailsService implements UserDetailsService {
         // 根据username查找用户，并检查有效性
         SysUser user = sysUserService.findUserByName(username);
 
+        if(user == null) {
+            throw new UsernameNotFoundException("无此用户");
+        }
+
         // 获取用户权限，并构造返回
         List<GrantedAuthority> authorities = new ArrayList<>();
         List<SysRole> roles = sysUserService.getRoles(user.getId());

@@ -111,12 +111,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
+
+        // 已完成历史使命
+        /*auth
                 .inMemoryAuthentication()
                 .passwordEncoder(NoOpPasswordEncoder.getInstance())
                 .withUser("admin22").password("123456").roles("admin")
                 .and()
-                .withUser("user11").password("123456").roles("user");
+                .withUser("user11").password("123456").roles("user");*/
 
         // 加入自定义的认证提供者
         auth

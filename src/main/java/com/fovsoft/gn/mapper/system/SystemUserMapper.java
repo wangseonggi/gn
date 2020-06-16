@@ -23,7 +23,7 @@ public interface SystemUserMapper {
 
     @Update({"<script>",
             "UPDATE sys_user SET nc=#{nc},dh=#{dh},dzyx=#{dzyx},zhyxq=#{zhyxq},mmyxq=#{mmyxq},zt=#{zt} ",
-            "<when test='password!=null'>",
+            "<when test=\"password!=null and password!=''\">",
             ",password=#{password} ",
             "</when>",
             "WHERE id=#{id}",
@@ -40,7 +40,7 @@ public interface SystemUserMapper {
             "FROM (" +
             "SELECT * FROM sys_role " +
             ") a LEFT JOIN (SELECT userid,roleid FROM sys_user_role b WHERE b.`userid` = #{id}) b " +
-            "ON a.id = b.`roleid`")
+            "ON a.id = b.`roleid` order by a.id")
     public List<RoleHasHolder> listRole(Integer id);
 
 
