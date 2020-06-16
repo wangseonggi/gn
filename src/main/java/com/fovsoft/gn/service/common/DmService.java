@@ -48,7 +48,7 @@ public class DmService {
         Map result = new HashMap();
         for (String dmType :
                 param) {
-            String currentTableName = "DM_YM_" + dmType.toUpperCase();
+            String currentTableName = "dm_ym_" + dmType;
             if(Arrays.asList(tableNames).contains(currentTableName)) {
                 result.put(dmType, dmMapper.getDm(currentTableName));
             }
