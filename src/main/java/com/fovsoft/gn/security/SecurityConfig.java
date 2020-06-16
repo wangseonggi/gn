@@ -8,6 +8,7 @@ import com.fovsoft.gn.security.handler.CustomAccessDeniedHandler;
 import com.fovsoft.gn.security.handler.CustomAuthenticationEntryPoint;
 import com.fovsoft.gn.security.handler.CustomFailureHandler;
 import com.fovsoft.gn.security.handler.CustomSuccessHandler;
+import com.fovsoft.gn.security.session.CustomSessionInformationExpiredStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -90,7 +91,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .hasAnyRole("user11")
 
                     .anyRequest()
-                    .authenticated();
+                    .authenticated()
+                .and()
+                .sessionManagement()
+                //设置session失效的跳转页面
+                .invalidSessionUrl("/login")
+                //设置最大session数为1
+                .maximumSessions(1)
+                //设置过期策略
+                .expiredSessionStrategy(getCustomSessionInformationExpiredStrategy());
 
 
         /**
@@ -176,5 +185,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CustomFailureHandler getCustomFailureHandler() {
         return new CustomFailureHandler();
+    }
+
+
+    @Bean
+    public CustomSessionInformationExpiredStrategy getCustomSessionInformationExpiredStrategy(){
+        return new CustomSessionInformationExpiredStrategy();
     }
 }
