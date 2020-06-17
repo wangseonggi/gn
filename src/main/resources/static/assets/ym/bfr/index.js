@@ -61,7 +61,8 @@ var bfr = (function () {
                     layer.open({
                         title: '新增帮扶人',
                         type: 2,
-                        area: ['30%', '30%'], //宽高
+                        skin:'layui-layer-molv',
+                        area: ['50%', '60%'], //宽高
                         content: '/yw/bfr/add',
                         end: function () {
                             parent.layui.table.reload('familyListTable');
@@ -138,7 +139,8 @@ var bfr = (function () {
                 layer.open({
                     title: '编辑帮扶人',
                     type: 2,
-                    area: ['30%', '30%'], //宽高
+                    skin:'layui-layer-molv',
+                    area: ['50%', '60%'], //宽高
                     content: '/yw/bfr/add?id=' + data.id,
                     success : function(layero, index) {
                     },
@@ -153,7 +155,8 @@ var bfr = (function () {
                     title: '帮扶关系',
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
-                    area: ['50%', '40%'], //宽高
+                    skin:'layui-layer-molv',
+                    area: ['50%', '60%'], //宽高
                     content: '/yw/bfr/bfgx?id=' + data.id,
                     success : function(layero, index) {
                     },

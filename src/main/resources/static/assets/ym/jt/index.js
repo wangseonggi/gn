@@ -54,6 +54,7 @@ var jt = (function () {
                     layer.open({
                         title: '新增贫困户家庭基本信息',
                         type: 2,
+                        skin:'layui-layer-molv',
                         area: ['100%', '100%'], //宽高
                         content: '/yw/jt/add',
                         end: function () {
@@ -150,6 +151,7 @@ var jt = (function () {
                 layer.open({
                     title: '编辑贫困户家庭基本信息',
                     type: 2,
+                    skin:'layui-layer-molv',
                     // skin: 'layui-layer-rim', //加上边框
                     area: ['100%', '100%'], //宽高
                     content: '/yw/jt/edit',

@@ -48,6 +48,7 @@ let family = (function () {
                     layer.open({
                         title: '新增用户',
                         type: 2,
+                        skin:'layui-layer-molv',
                         area: ['622px', '461px'], //宽高
                         content: '/xt/user/edit',
                         end: function () {
@@ -112,7 +113,8 @@ let family = (function () {
                 layer.open({
                     title: '授权',
                     type: 2,
-                    area: ['40%', '30%'], //宽高
+                    skin:'layui-layer-molv',
+                    area: ['40%', '50%'], //宽高
                     content: '/xt/user/setRole?id=' + data.id,
                     success : function(layero, index) {
                     },

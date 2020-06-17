@@ -85,38 +85,351 @@
                     </form>
                 </div><!-- /.nav-search -->
             </div>
+            
+            <!-- PAGE CONTENT BEGINS -->
+            <div class="page-content">
 
+                <div class="ace-settings-container" id="ace-settings-container">
+                    <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                        <i class="ace-icon fa fa-cog bigger-130"></i>
+                    </div>
 
-            <!--<div class="page-header">-->
-                <!--<h1>-->
-                    <!--Dashboard-->
-                    <!--<small>-->
-                        <!--<i class="ace-icon fa fa-angle-double-right"></i>-->
-                        <!--overview &amp; stats-->
-                    <!--</small>-->
-                <!--</h1>-->
-            <!--</div>-->
-            <!-- /.page-header -->
+                    <div class="ace-settings-box clearfix" id="ace-settings-box">
+                        <div class="pull-left width-50">
+                            <div class="ace-settings-item">
+                                <div class="pull-left">
+                                    <select id="skin-colorpicker" class="hide">
+                                        <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                        <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                        <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                        <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                    </select>
+                                </div>
+                                <span>&nbsp; 选择 皮肤</span>
+                            </div>
 
-            <!--	<div class="row">
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
+                                       id="ace-settings-navbar" autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-navbar"> 固定导航栏</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
+                                       id="ace-settings-sidebar" autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-sidebar"> 固定菜单栏</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
+                                       id="ace-settings-breadcrumbs" autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-breadcrumbs"> 固定面包屑</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl"
+                                       autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-rtl"> 菜单靠右(左)</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2 ace-save-state"
+                                       id="ace-settings-add-container" autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-add-container">
+                                    居中
+                                    <b>内容</b>
+                                </label>
+                            </div>
+                        </div><!-- /.pull-left -->
+
+                        <div class="pull-left width-50">
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover"
+                                       autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-hover"> 悬停子菜单</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact"
+                                       autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-compact"> 紧凑菜单栏</label>
+                            </div>
+
+                            <div class="ace-settings-item">
+                                <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight"
+                                       autocomplete="off"/>
+                                <label class="lbl" for="ace-settings-highlight"> Alt激活选项</label>
+                            </div>
+                        </div><!-- /.pull-left -->
+                    </div><!-- /.ace-settings-box -->
+                </div><!-- /.ace-settings-container -->
+
+                <div class="page-header">
+                    <h1>
+                        首页
+                        <small>
+                            <i class="ace-icon fa fa-angle-double-right"></i>
+                            钦州映像
+                        </small>
+                    </h1>
+                </div><!-- /.page-header -->
+
+                <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-            <div class="alert alert-block alert-success">
-                <button type="button" class="close" data-dismiss="alert">
-                    <i class="ace-icon fa fa-times"></i>
-                </button>
+                        <div class="alert alert-block alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="ace-icon fa fa-times"></i>
+                            </button>
 
-                <i class="ace-icon fa fa-check green"></i>
+                            <i class="ace-icon fa fa-check green"></i>
 
-                欢迎使用
-                <strong class="green">
-                    钦南区易地扶贫搬迁管理系统
-                    <small>(v1.4)</small>
-                </strong>,
+                            欢迎使用
+                            <strong class="green">
+                                钦州市异地搬迁扶贫管理信息系统
+                                <small>(v1.4)</small>
+                            </strong>,
+                            获取更多广西壮族自治区钦州市新闻，请访问 <a href="http://www.gxqzxw.com">广西钦州新闻网</a> 进行获取。
+                        </div>
+
+                        <div class="row">
+
+                        </div><!-- /.row -->
+
+                        <div class="hr hr32 hr-dotted"></div>
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div>
+                            <ul class="ace-thumbnails clearfix">
+                                <!-- #section:pages/gallery -->
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/Afterligth.jpg}" title="Photo Title" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/Afterligth-1.jpg}"  />
+                                    </a>
+
+                                    <div class="tags">
+												<span class="label-holder">
+													<span class="label label-info">河流</span>
+												</span>
+
+                                        <span class="label-holder">
+													<span class="label label-danger">晚霞</span>
+												</span>
+
+                                        <span class="label-holder">
+													<span class="label label-success">城市</span>
+												</span>
+
+                                        <span class="label-holder">
+													<span class="label label-warning arrowed-in">绿色</span>
+												</span>
+                                    </div>
+
+                                    <div class="tools">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/CityHead.jpg}" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/CityHead-1.jpg}" />
+                                        <div class="text">
+                                            <div class="inner">美丽城空</div>
+                                        </div>
+                                    </a>
+                                </li>
+
+                                <!-- /section:pages/gallery -->
+
+                                <!-- #section:pages/gallery.caption -->
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/Field.jpg}" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/Field-1.jpg}" />
+                                        <div class="text">
+                                            <div class="inner">漂亮田野</div>
+                                        </div>
+                                    </a>
+
+                                    <div class="tools tools-bottom">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <!-- /section:pages/gallery.caption -->
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/Fog.jpg}" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/Fog-1.jpg}" />
+                                        <div class="tags">
+                                            <!-- #section:pages/gallery.tags -->
+                                            <span class="label-holder">
+														<span class="label label-info arrowed">雾气</span>
+													</span>
+
+                                            <span class="label-holder">
+														<span class="label label-danger">河流</span>
+													</span>
+
+                                            <!-- /section:pages/gallery.tags -->
+                                        </div>
+                                    </a>
+
+                                    <div class="tools tools-top">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div>
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/Quay-1.jpg}" />
+                                        <div class="text">
+                                            <div class="inner">
+                                                <span>壮丽码头</span>
+
+                                                <br />
+                                                <a th:href="@{/assets/images/qinzhou/Quay.jpg}" data-rel="colorbox">
+                                                    <i class="ace-icon fa fa-search-plus"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-user"></i>
+                                                </a>
+
+                                                <a href="#">
+                                                    <i class="ace-icon fa fa-share"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/River.jpg}" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/River-1.jpg}" />
+                                    </a>
+
+                                    <div class="tools tools-right">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/RosyCloud.jpg}" data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/RosyCloud-1.jpg}" />
+                                    </a>
+
+                                    <div class="tools">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a th:href="@{/assets/images/qinzhou/Technology.jpg}"data-rel="colorbox">
+                                        <img width="150" height="150" alt="150x150" th:src="@{/assets/images/qinzhou/Technology-1.jpg}" />
+                                    </a>
+
+                                    <!-- #section:pages/gallery.tools -->
+                                    <div class="tools tools-top in">
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-link"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-paperclip"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-pencil"></i>
+                                        </a>
+
+                                        <a href="#">
+                                            <i class="ace-icon fa fa-times red"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- /section:pages/gallery.tools -->
+                                </li>
+                            </ul>
+                        </div><!-- PAGE CONTENT ENDS -->
+
+
+                        <div class="hr hr32 hr-dotted"></div>
+
+
+
+                        <!-- PAGE CONTENT ENDS -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
             </div>
-
-
-            <div class="hr hr32 hr-dotted"></div>
+            <!-- PAGE CONTENT ENDS -->
 
 
             <div class="hr hr32 hr-dotted"></div>
@@ -154,6 +467,7 @@
 <!--[if lte IE 8]>
 <script src="assets/js/excanvas.min.js"></script>
 <![endif]-->
+<script th:src="@{/assets/js/jquery.colorbox.min.js}"></script>
 <script th:src="@{/assets/js/jquery-ui.custom.min.js}"></script>
 <script th:src="@{/assets/js/jquery.ui.touch-punch.min.js}"></script>
 <script th:src="@{/assets/js/jquery.easypiechart.min.js}"></script>
@@ -169,156 +483,146 @@
 <!-- inline scripts related to this page -->
 <script type="text/javascript">
     jQuery(function ($) {
-        $('.easy-pie-chart.percentage').each(function () {
-            var $box = $(this).closest('.infobox');
-            var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-            var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-            var size = parseInt($(this).data('size')) || 50;
-            $(this).easyPieChart({
-                barColor: barColor,
-                trackColor: trackColor,
-                scaleColor: false,
-                lineCap: 'butt',
-                lineWidth: parseInt(size / 10),
-                animate: ace.vars['old_ie'] ? false : 1000,
-                size: size
-            });
-        })
+        // $('.easy-pie-chart.percentage').each(function () {
+        //     var $box = $(this).closest('.infobox');
+        //     var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
+        //     var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
+        //     var size = parseInt($(this).data('size')) || 50;
+        //     $(this).easyPieChart({
+        //         barColor: barColor,
+        //         trackColor: trackColor,
+        //         scaleColor: false,
+        //         lineCap: 'butt',
+        //         lineWidth: parseInt(size / 10),
+        //         animate: ace.vars['old_ie'] ? false : 1000,
+        //         size: size
+        //     });
+        // })
+        //
+        // $('.sparkline').each(function () {
+        //     var $box = $(this).closest('.infobox');
+        //     var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
+        //     $(this).sparkline('html',
+        //         {
+        //             tagValuesAttribute: 'data-values',
+        //             type: 'bar',
+        //             barColor: barColor,
+        //             chartRangeMin: $(this).data('min') || 0
+        //         });
+        // });
+        //
+        //
+        // //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
+        // //but sometimes it brings up errors with normal resize event handlers
+        // $.resize.throttleWindow = false;
+        //
+        // var placeholder = $('#piechart-placeholder').css({'width': '90%', 'min-height': '150px'});
+        // var data = [
+        //     {label: "social networks", data: 38.7, color: "#68BC31"},
+        //     {label: "search engines", data: 24.5, color: "#2091CF"},
+        //     {label: "ad campaigns", data: 8.2, color: "#AF4E96"},
+        //     {label: "direct traffic", data: 18.6, color: "#DA5430"},
+        //     {label: "other", data: 10, color: "#FEE074"}
+        // ]
+        //
+        // function drawPieChart(placeholder, data, position) {
+        //     $.plot(placeholder, data, {
+        //         series: {
+        //             pie: {
+        //                 show: true,
+        //                 tilt: 0.8,
+        //                 highlight: {
+        //                     opacity: 0.25
+        //                 },
+        //                 stroke: {
+        //                     color: '#fff',
+        //                     width: 2
+        //                 },
+        //                 startAngle: 2
+        //             }
+        //         },
+        //         legend: {
+        //             show: true,
+        //             position: position || "ne",
+        //             labelBoxBorderColor: null,
+        //             margin: [-30, 15]
+        //         }
+        //         ,
+        //         grid: {
+        //             hoverable: true,
+        //             clickable: true
+        //         }
+        //     })
+        // }
+        //
+        // drawPieChart(placeholder, data);
+        //
+        // /**
+        //  we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
+        //  so that's not needed actually.
+        //  */
+        // placeholder.data('chart', data);
+        // placeholder.data('draw', drawPieChart);
+        //
+        //
+        // //pie chart tooltip example
+        // var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
+        // var previousPoint = null;
+        //
+        // placeholder.on('plothover', function (event, pos, item) {
+        //     if (item) {
+        //         if (previousPoint != item.seriesIndex) {
+        //             previousPoint = item.seriesIndex;
+        //             var tip = item.series['label'] + " : " + item.series['percent'] + '%';
+        //             $tooltip.show().children(0).text(tip);
+        //         }
+        //         $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
+        //     } else {
+        //         $tooltip.hide();
+        //         previousPoint = null;
+        //     }
+        //
+        // });
 
-        $('.sparkline').each(function () {
-            var $box = $(this).closest('.infobox');
-            var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
-            $(this).sparkline('html',
-                {
-                    tagValuesAttribute: 'data-values',
-                    type: 'bar',
-                    barColor: barColor,
-                    chartRangeMin: $(this).data('min') || 0
-                });
-        });
 
-
-        //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-        //but sometimes it brings up errors with normal resize event handlers
-        $.resize.throttleWindow = false;
-
-        var placeholder = $('#piechart-placeholder').css({'width': '90%', 'min-height': '150px'});
-        var data = [
-            {label: "social networks", data: 38.7, color: "#68BC31"},
-            {label: "search engines", data: 24.5, color: "#2091CF"},
-            {label: "ad campaigns", data: 8.2, color: "#AF4E96"},
-            {label: "direct traffic", data: 18.6, color: "#DA5430"},
-            {label: "other", data: 10, color: "#FEE074"}
-        ]
-
-        function drawPieChart(placeholder, data, position) {
-            $.plot(placeholder, data, {
-                series: {
-                    pie: {
-                        show: true,
-                        tilt: 0.8,
-                        highlight: {
-                            opacity: 0.25
-                        },
-                        stroke: {
-                            color: '#fff',
-                            width: 2
-                        },
-                        startAngle: 2
-                    }
-                },
-                legend: {
-                    show: true,
-                    position: position || "ne",
-                    labelBoxBorderColor: null,
-                    margin: [-30, 15]
-                }
-                ,
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                }
-            })
-        }
-
-        drawPieChart(placeholder, data);
-
-        /**
-         we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-         so that's not needed actually.
-         */
-        placeholder.data('chart', data);
-        placeholder.data('draw', drawPieChart);
-
-
-        //pie chart tooltip example
-        var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
-        var previousPoint = null;
-
-        placeholder.on('plothover', function (event, pos, item) {
-            if (item) {
-                if (previousPoint != item.seriesIndex) {
-                    previousPoint = item.seriesIndex;
-                    var tip = item.series['label'] + " : " + item.series['percent'] + '%';
-                    $tooltip.show().children(0).text(tip);
-                }
-                $tooltip.css({top: pos.pageY + 10, left: pos.pageX + 10});
-            } else {
-                $tooltip.hide();
-                previousPoint = null;
+        var $overflow = '';
+        var colorbox_params = {
+            rel: 'colorbox',
+            reposition:true,
+            scalePhotos:true,
+            scrolling:false,
+            previous:'<i class="ace-icon fa fa-arrow-left"></i>',
+            next:'<i class="ace-icon fa fa-arrow-right"></i>',
+            close:'&times;',
+            current:'{current} of {total}',
+            maxWidth:'100%',
+            maxHeight:'100%',
+            onOpen:function(){
+                $overflow = document.body.style.overflow;
+                document.body.style.overflow = 'hidden';
+            },
+            onClosed:function(){
+                document.body.style.overflow = $overflow;
+            },
+            onComplete:function(){
+                $.colorbox.resize();
             }
+        };
 
+        $('.ace-thumbnails [data-rel="colorbox"]').colorbox(colorbox_params);
+        $("#cboxLoadingGraphic").html("<i class='ace-icon fa fa-spinner orange fa-spin'></i>");//let's add a custom loading icon
+
+
+        $(document).one('ajaxloadstart.page', function(e) {
+            $('#colorbox, #cboxOverlay').remove();
         });
-
         /////////////////////////////////////
         $(document).one('ajaxloadstart.page', function (e) {
             $tooltip.remove();
         });
 
 
-        var d1 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.5) {
-            d1.push([i, Math.sin(i)]);
-        }
 
-        var d2 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.5) {
-            d2.push([i, Math.cos(i)]);
-        }
-
-        var d3 = [];
-        for (var i = 0; i < Math.PI * 2; i += 0.2) {
-            d3.push([i, Math.tan(i)]);
-        }
-
-
-        var sales_charts = $('#sales-charts').css({'width': '100%', 'height': '220px'});
-        $.plot("#sales-charts", [
-            {label: "Domains", data: d1},
-            {label: "Hosting", data: d2},
-            {label: "Services", data: d3}
-        ], {
-            hoverable: true,
-            shadowSize: 0,
-            series: {
-                lines: {show: true},
-                points: {show: true}
-            },
-            xaxis: {
-                tickLength: 0
-            },
-            yaxis: {
-                ticks: 10,
-                min: -2,
-                max: 2,
-                tickDecimals: 3
-            },
-            grid: {
-                backgroundColor: {colors: ["#fff", "#fff"]},
-                borderWidth: 1,
-                borderColor: '#555'
-            }
-        });
 
 
         $('#recent-box [data-rel="tooltip"]').tooltip({placement: tooltip_placement});

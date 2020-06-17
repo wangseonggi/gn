@@ -39,6 +39,7 @@ var role = (function () {
                     layer.open({
                         title: '新增角色',
                         type: 2,
+                        skin:'layui-layer-molv',
                         area: ['622px', '261px'], //宽高
                         content: '/xt/role/add',
                         end: function () {
@@ -92,7 +93,8 @@ var role = (function () {
                 layer.open({
                     title: '授权',
                     type: 2,
-                    area: ['20%', '45%'], //宽高
+                    skin:'layui-layer-molv',
+                    area: ['40%', '60%'], //宽高
                     content: '/xt/role/grant?id=' + data.id,
                     success : function(layero, index) {
                     }

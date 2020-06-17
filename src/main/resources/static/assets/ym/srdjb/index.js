@@ -57,7 +57,7 @@ var income = (function () {
                 layer.open({
                     title: '选择登记表所属年份',
                     type: 1,
-                    skin: 'layui-layer-rim',
+                    skin:'layui-layer-molv',
                     area: ['600px', '200px'], //根据自己要求调整
                     btn: ['确认', '取消'],
                     content: $('#showcf'),

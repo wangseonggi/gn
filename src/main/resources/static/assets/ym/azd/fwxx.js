@@ -42,6 +42,7 @@ let fwxx = (function () {
                     layer.open({
                         title: '新增房屋信息',
                         type: 2,
+                        skin:'layui-layer-molv',
                         area: ['622px', '261px'], //宽高
                         content: '/yw/azd/addFwxx',
                         success : function(layero, index) {
@@ -137,6 +138,7 @@ let fwxx = (function () {
                 layer.open({
                     title: '关联住户',
                     type: 2,
+                    skin:'layui-layer-molv',
                     area: ['50%', '40%'], //宽高
                     content: '/yw/azd/glzh',
                     success : function(layero, index) {
@@ -152,6 +154,7 @@ let fwxx = (function () {
                 layer.open({
                     title: '编辑房屋信息',
                     type: 2,
+                    skin:'layui-layer-molv',
                     area: ['622px', '261px'], //宽高
                     content: '/yw/azd/addFwxx',
                     success : function(layero, index) {
