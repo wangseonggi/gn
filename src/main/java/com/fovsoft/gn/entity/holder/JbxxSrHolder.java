@@ -1,11 +1,8 @@
 package com.fovsoft.gn.entity.holder;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 /**
  * 基本信息及收入的数据对象
