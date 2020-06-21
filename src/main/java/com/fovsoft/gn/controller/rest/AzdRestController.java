@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,6 +95,24 @@ public class AzdRestController {
         return new JsonResult(affectRow);
     }
 
+    /**
+     * 批量删除
+     *
+     * 多表批量删除，没加事务
+     *
+     * @return
+     */
+    @RequestMapping(value = "/delAll",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult delAll(@RequestBody ArrayList<Integer> ids) {
+        String inStr = "";
+        for (int i:
+                ids) {
+            inStr += i + ",";
+        }
+        inStr = inStr.substring(0, inStr.length() - 1);
+        azdSerivce.delAll(inStr);
+        return new JsonResult();
+    }
 
     @RequestMapping(value = "/del", method = RequestMethod.GET)
     public JsonResult del(Integer id) {

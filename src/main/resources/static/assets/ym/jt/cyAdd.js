@@ -103,7 +103,7 @@ var cyAdd = (function () {
         form.on('submit(member)', function (data) {
             data.field.fid = $("#fid").val();
             $.ajax({
-                url: '/yw/jt/addCy',
+                url: '/yw/jt/cyAdd',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -115,7 +115,6 @@ var cyAdd = (function () {
                             var index = parent.layer.getFrameIndex(window.name);
                             parent.layer.close(index);
                         });
-
                     }
                     else {
                         layer.msg("× 保存失败");

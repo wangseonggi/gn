@@ -2,12 +2,12 @@ $(document).ready(function () {
     family.onload();
 });
 
-let family = (function () {
+var family = (function () {
     layui.use('table', function () {
         var table = layui.table;
         var familyTabel = table.render({
             elem: '#familyListTable',
-            url: '/xt/user/getList',
+            url: '/xt/user/index',
             page: true,
             toolbar: '#toolbarDemo',
             limits: [10, 15, 20, 25],
@@ -42,15 +42,15 @@ let family = (function () {
 
         //工具栏事件
         table.on('toolbar(userList)', function (obj) {
-            let checkStatus = table.checkStatus(obj.config.id);
+            var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
                     layer.open({
                         title: '新增用户',
                         type: 2,
-                        skin:'layui-layer-molv',
+
                         area: ['622px', '461px'], //宽高
-                        content: '/xt/user/edit',
+                        content: '/xt/user/add',
                         end: function () {
                             parent.layui.table.reload('familyListTable');
                         }
@@ -61,7 +61,6 @@ let family = (function () {
                     break;
                 case 'getCheckData':
                     var data = checkStatus.data;
-                    layer.alert(JSON.stringify(data));
                     layer.confirm('是否删除' + ids, {
                         btn: ['是', '否'] //按钮
                     }, function () {
@@ -99,7 +98,7 @@ let family = (function () {
                     title: '编辑管理员信息',
                     type: 2,
                     area: ['622px', '461px'], //宽高
-                    content: '/xt/user/edit',
+                    content: '/xt/user/add',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
                         iframe.setBaseId(data.id);
@@ -111,9 +110,9 @@ let family = (function () {
 
             } else if(obj.event === 'setRole') {
                 layer.open({
-                    title: '授权',
+                    title: '角色',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     area: ['40%', '50%'], //宽高
                     content: '/xt/user/setRole?id=' + data.id,
                     success : function(layero, index) {
@@ -135,7 +134,7 @@ let family = (function () {
 
             familyTabel.reload({
                 elem: '#familyListTable',
-                url: '/xt/user/getList',
+                url: '/xt/user/index',
                 page: true,
                 where : formData,
                 toolbar: '#toolbarDemo',
@@ -146,16 +145,24 @@ let family = (function () {
                 cols: [[
                     {type: 'checkbox'}
                     , {field: 'id', title: 'ID', width: 80, unresize: true, sort: true}
-                    , {field: 'username', title: '账号'}
+                    , {field: 'username', title: '账号', width: 120}
                     , {field: 'nc', title: '昵称', width: 120}
-                    , {field: 'dh', title: '电话'}
+                    , {field: 'dh', title: '电话', width: 140}
                     , {field: 'dzyx', title: '电子邮箱'}
                     , {field: 'zhyxq', title: '账户有效期'}
                     , {field: 'mmyxq', title: '密码有效期'}
-                    , {field: 'zt', title: '状态'}
-                    , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
+                    , {field: 'zt', title: '状态', width: 80}
+                    , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 200}
                 ]],
                 done: function (res, curr, count) {
+                    $("[data-field='zt']").children().each(function () {
+                        if ($(this).text() == '1') {
+                            $(this).html("<span style='color: green'>启用</span>")
+                        }
+                        if ($(this).text() == '0') {
+                            $(this).html("<span style='color: red'>禁用</span>")
+                        }
+                    });
                     $("#search_name").val(username);
                     bindClick();
                 },

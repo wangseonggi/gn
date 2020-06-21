@@ -3,7 +3,10 @@ package com.fovsoft.gn.service;
 
 import com.fovsoft.gn.entity.Sr1DO;
 import com.fovsoft.gn.entity.holder.FidNFHolder;
+import com.fovsoft.gn.entity.holder.JbxxSrHolder;
 import com.fovsoft.gn.mapper.srdjb.*;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,6 +21,9 @@ import java.util.*;
 public class SrdjbSerivce {
 
     @Resource
+    private SRDJBMapper srdjbMapper;
+
+    @Resource
     private Sr1Mapper sr1Mapper;
 
     @Resource
@@ -28,6 +34,16 @@ public class SrdjbSerivce {
 
     @Resource
     private Sr9Mapper sr9Mapper;
+
+    public PageInfo getList(Integer page, Integer limit, String name, String sfzhm) {
+        PageHelper.startPage(page, limit);
+
+        String name1 = name != null && !name.equals("") ? name : null;
+        String sfzhm1 = sfzhm != null && !sfzhm.equals("") ? sfzhm : null;
+
+        List<JbxxSrHolder> list =  srdjbMapper.list(name1, sfzhm1);
+        return new PageInfo(list);
+    }
 
     public int addSr1(Map<String, Object> map) {
         int fid = Integer.parseInt(map.get("fid").toString());

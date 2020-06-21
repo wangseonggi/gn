@@ -144,30 +144,19 @@
 <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
 
 <script type="text/html" id="toolbarDemo">
-<div class="layui-btn-container">
-    <input id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
-    <input id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入身份找号码">
-    <button id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
-<!--<button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>-->
-<!--<button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</button>-->
-<!--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>-->
-<!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
-<!--<button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>-->
+<div  class="layui-btn-container">
+    <input sec:authorize-url="/yw/jt/index" id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
+    <input sec:authorize-url="/yw/jt/index" id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入身份找号码">
+    <button sec:authorize-url="/yw/jt/index" id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
 </div>
 </script>
 
-<!--<script type="text/html" id="barDemo">-->
-<!--<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">查看</a>-->
-<!--<a class="layui-btn layui-btn-xs" lay-event="edit">登记表</a>-->
-<!--<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>-->
-<!--</script>-->
-
 <script type="text/html" id="barDemo">
-    <a class="layui-btn layui-btn-xs" lay-event="edit">收入登记表</a>
+    <a sec:authorize-url="/yw/sr/add" class="layui-btn layui-btn-xs" lay-event="edit">收入登记表</a>
 </script>
 <script th:src="@{/assets/ym/srdjb/index.js}"></script>
 <div id="showcf" style="display: none;text-align: center">
-    <input id="selectYear" />
+    <input style="margin-top: 10px" id="selectYear" placeholder="选择年份" />
 </div>
 </body>
 </html>

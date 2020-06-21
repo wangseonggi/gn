@@ -141,21 +141,20 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button sec:authorize-url="/yw/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
+        <button sec:authorize-url="/xt/user/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
         <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>-->
         <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
         <!--<button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>-->
-
-        <input id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入账号">
-        <button id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
+        <input sec:authorize-url="/xt/user/index" id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入账号">
+        <button sec:authorize-url="/xt/user/index" id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
     </div>
 </script>
 
 <!--<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">查看</a> 放上来-->
 <script type="text/html" id="barDemo">
-    <a sec:authorize-url="/yw/jt/edit" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="setRole">角色</a>
-    <a sec:authorize-url="/yw/jt/edit" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-    <a sec:authorize-url="/yw/jt/edit" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a sec:authorize-url="/xt/user/setRole" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="setRole">角色</a>
+    <a sec:authorize-url="/xt/user/add" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a sec:authorize-url="/xt/user/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <script th:src="@{/assets/system/user/index.js}"></script>

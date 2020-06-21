@@ -83,4 +83,10 @@ public interface AzdMapper {
 
     @Delete("DELETE FROM ym_azd_fwxx_rz WHERE fwid = #{fwid}")
     public int delRz(@Param("fwid")int fwid);
+
+    @Delete("DELETE FROM ym_azd_fwxx WHERE id IN (#{id})")
+    public int delAll(@Param("id")String id);
+
+    @Delete("DELETE FROM ym_azd_fwxx_rz WHERE fwid IN (#{fwid})")
+    public int delAllRz(@Param("fwid")String fwid);
 }

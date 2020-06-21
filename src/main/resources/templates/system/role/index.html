@@ -141,16 +141,16 @@
 
 <script type="text/html" id="toolbarDemo">
     <div class="layui-btn-container">
-        <button sec:authorize-url="/yw/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
-        <input id="search_mc" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入标签">
-        <input id="search_sm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入角色名">
-        <button id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
+        <button sec:authorize-url="/xt/role/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
+        <input sec:authorize-url="/xt/role/index" id="search_mc" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入标签">
+        <input sec:authorize-url="/xt/role/index" id="search_sm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入角色名">
+        <button sec:authorize-url="/xt/role/index" id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
     </div>
 </script>
 
 <script type="text/html" id="barDemo">
-    <a sec:authorize-url="/yw/jt/edit" class="layui-btn layui-btn-xs" lay-event="grant">授权</a>
-    <a sec:authorize-url="/yw/jt/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a sec:authorize-url="/xt/role/grant" class="layui-btn layui-btn-xs" lay-event="grant">授权</a>
+    <a sec:authorize-url="/xt/role/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
 <script th:src="@{/assets/system/role/index.js}"></script>

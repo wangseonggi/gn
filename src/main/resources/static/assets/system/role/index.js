@@ -7,7 +7,7 @@ var role = (function () {
         var table = layui.table;
         var roleTable = table.render({
             elem: '#familyListTable',
-            url: '/xt/role/getList',
+            url: '/xt/role/index',
             page: true,
             toolbar: '#toolbarDemo',
             limits: [10, 15, 20, 25],
@@ -25,7 +25,14 @@ var role = (function () {
                 , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
             ]],
             done: function (res, curr, count) {
-
+                $("[data-field='zt']").children().each(function () {
+                    if ($(this).text() == '1') {
+                        $(this).html("<span style='color: green'>启用</span>")
+                    }
+                    if ($(this).text() == '0') {
+                        $(this).html("<span style='color: red'>禁用</span>")
+                    }
+                });
             },
             skin: 'row'
         });
@@ -39,7 +46,7 @@ var role = (function () {
                     layer.open({
                         title: '新增角色',
                         type: 2,
-                        skin:'layui-layer-molv',
+
                         area: ['622px', '261px'], //宽高
                         content: '/xt/role/add',
                         end: function () {
@@ -93,7 +100,7 @@ var role = (function () {
                 layer.open({
                     title: '授权',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     area: ['40%', '60%'], //宽高
                     content: '/xt/role/grant?id=' + data.id,
                     success : function(layero, index) {
@@ -115,7 +122,7 @@ var role = (function () {
 
             roleTable.reload({
                 elem: '#familyListTable',
-                url: '/xt/role/getList',
+                url: '/xt/role/index',
                 page: true,
                 where : formData,
                 toolbar: '#toolbarDemo',
@@ -135,7 +142,14 @@ var role = (function () {
                     , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
                 ]],
                 done: function (res, curr, count) {
-
+                    $("[data-field='zt']").children().each(function () {
+                        if ($(this).text() == '1') {
+                            $(this).html("<span style='color: green'>启用</span>")
+                        }
+                        if ($(this).text() == '0') {
+                            $(this).html("<span style='color: red'>禁用</span>")
+                        }
+                    });
                 },
                 skin: 'row'
             });

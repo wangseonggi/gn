@@ -41,7 +41,7 @@ var setRole = (function () {
             var userid = id;
 
             $.ajax({
-                url : '/xt/user/setRole2',
+                url : '/xt/user/setRole',
                 method : 'POST',
                 data :{roleid : parseInt(roleid), status : status, userid : parseInt(userid)}
             });

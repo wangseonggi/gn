@@ -7,6 +7,7 @@ import com.fovsoft.gn.entity.Sr5DO;
 import com.fovsoft.gn.entity.Sr9DO;
 import com.fovsoft.gn.entity.holder.FidNFHolder;
 import com.fovsoft.gn.service.SrdjbSerivce;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,17 @@ public class SrdjbRestController {
 
     @Autowired
     private SrdjbSerivce srdjbSerivce;
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public Object index(Integer page, Integer limit, String name, String sfzhm) {
+        PageInfo pageInfo = srdjbSerivce.getList(page, limit, name, sfzhm);
+        Map result = new HashMap();
+        result.put("data", pageInfo.getList());
+        result.put("msg", "");
+        result.put("count", pageInfo.getTotal());
+        result.put("code", 0);
+        return result;
+    }
 
     @RequestMapping(value = "/addSr1", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addSr1(@RequestBody Map<String, Object> map) {

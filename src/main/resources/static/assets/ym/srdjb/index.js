@@ -10,7 +10,7 @@ var income = (function () {
         var laydate = layui.laydate;
         var familyTabel = table.render({
             elem: '#familyListTable',
-            url: '/yw/jt/getList',
+            url: '/yw/sr/index',
             page: true,
             toolbar: '#toolbarDemo',
             limits: [10, 15, 20, 25],
@@ -23,13 +23,25 @@ var income = (function () {
                 , {field: 'zjhm', title: '证件号码',width: 200}
                 , {field: 'hzxm', title: '户主姓名', width: 100}
                 // , {field: 'pkhsx', title: '贫困户属性'}
-                , {field: 'pkhsx', title: '收入登记表年度'}
-                // , {field: 'jhtpnd', title: '计划脱贫年度'}
-                // , {field: 'fpnd', title: '返贫年度',}
-                // , {field: 'sfydbqh', title: '是否易地搬迁户'}
+                , {field: 'nf', title: '收入登记表年度'}
                 , {title: '操作', toolbar: '#barDemo',fixed: 'right',width: 160}
             ]],
             done: function (res, curr, count) {
+                $("[data-field='nf']").children().each(function (i, n) {
+                    if ($(this).text() != '' && $(this).text() != '收入登记表年度') {
+                        var html = '';
+                        var nfList = $(this).text().split(",");
+                        $.each(nfList, function(ii, nn) {
+                            html += '<a href="/yw/sr/add?fid='+ $($("[data-field='id']").children()[i]).text() +'&year=' + nn + '">' + nn +'</a>,' ;
+                        });
+                        html = html.substr(0, html.length - 1);
+                        $(this).html(html);
+                    }
+                    if($(this).text() == '') {
+                        $(this).css('color', 'red');
+                        $(this).text('------');
+                    }
+                });
                 $("#search_name").unbind();
                 $("#search_sfzhm").unbind();
                 bindClick();
@@ -57,7 +69,6 @@ var income = (function () {
                 layer.open({
                     title: '选择登记表所属年份',
                     type: 1,
-                    skin:'layui-layer-molv',
                     area: ['600px', '200px'], //根据自己要求调整
                     btn: ['确认', '取消'],
                     content: $('#showcf'),

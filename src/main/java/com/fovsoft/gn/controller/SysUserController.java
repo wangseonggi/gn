@@ -22,7 +22,7 @@ public class SysUserController {
         return "system/user/index";
     }
 
-    @RequestMapping(value = "/edit")
+    @RequestMapping(value = "/add")
     public Object edit(Integer isProfile) {
         // 处理个人信息
         if(isProfile != null && isProfile == 1) {
@@ -30,6 +30,7 @@ public class SysUserController {
             CustomUser customUser = (CustomUser)auth.getPrincipal();
             ModelMap map = new ModelMap();
             map.put("user", customUser);
+            map.put("isProfile", 1);
             return new ModelAndView("system/user/edit", map);
         }
         else {

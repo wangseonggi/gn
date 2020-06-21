@@ -22,7 +22,7 @@ public class SystemUserRestController {
     @Autowired
     private SystemUserService systemUserService;
 
-    @RequestMapping(value = "/getList", produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/index", produces = "application/json;charset=UTF-8")
     public Object list(Integer page, Integer limit, String username) {
         PageInfo pageInfo = systemUserService.list(page, limit, username);
 
@@ -77,7 +77,7 @@ public class SystemUserRestController {
         return new JsonResult(result);
     }
 
-    @RequestMapping(value = "/setRole2", method = RequestMethod.POST)
+    @RequestMapping(value = "/setRole", method = RequestMethod.POST)
     public JsonResult setRole(@RequestParam(name = "roleid")Integer roleid, @RequestParam(name = "status")Boolean status, @RequestParam(name =  "userid")Integer userid) {
         int result = systemUserService.setRole(roleid, status, userid);
         return new JsonResult(result);

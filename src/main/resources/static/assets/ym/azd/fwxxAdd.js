@@ -1,7 +1,7 @@
 $(document).ready(function () {
     fwxxAdd.onload();
 });
-let fwxxAdd = (function () {
+var fwxxAdd = (function () {
 
     layui.use(['form', 'element',  'table'], function () {
         var element, laydate, form, table;

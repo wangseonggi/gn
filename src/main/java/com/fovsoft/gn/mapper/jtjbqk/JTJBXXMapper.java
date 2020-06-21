@@ -43,7 +43,7 @@ public interface JTJBXXMapper {
     @Select({"<script>",
             "SELECT * FROM ( ",
             "SELECT a.`id`,a.`tpqk`,a.`ndbqrw`,a.`sjrzsj`,a.`zfmj`," +
-                    "(SELECT COUNT(1) FROM ym_jtjbqk_jtcy cy WHERE cy.fid=a.`id` AND cy.rklx = '01' ) AS syrk," +
+                    "(SELECT COUNT(1) FROM ym_jtjbqk_jtcy cy WHERE cy.fid=a.`id` AND cy.rklx = '01' AND cy.scbz = 'N') AS syrk," +
                     "(SELECT `name` FROM dm_ym_pkhsx WHERE dm = a.`pkhsx`)  pkhsx," +
                     "b.`fid`,b.`xm` hzxm,b.`zjhm` FROM ym_jtjbqk_jtjbxx a ",
             "LEFT JOIN ( ",

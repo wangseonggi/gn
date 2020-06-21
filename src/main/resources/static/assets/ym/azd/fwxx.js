@@ -2,7 +2,7 @@ $(document).ready(function () {
     fwxx.onload();
 });
 
-let fwxx = (function () {
+var fwxx = (function () {
     var aid = getQueryVariable('id');
     layui.use('table', function () {
         var table = layui.table;
@@ -36,13 +36,13 @@ let fwxx = (function () {
 
         // 表格上部工具条
         table.on('toolbar(userList)', function (obj) {
-            let checkStatus = table.checkStatus(obj.config.id);
+            var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
                     layer.open({
                         title: '新增房屋信息',
                         type: 2,
-                        skin:'layui-layer-molv',
+
                         area: ['622px', '261px'], //宽高
                         content: '/yw/azd/addFwxx',
                         success : function(layero, index) {
@@ -72,7 +72,7 @@ let fwxx = (function () {
                         btn: ['是', '否'] //按钮
                     }, function () {
                         $.ajax({
-                            url: '/jt/delAll',
+                            url: '/yw/azd/delAll',
                             data: JSON.stringify(ids),
                             method: "POST",
                             contentType: 'application/json',
@@ -138,7 +138,7 @@ let fwxx = (function () {
                 layer.open({
                     title: '关联住户',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     area: ['50%', '40%'], //宽高
                     content: '/yw/azd/glzh',
                     success : function(layero, index) {
@@ -154,7 +154,7 @@ let fwxx = (function () {
                 layer.open({
                     title: '编辑房屋信息',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     area: ['622px', '261px'], //宽高
                     content: '/yw/azd/addFwxx',
                     success : function(layero, index) {

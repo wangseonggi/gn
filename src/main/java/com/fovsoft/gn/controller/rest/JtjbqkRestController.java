@@ -26,7 +26,7 @@ public class JtjbqkRestController {
     @Autowired
     JTJBQKSerivce service;
 
-    @RequestMapping(value = "/getList")
+    @RequestMapping(value = "/index", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
     public Object index(Integer page, Integer limit, String name, String sfzhm) {
         PageInfo pageInfo = service.getList(page, limit, name, sfzhm);
 
@@ -94,7 +94,7 @@ public class JtjbqkRestController {
         return new JsonResult(member);
     }
 
-    @RequestMapping(value = "/addCy", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/cyAdd", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addMember(@RequestBody JtcyDO jtcyDO) {
         int id = service.addOrUpdateFamilyBaseMember(jtcyDO);
         return new JsonResult(Integer.valueOf(id));

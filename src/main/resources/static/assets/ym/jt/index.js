@@ -7,7 +7,7 @@ var jt = (function () {
         var table = layui.table;
         var familyTabel = table.render({
             elem: '#indexTable',
-            url: '/yw/jt/getList',
+            url: '/yw/jt/index',
             page: true,
             toolbar: '#toolbarDemo',
             limits: [10, 15, 20, 25],
@@ -54,7 +54,7 @@ var jt = (function () {
                     layer.open({
                         title: '新增贫困户家庭基本信息',
                         type: 2,
-                        skin:'layui-layer-molv',
+
                         area: ['100%', '100%'], //宽高
                         content: '/yw/jt/add',
                         end: function () {
@@ -151,7 +151,7 @@ var jt = (function () {
                 layer.open({
                     title: '编辑贫困户家庭基本信息',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     // skin: 'layui-layer-rim', //加上边框
                     area: ['100%', '100%'], //宽高
                     content: '/yw/jt/edit',
@@ -176,7 +176,7 @@ var jt = (function () {
             formData.sfzhm = sfzhm;
 
             table.reload('indexTable', {
-                url : '/yw/jt/getList',
+                url : '/yw/jt/index',
                 where : formData,
                 page: {
                     curr: 1

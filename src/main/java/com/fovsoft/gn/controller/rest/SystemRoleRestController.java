@@ -24,7 +24,7 @@ public class SystemRoleRestController {
     @Autowired
     private SystemRoleService systemRoleService;
 
-    @RequestMapping(value = "/getList",  produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/index",  produces = "application/json;charset=UTF-8")
     public Object list(Integer page, Integer limit, String mc, String sm) {
         PageInfo pageInfo = systemRoleService.list(page, limit, mc, sm);
 

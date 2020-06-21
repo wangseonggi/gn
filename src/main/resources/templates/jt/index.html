@@ -145,9 +145,9 @@
         <button sec:authorize-url="/yw/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
         <button sec:authorize-url="/yw/jt/delAll" class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除</button>
 
-        <input id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
-        <input id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入身份找号码">
-        <button id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
+        <input sec:authorize-url="/yw/jt/index" id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline" placeholder="请输入姓名">
+        <input sec:authorize-url="/yw/jt/index" id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline" placeholder="请输入身份找号码">
+        <button sec:authorize-url="/yw/jt/index" id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
     </div>
 </script>
 

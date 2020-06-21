@@ -24,7 +24,7 @@
         <b class="arrow"></b>
 
         <ul class="submenu">
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/user/index'}?'active'">
+            <li sec:authorize-url="/xt/user/index" th:class="${#httpServletRequest.getServletPath()=='/xt/user/index'}?'active'">
                 <a th:href="@{/xt/user/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     用户管理
@@ -33,7 +33,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/role/index'}?'active'">
+            <li sec:authorize-url="/xt/role/index" th:class="${#httpServletRequest.getServletPath()=='/xt/role/index'}?'active'">
                 <a th:href="@{/xt/role/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     角色管理
@@ -42,7 +42,7 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_admin')" th:class="${#httpServletRequest.getServletPath()=='/xt/menu/index'}?'active'">
+            <li class="" sec:authorize-url="/xt/menu/index" th:class="${#httpServletRequest.getServletPath()=='/xt/menu/index'}?'active'">
                 <a th:href="@{/xt/menu/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     菜单管理
@@ -104,23 +104,22 @@
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize-url="/yx/index" th:class="${#httpServletRequest.getServletPath()=='/yx/index'}?'active'">
-                <a th:href="@{/yw/yx/index}">
+            <li class="" sec:authorize-url="/yw/yxh/index" th:class="${#httpServletRequest.getServletPath()=='/yw/yxh/index'}?'active'">
+                <a th:href="@{/yw/yxh/index}">
                     <i class="menu-icon fa fa-caret-right"></i>
                     影像化采集
                 </a>
-
                 <b class="arrow"></b>
             </li>
 
-            <li class="" sec:authorize="hasRole('ROLE_ADMIN')" th:class="${#httpServletRequest.getServletPath()=='/ym/img'}?'active'">
-                <a th:href="@{/yw/other/o}">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    ROLE其他的菜单
-                </a>
+            <!--<li class="" sec:authorize="hasRole('ROLE_ADMIN')" th:class="${#httpServletRequest.getServletPath()=='/ym/img'}?'active'">-->
+                <!--<a th:href="@{/yw/other/o}">-->
+                    <!--<i class="menu-icon fa fa-caret-right"></i>-->
+                    <!--ROLE其他的菜单-->
+                <!--</a>-->
 
-                <b class="arrow"></b>
-            </li>
+                <!--<b class="arrow"></b>-->
+            <!--</li>-->
 
         </ul>
     </li>

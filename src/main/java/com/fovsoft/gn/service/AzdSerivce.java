@@ -69,6 +69,13 @@ public class AzdSerivce {
     }
 
     @Transactional
+    public int delAll(String ids) {
+        int fwid = azdMapper.delAll(ids);
+        int rzid = azdMapper.delAllRz(ids);
+        return rzid;
+    }
+
+    @Transactional
     public int del(int id) {
         int fwid = azdMapper.del(id);
         int rzid = azdMapper.delRz(id);

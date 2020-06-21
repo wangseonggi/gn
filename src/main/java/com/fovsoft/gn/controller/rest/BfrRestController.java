@@ -30,7 +30,7 @@ public class BfrRestController {
      * @param lxdh
      * @return
      */
-    @RequestMapping(value = "/getList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/index", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public Object getList(Integer page, Integer limit, String name, String gzdw, String lxdh) {
         PageInfo pageInfo = bfrSerivce.getList(page, limit, name, gzdw, lxdh);
 

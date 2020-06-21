@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -69,7 +69,7 @@
             </tbody>
         </table>
     </div>
-    <div class="layui-form-item" style="margin-top: 20px">
+    <div sec:authorize-url="/yw/bfr/add" class="layui-form-item" style="margin-top: 20px">
         <div class="layui-input-block">
             <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="member">提交</button>
             <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>

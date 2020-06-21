@@ -638,7 +638,6 @@ var family_edit = (function () {
                     parent.layer.open({
                         title: '新增家庭成员',
                         type: 2,
-                        skin: 'layui-layer-rim', //加上边框
                         area: ['70%', '60%'], //宽高
                         content: '/yw/jt/cyAdd?id=0',
                         success: function (layero, index) {
@@ -701,7 +700,6 @@ var family_edit = (function () {
                 parent.layer.open({
                     title: '编辑家庭成员基本信息',
                     type: 2,
-                    skin: 'layui-layer-rim', //加上边框
                     area: ['70%', '60%'], //宽高
                     content: '/yw/jt/cyAdd?id=' + data.memberid,
                     end: function () {

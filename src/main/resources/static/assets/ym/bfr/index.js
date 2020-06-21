@@ -7,7 +7,7 @@ var bfr = (function () {
         var table = layui.table;
         var bfrTable = table.render({
             elem: '#sss',
-            url: '/yw/bfr/getList',
+            url: '/yw/bfr/index',
             page: true,
             method : 'POST',
             toolbar: '#toolbarDemo',
@@ -61,7 +61,7 @@ var bfr = (function () {
                     layer.open({
                         title: '新增帮扶人',
                         type: 2,
-                        skin:'layui-layer-molv',
+
                         area: ['50%', '60%'], //宽高
                         content: '/yw/bfr/add',
                         end: function () {
@@ -139,7 +139,7 @@ var bfr = (function () {
                 layer.open({
                     title: '编辑帮扶人',
                     type: 2,
-                    skin:'layui-layer-molv',
+
                     area: ['50%', '60%'], //宽高
                     content: '/yw/bfr/add?id=' + data.id,
                     success : function(layero, index) {
@@ -155,7 +155,7 @@ var bfr = (function () {
                     title: '帮扶关系',
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
-                    skin:'layui-layer-molv',
+
                     area: ['50%', '60%'], //宽高
                     content: '/yw/bfr/bfgx?id=' + data.id,
                     success : function(layero, index) {
@@ -179,7 +179,7 @@ var bfr = (function () {
             formData.lxdh = lxdh;
 
             table.reload('sss', {
-                url : '/yw/bfr/getList',
+                url : '/yw/bfr/index',
                 where : formData,
                 page: {
                     curr: 1

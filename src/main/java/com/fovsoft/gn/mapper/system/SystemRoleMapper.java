@@ -29,7 +29,7 @@ public interface SystemRoleMapper {
     @Delete("DELETE FROM sys_role_menu WHERE roleid = ${roleid}")
     public int delFromMidTable(@Param("roleid")Integer roleId);
 
-    @Select("SELECT id,pid,mc from sys_menu where zt = 1")
+    @Select("SELECT id,pid,mc from sys_menu where zt = 1 order by px,id")
     public List<Menu> getMenus();
 
     @Select("SELECT b.url " +

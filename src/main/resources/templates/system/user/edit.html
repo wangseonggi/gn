@@ -68,19 +68,19 @@
                     <input id="dzyx" name="dzyx" class="layui-input ld" lay-filter="dzyx" th:value="${user!=null?user.email:''}"/>
                 </td>
             </tr>
-            <tr>
+            <tr th:if="${isProfile ne 1}">
                 <td class="fp_btbt">账户有效期</td>
                 <td class="fp_nrbt" colspan="3">
                     <input id="zhyxq" name="zhyxq" class="layui-input ld" lay-filter="zhyxq"/>
                 </td>
             </tr>
-            <tr>
+            <tr th:if="${isProfile ne 1}">
                 <td class="fp_btbt">密码有效期</td>
                 <td class="fp_nrbt" colspan="3">
                     <input id="mmyxq" name="mmyxq" class="layui-input ld" lay-filter="mmyxq"/>
                 </td>
             </tr>
-            <tr>
+            <tr th:if="${isProfile ne 1}">
                 <td class="fp_btbt">状态</td>
                 <td class="fp_nrbt" colspan="3">
                     <input id="zt" name="zt" lay-skin="switch" type="checkbox" lay-text="启用|禁用" lay-filter="zt" value="1"/>
