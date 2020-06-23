@@ -35,7 +35,6 @@
         <li lay-id="2">家庭成员</li>
         <li lay-id="3">致贫原因及家庭人口情况</li>
         <li lay-id="4">生产生活条件</li>
-        <li lay-id="5">变更情况说明</li>
         <li lay-id="6">其他</li>
     </ul>
 
@@ -414,18 +413,6 @@
 
             </form>
         </div>
-        <div class="layui-tab-item">
-            <form class="layui-form" lay-filter="form5">
-                <input type="hidden" name="changeid" id="changeid"/>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">变更情况说明</label>
-                    <div class="layui-input-block">
-                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-                    </div>
-                </div>
-
-            </form>
-        </div>
         <!-- 新增字段 -->
         <div class="layui-tab-item">
             <form class="layui-form" lay-filter="form6">
@@ -509,7 +496,7 @@
         layui.use(['form'], function () {
             let form = layui.form;
             $.ajax({
-                url: '/yw/jt/get',
+                url: '/query/jt/get',
                 data: {id: id},
                 async: false,
                 success: function (res) {
