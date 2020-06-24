@@ -20,7 +20,7 @@ var fwxx = (function () {
             cols: [[
                 {type: 'checkbox'}
                 // , {field: 'aid'}
-                , {field: 'id', title: 'ID', width: 60, sort: true}
+                , {field: 'id', title: 'ID', sort: true}
                 , {field: 'mc', title: '名称'}
                 , {field: 'ld', title: '楼栋'}
                 , {field: 'dy', title: '单元'}
@@ -29,7 +29,7 @@ var fwxx = (function () {
                 , {field: 'zjhm', title: '证件号码'}
                 // , {field: 'mj', title: '房屋面积'}
                 // , {field: 'hx', title: '户型'}
-                , {title: '操作', toolbar: '#barDemo', fixed: 'right'}
+                , {title: '操作', toolbar: '#barDemo', fixed: 'right', width:'20%'}
             ]],
             skin: 'row'
         });

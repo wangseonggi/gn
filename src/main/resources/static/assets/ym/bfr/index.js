@@ -17,14 +17,14 @@ var bfr = (function () {
             title: '帮扶人列表',
             cols: [[
                 {type: 'checkbox'}
-                , {field: 'id', title: 'ID', width: 60, unresize: true, sort: true}
-                , {field: 'xm', title: '帮扶人姓名',width: 115}
-                , {field: 'xb', title: '性别',width: 60}
+                , {field: 'id', title: 'ID', sort: true}
+                , {field: 'xm', title: '帮扶人姓名'}
+                , {field: 'xb', title: '性别'}
                 , {field: 'gzdw', title: '工作单位'}
                 , {field: 'lxdh', title: '联系电话'}
                 , {field: 'hzxm', title: '帮扶家庭户主'}
                 , {field: 'fid', title: '帮扶家庭id'}
-                , {title: '操作', toolbar: '#barDemo', fixed: 'right'}
+                , {title: '操作', toolbar: '#barDemo', fixed: 'right' ,width:'20%'}
             ]],
             done: function (res, curr, count) {
                 $("[data-field='xb']").children().each(function () {
