@@ -1,5 +1,5 @@
 @charset "utf-8";
-input:read-only { color:#999;}
+/*input:read-only { color:#000;}*/
 html,body { background: #eff2f5; }
 .pall10 { padding:10px!important;}
 .pt10 { padding-top:10px!important;}

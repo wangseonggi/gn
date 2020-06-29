@@ -378,16 +378,48 @@ var family_add = (function () {
                 , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}
             ]]
             , done: function (res, curr, count) {
-
-                $("[data-field='xb']").children().each(function () {
-                    if ($(this).text() == 1) {
-                        $(this).text("男")
-                    } else if ($(this).text() == 0) {
-                        $(this).text("女");
+                $("[data-field='sfhjpth']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
                     }
                 });
-
-
+                $("[data-field='sfcjcxjmjbytlbx']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
+                    }
+                });
+                $("[data-field='sfcjsybcylbx']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
+                    }
+                });
+                $("[data-field='sfxsncjmzjshbz']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
+                    }
+                });
+                $("[data-field='sfcjcxjmybyanglbx']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
+                    }
+                });
+                $("[data-field='sfxsrsywbxbt']").children().each(function () {
+                    if ($(this).text() == 'Y') {
+                        $(this).text("是")
+                    } else if ($(this).text() == 'N') {
+                        $(this).text("否");
+                    }
+                });
             },
             skin: 'row'
         });

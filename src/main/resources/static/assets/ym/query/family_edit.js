@@ -410,7 +410,7 @@ var family_edit = (function () {
             }
 
             // 新增字段
-            if(data.index == 5) {
+            if(data.index == 4) {
                 if(initTab5 == 0) {
                     $.ajax({
                         url : '/query/jt/getNew',

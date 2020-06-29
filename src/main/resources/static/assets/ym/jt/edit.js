@@ -18,18 +18,18 @@ var family_edit = (function () {
         table = layui.table;
 
         // 先加载下拉
-        var selectArr = ['rhllx', 'wfjb', 'pkhsx', 'rhllx', 'fpyy'];
+        var selectArr = ['rhllx', 'wfjb', 'pkhsx', 'fpyy'];
         $.post("/dm/getDmByNames",
             {param: selectArr},
             function (res) {
-                $.each(res.data, function (key, val) {
+                $.each(res.data, function(key, val) {
                     $.each(val, function (index, item) {
                         $("#" + key).append(new Option(item.name, item.dm));
                     });
                 });
                 layui.form.render('select');
 
-                var id = $("#baseid").val();
+                /*var id = $("#baseid").val();
                 $.ajax({
                     url: '/yw/jt/get',
                     data: {id: id},
@@ -104,7 +104,7 @@ var family_edit = (function () {
 
                         form.render();
                     }
-                });
+                });*/
 
             }
         );
@@ -119,6 +119,7 @@ var family_edit = (function () {
             });
             layui.form.render('select');
         });
+
 
         var zpyy1_value, zpyy2_value, zpyy3_value;
 
@@ -356,6 +357,48 @@ var family_edit = (function () {
                         ]]
                         , page: false
                         , done: function (res, curr, count) {
+                            $("[data-field='sfhjpth']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
+                            $("[data-field='sfcjcxjmjbytlbx']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
+                            $("[data-field='sfcjsybcylbx']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
+                            $("[data-field='sfxsncjmzjshbz']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
+                            $("[data-field='sfcjcxjmybyanglbx']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
+                            $("[data-field='sfxsrsywbxbt']").children().each(function () {
+                                if ($(this).text() == 'Y') {
+                                    $(this).text("是")
+                                } else if ($(this).text() == 'N') {
+                                    $(this).text("否");
+                                }
+                            });
                         }
                     });
 
