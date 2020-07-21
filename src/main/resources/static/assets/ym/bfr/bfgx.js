@@ -120,6 +120,7 @@ var bfgx = (function () {
                     obj.parent().parent().find('input[name="zjhm"]').val(res.data.zjhm);
                     obj.parent().parent().find('input[name="jtrks"]').val(res.data.num);
                     obj.parent().parent().find('input[name="pkhsx"]').val(res.data.pkhsx);
+                    console.log(obj.parent().parent());
                 }
                 else {
                     obj.val('');

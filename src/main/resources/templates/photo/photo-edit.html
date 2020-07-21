@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+
+    <!-- layui css -->
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
+    <script src="/assets/layui/dist/layui.all.js"></script>
+
+<!--    <div th:replace="common/common_headcontent :: headcontent"></div>-->
+    <title>影像资料上传</title>
+
+
+</head>
+<body class="no-skin">
+<!--<div th:replace="common/common_headline :: headline"></div>-->
+
+
+<style>
+
+    .layui-upload .mark_button {
+
+        position: absolute;
+
+        right: 15px;
+
+    }
+
+
+    .upload-img {
+
+        position: relative;
+
+        display: inline-block;
+
+        width: 300px;
+
+        height: 200px;
+
+        margin: 0 10px 10px 0;
+
+        transition: box-shadow .25s;
+
+        border-radius: 4px;
+
+        box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+
+        transition: 0.25s;
+
+        -webkit-transition: 0.25s;
+
+        margin-top: 15px;
+
+    }
+
+
+    .layui-upload-img {
+
+        width: 300px;
+
+        height: 200px;
+
+        border-radius: 4px;
+
+    }
+
+
+    .upload-img:hover {
+
+        cursor: pointer;
+
+        box-shadow: 0 0 4px rgba(0,0,0,1);
+
+        transform: scale(1.2);
+
+        -webkit-transform: scale(1.05);
+
+    }
+
+
+    .upload-img input {
+
+        position: absolute;
+
+        left: 0px;
+
+        top: 0px;
+
+    }
+
+
+    .upload-img button {
+
+        position: absolute;
+
+        right: 0px;
+
+        top: 0px;
+
+        border-radius: 6px;
+
+    }
+
+</style>
+
+<div class="layui-upload ">
+
+    <input type="hidden" id="fid" name="fid"/>
+
+
+    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+
+        预览图：
+
+        <div class="layui-upload-list" id="imgs">
+
+        </div>
+
+    </blockquote>
+
+    <div class="mark_button">
+
+        <button type="button" class="layui-btn layui-btn-normal" id="sele_imgs">选择文件</button>
+
+        <button type="button" class="layui-btn" id="upload_imgs" disabled>开始上传</button>
+
+
+        <button type="button" class="layui-btn layui-btn-danger" id="dele_imgs">删除选中图片</button>
+
+    </div>
+
+    <div class="mark_button">
+        <a class="layui-btn layui-btn-primary layui-btn-xs"  label="查看"  id="add-new">查看</a>
+
+    </div>
+
+
+
+
+
+</div>
+
+
+<script id="img_template" type="text/html">
+
+    <div class="upload-img" filename="{{ d.index }}">
+
+        <!--        <input type="checkbox" name="" lay-skin="primary">-->
+
+        <img src="{{ d.result }}" alt="{{ d.name }}" class="layui-upload-img" id="{{ d.imgId }}">
+        <button id="{{ d.btnId }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>
+
+    </div>
+
+</script>
+
+<script th:src="@{/assets/ym/photo/photo-edit.js}"></script>
+
+</body>
+</html>
