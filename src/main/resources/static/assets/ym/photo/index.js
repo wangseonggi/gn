@@ -68,7 +68,7 @@ layui.use(['table','layer','laydate'], function () {
                     type: 2,
                     area: ['90%', '90%'], //根据自己要求调整
                     btn: ['确认', '取消'],
-                    content: '/yw/yxh/editIndex',
+                    content: '/yw/yxh/editIndex?fid='+data.fid,
                     success : function(layero, index) {
                         var body=layer.getChildFrame('body',index);
                         body.contents().find('#fid').val(data.fid);

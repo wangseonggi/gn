@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,12 +46,24 @@ public class YmPhotoController {
     }
 
 
+    @RequestMapping(value = "/delPhoto")
+    @ResponseBody
+    public Map<String,Object> delPhotoById(Integer id){
+
+        ymPhotoService.delHouseholderPhotoById(id);
+        Map<String,Object> map = new HashMap<>();
+        map.put("code", 0);
+        map.put("msg", "");
+        return map;
+    }
+
+
     @RequestMapping(value="/editIndex")
-    public ModelAndView goPhotoEdit(){
+    public ModelAndView goPhotoEdit(String fid){
         ModelAndView  modelAndView = new ModelAndView();
         modelAndView.setViewName("photo/photo-edit");
-        YmPhotoDo ymPhotoDo = ymPhotoService.getHouseholderPhoto(1);
-        modelAndView.addObject("ymPhotoDo",ymPhotoDo);
+        List<YmPhotoDo> ymPhotoList = ymPhotoService.getHouseholderPhoto(Integer.parseInt(fid));
+        modelAndView.addObject("ymPhotoList",ymPhotoList);
         return modelAndView;
     }
 
@@ -79,48 +93,78 @@ public class YmPhotoController {
     }
 
 
+
+    /*
+     * 功能描述: 家庭影像资料上传，利用layui upload多文件上传，多文件上传实际上是传一个文件请求一次后端
+     * @author by tpc
+     * @date 2020/7/22 15:17
+     * @param
+     * @return
+     */
+
     @RequestMapping(value = "/upload")
     @ResponseBody
-    public Map<String,Object> uploadPhoto(@RequestParam(value = "file", required = false)MultipartFile[] files,String fid, HttpServletRequest request){
+    public Map<String,Object> uploadPhoto(@RequestParam(value = "file", required = false)MultipartFile file,String fid, HttpServletRequest request){
 
 
         System.out.println(fid);
         int index = 0;
 
-        //先查看家庭影像信息是否采集
 
 
-        for(MultipartFile file:files){
+        Map<String,String> fileNameMap = new HashMap();
 
-            if(file !=null){
-                index++;
-                String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-                System.out.println(file.getOriginalFilename());
-                System.out.println(suffix);
-                String fileName = UUIDUtil.getUUID()+"_"+index+suffix;
-                File filePath = null;
-                try {
-                    String newUrl = ResourceUtils.getURL("classpath:").getPath() + "/static/familyPhoto/"+fid+"/"+fileName;
-                    filePath = new File(newUrl);
-                    if(!filePath.getParentFile().exists()){
-                        filePath.getParentFile().mkdirs();
-                    }
-                    try {
-                        file.transferTo(filePath);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+        //获取上传的图片后缀格式名
+        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        //生产新的文件名
+        String fileName = UUIDUtil.getUUID()+"_"+index+suffix;
+        //写入数据库中的文件相对路径
+        String relativePath = "/static/familyPhoto/"+fid+"/"+fileName;
 
+        //写入文件对象
+        File writeFile = null;
+        try {
+            //文件写入路径
+            String filePath = ResourceUtils.getURL("classpath:").getPath() + relativePath;
+            writeFile = new File(filePath);
+            if(!writeFile.getParentFile().exists()){
+                writeFile.getParentFile().mkdirs();
             }
+            try {
+                file.transferTo(writeFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
+
+
+        //先查看家庭影像信息是否采集
+        YmPhotoDo ymPhotoDo  = ymPhotoService.getHouseholderPhotoMax(Integer.parseInt(fid));
+
+        //如果为空，则进行新增
+        if(ymPhotoDo ==null){
+            ymPhotoDo = new YmPhotoDo();
+            ymPhotoDo.setFid(Integer.parseInt(fid));
+            ymPhotoDo.setSequence(1);
+            ymPhotoDo.setPhoto1("/familyPhoto/"+fid+"/"+fileName);
+            ymPhotoService.addHouseHolderPhoto(ymPhotoDo);
+        }else {//不为空则增加sequence的值，进行新增
+            Integer seq = ymPhotoDo.getSequence()+1;
+            ymPhotoDo.setSequence(seq);
+            ymPhotoDo.setPhoto1("/familyPhoto/"+fid+"/"+fileName);
+            ymPhotoService.addHouseHolderPhoto(ymPhotoDo);
+        }
+
+
         Map<String,Object> map = new HashMap<>();
 
         map.put("code", 0);
         map.put("msg", "");
         return map;
     }
+
+
 
 }

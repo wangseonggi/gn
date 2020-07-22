@@ -7,12 +7,32 @@ layui.use(['upload', 'laytpl', 'form'], function () {
         , laytpl = layui.laytpl
 
         , form = layui.form;
+    var layer = layui.layer;
     var fileCount = 0;//控制文件数量
 
 
+    $("[id^='delImg']").on('click',function () {
+        var obj  = this;
+        layer.confirm("确定删除？",{btn:['确定','取消'],title: '提示'},function () {
+            var id = $(obj).prev().val();
+            console.log(id);
+            $.ajax({
+                type:'post',
+                url:'/yw/yxh/delPhoto',
+                data:{'id':id},
+                async:false,
+                dataType:'json',
+                success:function (data) {
+                    if(data.code==0){
+                        $(obj).closest('div').remove();//当前父div删除
+                        layer.msg('删除成功！',{icon:1});
 
+                    }
+                }
+            })
+        });
 
-
+    });
 
 
     $('#add-new').click(function () {

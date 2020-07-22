@@ -29,7 +29,26 @@ public class YmPhotoService {
         return jtcyMapper.getHouseholder(name,sfzhm);
     }
 
-    public YmPhotoDo getHouseholderPhoto(Integer familyId){
+    public List<YmPhotoDo> getHouseholderPhoto(Integer familyId){
         return ymPhotoMapper.getHouseholderPhoto(familyId);
+    }
+
+
+    public int getHouseholderPhotoCount(Integer familyId){
+        return ymPhotoMapper.getHouseholderPhotoCount(familyId);
+    }
+
+
+
+    public YmPhotoDo getHouseholderPhotoMax(Integer familyId){
+        return  ymPhotoMapper.getHouseholderPhotoMax(familyId);
+    }
+
+    public int delHouseholderPhotoById(Integer id){
+        return ymPhotoMapper.delHouseholderPhotoById(id);
+    }
+
+    public int addHouseHolderPhoto(YmPhotoDo ymPhotoDo){
+        return ymPhotoMapper.addHouseHolderPhoto(ymPhotoDo);
     }
 }

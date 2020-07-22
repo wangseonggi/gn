@@ -3,10 +3,11 @@
 <head>
 
     <!-- layui css -->
-    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}"
+          media="all">
     <script src="/assets/layui/dist/layui.all.js"></script>
 
-<!--    <div th:replace="common/common_headcontent :: headcontent"></div>-->
+    <!--    <div th:replace="common/common_headcontent :: headcontent"></div>-->
     <title>影像资料上传</title>
 
 
@@ -68,7 +69,7 @@
 
         cursor: pointer;
 
-        box-shadow: 0 0 4px rgba(0,0,0,1);
+        box-shadow: 0 0 4px rgba(0, 0, 0, 1);
 
         transform: scale(1.2);
 
@@ -106,35 +107,50 @@
 
     <input type="hidden" id="fid" name="fid"/>
 
-
     <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
 
-        预览图：
+        已有影像资料：
 
-        <div class="layui-upload-list" id="imgs">
+        <div class="layui-upload-list" id="imgs-exists">
+            <div class="upload-img" th:each="ymPhoto : ${ymPhotoList}" th:id="'container' + ${ymPhoto.id}">
+                <img th:src="${ymPhoto.photo1}" class="layui-upload-img" th:id="'listImg' + ${ymPhoto.id}">
+                <input type="hidden" th:id="${ymPhoto.id}" th:value="${ymPhoto.id}">
+                <button th:id="'delImg' + ${ymPhoto.id}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+            </div>
 
         </div>
+</div>
 
-    </blockquote>
+</div>
 
-    <div class="mark_button">
-
-        <button type="button" class="layui-btn layui-btn-normal" id="sele_imgs">选择文件</button>
-
-        <button type="button" class="layui-btn" id="upload_imgs" disabled>开始上传</button>
+</blockquote>
 
 
-        <button type="button" class="layui-btn layui-btn-danger" id="dele_imgs">删除选中图片</button>
+<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
 
-    </div>
+    预览图：
 
-    <div class="mark_button">
-        <a class="layui-btn layui-btn-primary layui-btn-xs"  label="查看"  id="add-new">查看</a>
+    <div class="layui-upload-list" id="imgs">
 
     </div>
 
+</blockquote>
+
+<div class="mark_button">
+
+    <button type="button" class="layui-btn layui-btn-normal" id="sele_imgs">选择文件</button>
+
+    <button type="button" class="layui-btn" id="upload_imgs" disabled>开始上传</button>
 
 
+    <button type="button" class="layui-btn layui-btn-danger" id="dele_imgs">删除选中图片</button>
+
+</div>
+
+<div class="mark_button">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" label="查看" id="add-new">查看</a>
+
+</div>
 
 
 </div>
@@ -147,7 +163,8 @@
         <!--        <input type="checkbox" name="" lay-skin="primary">-->
 
         <img src="{{ d.result }}" alt="{{ d.name }}" class="layui-upload-img" id="{{ d.imgId }}">
-        <button id="{{ d.btnId }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>
+        <button id="{{ d.btnId }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+    </div>
 
     </div>
 
