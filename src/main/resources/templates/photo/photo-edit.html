@@ -119,46 +119,55 @@
             </div>
 
         </div>
-</div>
-
-</div>
-
-</blockquote>
 
 
-<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+    </blockquote>
 
-    预览图：
 
-    <div class="layui-upload-list" id="imgs">
+    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+
+        预览图：
+
+        <div class="layui-upload-list" id="imgs">
+
+        </div>
+
+    </blockquote>
+
+    <div class="mark_button">
+
+        <button type="button" class="layui-btn layui-btn-normal" id="sele_imgs">选择文件</button>
+
+        <button type="button" class="layui-btn" id="upload_imgs" disabled>开始上传</button>
+
+
+        <!--    <button type="button" class="layui-btn layui-btn-danger" id="dele_imgs">删除选中图片</button>-->
 
     </div>
 
-</blockquote>
-
-<div class="mark_button">
-
-    <button type="button" class="layui-btn layui-btn-normal" id="sele_imgs">选择文件</button>
-
-    <button type="button" class="layui-btn" id="upload_imgs" disabled>开始上传</button>
-
-
-    <button type="button" class="layui-btn layui-btn-danger" id="dele_imgs">删除选中图片</button>
-
-</div>
-
-<div class="mark_button">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" label="查看" id="add-new">查看</a>
 
 </div>
 
 
-</div>
+<script id="img_exists_template" type="text/html">
+
+    <div class="upload-img" id="{{ d.containerId1 }}">
+
+        <!--        <input type="checkbox" name="" lay-skin="primary">-->
+
+        <img src="{{ d.result }}" alt="{{ d.result }}" class="layui-upload-img" id="{{ d.imgId1 }}">
+        <input type="hidden" id="{{ d.index }}" value="{{ d.index }}">
+        <button id="{{ d.btnId1 }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+    </div>
+
+    </div>
+
+</script>
 
 
 <script id="img_template" type="text/html">
 
-    <div class="upload-img" filename="{{ d.index }}">
+    <div class="upload-img" filename="{{ d.index }}" id="{{ d.containerId }}">
 
         <!--        <input type="checkbox" name="" lay-skin="primary">-->
 

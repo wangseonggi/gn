@@ -158,8 +158,9 @@ public class YmPhotoController {
         }
 
 
+        List<YmPhotoDo> ymPhotoDoList = ymPhotoService.getHouseholderPhoto(Integer.parseInt(fid));
         Map<String,Object> map = new HashMap<>();
-
+        map.put("ymPhotoList",ymPhotoDoList);
         map.put("code", 0);
         map.put("msg", "");
         return map;
