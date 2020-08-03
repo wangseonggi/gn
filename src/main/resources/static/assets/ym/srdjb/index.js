@@ -109,12 +109,28 @@ var income = (function () {
             formData.name = name;
             formData.sfzhm = sfzhm;
             table.reload('familyListTable', {
-                url : '/yw/jt/getList',
+                url : '/yw/sr/index',
                 where : formData,
                 page: {
                     curr: 1
                 },
                 done : function() {
+                    $("[data-field='nf']").children().each(function (i, n) {
+                        if ($(this).text() != '' && $(this).text() != '收入登记表年度') {
+                            var html = '';
+                            var nfList = $(this).text().split(",");
+                            $.each(nfList, function(ii, nn) {
+                                html += '<a href="/yw/sr/add?fid='+ $($("[data-field='id']").children()[i]).text() +'&year=' + nn + '">' + nn +'</a>,' ;
+                            });
+                            html = html.substr(0, html.length - 1);
+                            $(this).html(html);
+                        }
+                        if($(this).text() == '') {
+                            $(this).css('color', 'red');
+                            $(this).text('------');
+                        }
+                    });
+
                     $("#search_name").val(name);
                     $("#search_sfzhm").val(sfzhm);
                     $("#search_name").unbind();
