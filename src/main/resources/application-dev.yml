@@ -1,3 +1,7 @@
+# 上传路径
+webappfile:
+    uploadPath: E:/java_workspace/gn/
+
 spring:
   datasource:
     username: root
@@ -12,7 +16,7 @@ spring:
       additional-paths: resources/**,static/**,templates/**   #设置重启的目录
       exclude: data/**  #该目录下的内容修改不重启
   resources:
-    static-locations: classpath:/static/,classpath:/views/
+    static-locations: classpath:/static/,classpath:/views/,file:${webappfile.uploadPath}
 #  messages:
 #    basename: messages
 #    encoding: UTF-8

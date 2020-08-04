@@ -14,8 +14,8 @@ layui.use(['table','layer','laydate'], function () {
         cols: [[
             {type: 'checkbox'}
             , {field: 'memberid', title: 'ID', width: 80, unresize: true, sort: true}
-            , {field: 'fid', title: "家庭户ID", width: 80}
-            , {field: 'zjhm', title: '证件号码',width: 200}
+            , {field: 'fid', title: "家庭户ID", width: 100}
+            , {field: 'zjhm', title: '证件号码'}
             , {field: 'xm', title: '户主姓名', width: 100}
             // // , {field: 'pkhsx', title: '贫困户属性'}
             // , {field: 'nf', title: '收入登记表年度'}
