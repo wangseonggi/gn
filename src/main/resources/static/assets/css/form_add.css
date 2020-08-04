@@ -1,0 +1,864 @@
+﻿html, body {
+	/*width: 100%;
+    height: 100%;*/
+	font-family: "simSun", "Microsoft yaHei";
+	/*font-size: 0;*/
+}
+
+table {
+	font-size: 14px;
+}
+
+html, body {
+	/*width: 100%;
+    height: 100%;*/
+	background: #fff;
+}
+body{
+	min-height: auto;
+}
+/*cell样式*/
+.wdl_wrap {
+	background: #fff;
+}
+
+/*.wdl_wrap .cj_tit{margin-top:10px;}*/
+.wxl_cztdsy_con form {
+	margin-bottom: 14px;
+}
+
+/* tab切换标题行 */
+.wdl_table_tab {
+	font-size: 12px;
+	padding: 0 10px;
+	margin-top: -10px; /* margin-bottom: -10px;*//* margin-bottom: 1px; */
+}
+
+.wdl_table_tab p {
+	background: #51b4f4;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: middle;
+	color: #000;
+	border: #000 solid 1px;
+	border-bottom: 0;
+	border-top: 0;
+	font-size: 14px;
+}
+
+.wdl_table {
+	overflow: auto;
+	padding: 0 !important;
+	margin: 0 10px;
+	min-height: 0%;
+}
+
+.wdl_table1 {
+}
+
+.wdl_table2 {
+	margin-top: -10px;
+}
+
+.wdl_table table {
+	width: auto;
+	table-layout: fixed;
+}
+
+.wdl_table_tab p span {
+	/* 	font-weight:bold; */
+	display: block;
+	float: left;
+	padding: 0 10px;
+	cursor: pointer;
+	font-family: "simSun", "Microsoft yaHei";
+}
+
+/*按钮*/
+.wdl_table td a.btn {
+	padding: 3px 10px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: #fff;
+	margin-right: 5px;
+}
+
+.wdl_table tbody td input, .wdl_table tbody td .layui-form-select .layui-input {
+	height: 28px;
+	width: 100% !important;
+	background: transparent;
+	text-align: center; /* padding:0; */
+	border: none;
+}
+
+.wdl_table tbody td input:focus { /*border:1px solid #f2f2f2;border-right:1px solid #f2f2f2; background: #fafafa;*/
+	border: #76c3fd solid 1px;
+}
+
+.wdl_table_tab p span.active, .wdl_table_tab p span:hover {
+	background: #fff;
+	color: #000;
+}
+
+.wxl_cztdsy_con form li {
+	display: inline-block;
+	line-height: 20px;
+}
+
+.wxl_table_box_pad {
+	padding: 0px 15px;
+}
+
+.wdl_wrap .cj_tit {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: "simSun";
+	text-align: center;
+	color: #333;
+	margin-top: 20px;
+}
+
+.layui-input::-ms-clear, .layui-input::-ms-reveal {
+	display: none;
+}
+
+.wep_btn_group1 {
+	border-radius: 3px;
+	border: 1px solid #0b89e6;
+	overflow: hidden;
+}
+
+.wep_btn_lbtn {
+	height: 21px;
+	line-height: 21px;
+	font-size: 12px;
+	float: left;
+	padding: 0 12px;
+	background: #e4f4ff;
+	color: #1e9fff;
+	cursor: pointer;
+}
+
+.wep_btn_dbtn {
+	background: #0b89e6;
+	color: #fff;
+	border-radius: 3px;
+}
+.wep_btn_dbtn{
+	margin-left:10px;
+}
+
+.wep_btn_group span {
+	padding: 0 12px;
+	border-radius: 3px;
+	font-size: 12px;
+	height: 23px;
+	line-height: 23px;
+	float: left;
+	color: #fff;
+	cursor: pointer;
+}
+
+.wep_btn_group .wep_btn_gbtn {
+	background: #0b89e6;
+}
+
+.wep_btn_group .wep_btn_rbtn {
+	background: #ff5722;
+	margin-left: 20px;
+}
+
+.wep_celltable_div {
+	padding: 10px;
+}
+
+.wep_celltable_div h2 {
+	font-size: 18px;
+	font-weight: bold;
+	color: #000;
+	text-align: center;
+	line-height: 50px;
+}
+
+.wep_celltable_tl li {
+	width: 33.33%;
+	float: left;
+	line-height: 22px;
+	height: 22px;
+	font-family: "simSun";
+	font-size: 14px;
+	color: #000;
+}
+
+.wep_celltable_tl li span {
+	display: inline-block;
+}
+
+.wep_celltable_tl .wep_cell_li {
+	width: 40%;
+	text-align: right;
+}
+
+.wep_celltable_div table {
+	width: 100%;
+	font-family: "simSun";
+	font-size: 12px;
+	text-align: left;
+	color: #000;
+	border: 1px #000 solid;
+}
+
+.layui-input, .layui-textarea, .layui-select {
+	font-size: 12px;
+	line-height: 25px;
+	height: 25px;
+	border: none;
+	padding-left: 0;
+	color: #000;
+	background: transparent;
+}
+
+.layui-form-select dl {
+	max-height: 200px;
+	min-height: 48px;
+	/*top: 28px;*/
+	top: auto;
+	overflow: auto;
+	width: 100%;
+}
+
+.layui-form-select dl dd {
+	/*width: 100%;*/
+	white-space: inherit;
+	line-height: 24px;
+	padding: 6px;
+}
+
+.layui-form-radio > i {
+	font-size: 14px;
+	margin-right: 0;
+}
+
+.layui-form-radio {
+	line-height: 25px;
+	margin: 0;
+	padding-right: 0;
+}
+
+.wep_celltable_div table .wdl_center {
+	text-align: center;
+	background: #E6F4F7;
+}
+
+.wep_celltable_div table .wdl_pl input {
+	padding-left: 12px;
+}
+
+.wep_celltable_div table .po-re {
+	position: relative;
+}
+
+.wep_celltable_div table td {
+	line-height: 28px;
+	height: 28px;
+	border: 1px solid #000;
+	background: #fff;
+}
+
+.wep_celltable_div table td.mustfill {
+	background: #fff;
+}
+
+.wep_celltable_div table td.wdl_btx {
+	background: #E0FCC2;
+}
+
+.wep_celltable_div table td.wdl_db {
+	background: #ebebeb;
+}
+
+.wep_celltable_div table .c_red {
+	margin-right: 5px;
+}
+
+.wep_celltable_div table td.tabletitle {
+	padding-left: 12px;
+	font-weight: bold;
+	background: #e6f4f7;
+}
+
+.wep_celltable_div table .wep_date {
+	position: absolute;
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	line-height: 14px;
+	right: 10px;
+	top: 5px;
+}
+
+.wep_celltable_div table .wep_date i {
+	font-size: 14px;
+	color: #1e9fff;
+}
+
+.c_red {
+	color: red;
+}
+
+.wdl_bt0 {
+	border-top: 0px !important;
+}
+
+.wdl_bt1 {
+	border-top: #000 solid 1px !important;
+}
+
+.wdl_bb1 {
+	border-bottom: #000 solid 1px !important;
+}
+
+.wdl_bl0 {
+	border-left: 0px !important;
+}
+
+.wdl_br0 {
+	border-right: 0px !important;
+}
+
+.wdl_bb0 {
+	border-bottom: 0px !important;
+}
+
+.table_btn {
+	width: 45px;
+	height: 18px;
+	line-height: 18px;
+	display: block;
+	float: left;
+	text-align: center;
+	background: #1e9fff;
+	color: #fff;
+	font-size: 12px;
+	font-family: simSun;
+	border-radius: 2px;
+	margin-right: 5px;
+}
+
+.table_btn i {
+	font-size: 8px;
+}
+
+.layui-btn-sm {
+	height: 18px;
+	line-height: 18px;
+	padding: 0 5px;
+	font-size: 12px;
+	font-family: "simSun";
+	font-weight: normal;
+	margin-bottom: 3px;
+}
+
+.layui-btn-sm i {
+	font-size: 11px !important;
+	color: #000;
+
+}
+
+.layui-btn + .layui-btn {
+	margin-left: 0px;
+}
+
+.layui-form-checked[lay-skin="primary"] i {
+	border-color: #1e9fff;
+	background-color: #1e9fff;
+	color: #fff;
+}
+
+.f_txt_center {
+	text-align: center;
+}
+
+/*修复layui*/
+.layui-form-item {
+	margin-bottom: 0;
+}
+
+.layui-input-block {
+	margin-left: 0;
+	margin-bottom: 0;
+	min-height: 25px !important;
+}
+
+.layui-disabled, .layui-disabled:hover {
+	color: #000 !important;
+}
+
+.layui-textarea {
+	padding: 6px 10px;
+}
+
+.layui-input:hover, .layui-textarea:hover {
+	border-color: transparent !important;
+	cursor: pointer;
+}
+
+.layui-input[disabled]:hover, .layui-input[readonly]:hover, .layui-textarea[disabled]:hover, .layui-textarea[readonly]:hover {
+	cursor: inherit;
+}
+
+.layui-form-selectup .layui-anim-upbit {
+	bottom: 26px;
+	margin-bottom: 0;
+}
+
+.wdl_layui_datatable1 {
+	position: absolute;
+}
+
+.wdl_table_tab1 p {
+	height: 25px;
+	line-height: 25px;
+	font-weight: bold;
+	background: #e6f4f7;
+	color: #000;
+}
+
+.wdl_table_tab1 p span {
+	font-size: 12px;
+}
+
+.wdl_table_tab1 p span:hover {
+	background: inherit;
+	color: inherit;
+	cursor: inherit;
+
+}
+
+/*wdl—— disabled 、readonly*/
+.wdl_pl input[disabled] { /*,.wdl_pl input[readonly] 不用这个，因为下拉框都加了readonly*/
+	background: #ebebeb;
+	color: black;
+	-webkit-text-fill-color: #333;
+	-webkit-opacity: 1;
+	opacity: 1;
+}
+
+.wdl_table_tab2 {
+	padding: 0;
+	border-top: #000 solid 1px;
+}
+
+.wdl_table_tab3 {
+	margin-top: 0px !important;
+}
+
+.wdl_layui-disabled, .wdl_layui-disabled:hover {
+	background: #F0F3F6;
+	color: #d2d2d2 !important;
+	cursor: not-allowed !important;
+}
+
+.layui-form-radio {
+	margin-left: 10px;
+}
+
+.layui-form-radio * {
+	font-size: 12px;
+}
+
+.layui-form-radio > i {
+	margin-right: 5px;
+}
+
+.wep_cx_btn {
+	padding: 3px 10px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	color: #fff;
+	margin-left: 12px;
+}
+
+.wep_cx_btn:hover {
+	color: #fff;
+	text-decoration:none;
+	background:#188ce2;
+}
+
+/*复选框*/
+.wdl_checkbox .layui-form-checkbox {
+	margin-left: 10px;
+	vertical-align: text-bottom;
+}
+
+.wdl_checkbox .layui-form-checkbox .layui-icon {
+	top: 1px;
+}
+
+/*2018-10-9 lixiaohui*/
+.wdl_table .wdl_table_tab {
+	padding: 0px;
+	margin: 0px;
+}
+
+.wep_celltable_div .wdl_table_tab {
+	padding: 0px;
+	border-top: solid 1px #000;
+	margin-top: 10px;
+}
+
+.layui_sele_list .layui-input-block {
+	width: 25%;
+	float: left;
+	clear: inherit
+}
+
+.wep_celltable_div .mat_bor {
+	border-top: none;
+	margin-top: 0px;
+}
+
+.wdl_pl .layui-form-checkbox {
+	margin: 0 0px 0 12px;
+}
+
+.mat0 {
+	margin: 0px;
+}
+
+/*wdl_20181010弹出框的树*/
+#main_div table .ztree li {
+	display: block;
+}
+
+#main_div table .ztree li span:last-child {
+	position: relative;
+	top: auto;
+}
+
+.wxl_wrap .ztree li {
+	display: block;
+	margin-bottom: 1px; /*因为ztree自己设置的背景图片大小不一，18和16*/
+	position: static;
+}
+
+.wxl_wrap .ztree li span:last-child {
+	position: relative;
+	top: auto;
+}
+
+#camanger {
+	height: 0;
+	font-size: 0;
+}
+
+.menuContent {
+	opacity: 1 !important;
+	display: none;
+	position: absolute;
+	background-color: #fff !important;
+	width: 11.4%;
+	height: 260px;
+	z-index: 9999;
+	border: #ddd solid 1px !important;
+	border-radius: 3px;
+	overflow: auto !important;
+}
+
+.menuContent div {
+	overflow: visible !important;
+}
+
+#orgContent ul li {
+	display: block !important;
+}
+
+#orgContent ul li a span:last-child {
+	position: relative;
+	top: auto;
+}
+
+.menuContent:hover {
+	border: #76c3fd solid 1px;
+}
+
+.menuContent .ztree li {
+	margin: 2px 0;
+	display: block;
+}
+
+.menuContent .ztree li span {
+	text-align: left;
+	line-height: 16px;
+}
+
+.menuContent table .ztree li span:last-child {
+	position: relative;
+	top: auto;
+}
+
+.ztree li {
+	margin: 2px 0;
+	width: 150%;
+}
+
+.ztree li span {
+	text-align: left;
+	line-height: 16px;
+}
+
+/*按钮不可用*/
+.wdl_layui-disabled, .wdl_layui-disabled:hover {
+	background: #e0e0e0;
+	color: #c1c1c1 !important;
+	cursor: not-allowed !important;
+}
+
+/*wdl20181011layer弹出样式*/
+.layui-layer-page .layui-layer-content {
+	padding: 20px 15px 15px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+/* wdl20181012修复layui下拉框上漂问题 */
+.wdl_wrap .cj_tit {
+	margin-top: 0;
+	/*padding-top: 20px;*/
+	line-height: 50px;
+}
+
+/*wdl20181017input居左*/
+.wep_celltable_div tbody td input, .wep_celltable_div tbody td .layui-form-select .layui-input {
+	text-align: left;
+}
+
+.wdl_table_box tbody td input, .wdl_table_box tbody td .layui-form-select .layui-input {
+	text-align: center;
+	min-height: 0%;
+}
+
+/* yyq20181017 layui open 弹出框type 为1的时候 弹出样式 */
+.layer-anim-00 .layui-layer-content {
+	padding: 20px 15px 15px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.wdl_tip {
+	padding-left: 10px;
+}
+
+.wdl_ct {
+	padding: 10px;
+}
+
+.wdl_ct input {
+	width: 50px;
+	padding-right: 12px;
+	text-align: center !important;
+	border-bottom: #000 solid 1px;
+}
+
+.wep_celltable_div table .wdl_pl input {
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+/* wdl_20181017 按钮添加图片背景 */
+.wdl_btn1 {
+	/* background: url(../../../../../taxclient/commons/dzswj/img/img_fxgg.gif) no-repeat; */
+	display: inline-block;
+	height: 23px;
+	text-align: center;
+	line-height: 23px;
+	overflow: hidden;
+	color: #ffffff;
+	margin-top: 1px;
+	margin-left: 6px;
+	font-size: 12px;
+	width: 68px;
+	background-position: -80px 0px;
+	cursor: pointer;
+	padding: 0;
+}
+
+/*设置按钮不能点击的背景*/
+.wdl_layui-disabled1, .wdl_layui-disabled1:hover {
+	background: #ccc;
+	cursor: not-allowed !important;
+}
+
+/*layuiopen滚动条*/
+.layui-layer-content {
+	overflow: auto;
+}
+
+.layui-layer-content #MXCX {
+	margin-top: -20px;
+}
+
+/* wdl20181026弹窗按钮 */
+.layui-layer-btn .layui-layer-btn0 {
+	font-size: 12px;
+}
+
+.layui-layer-btn .layui-layer-btn0 {
+	font-size: 12px;
+}
+
+/*wdl20181101layui下拉框变蓝色*/
+.layui-form-select dl dd.layui-this {
+	/*background-color: #0087f1;*/
+	color: #fff;
+}
+
+/*input内容都居左显示*/
+/*.wdl_table_box tbody td input, .wdl_table_box tbody td .layui-form-select .layui-input{*/
+/*text-align: left;*/
+/*}*/
+/*my97修復輸入框寬度*/
+.Wdate {
+	width: 100% !important;
+	border: none !important;
+}
+/*wdl20181111按鈕放大*/
+.wep_celltable_div table .wdl_btn_td{height:36px;line-height: 36px;}
+.wep_celltable_div table .wdl_btn_td .wep_cx_btn{ padding: 5px 10px;}
+
+/* wdl20181122layui下拉框三角变黑色 */
+.layui-form-select .layui-edge{
+	border-top-color: #333;
+}
+.layui-select-disabled .layui-edge{
+	border-top-color: #d2d2d2;
+}
+
+.wdl_pb0{
+	padding-bottom:0 !important;
+}
+.wdl_br0 {
+	border-right: 0px !important;
+}
+.wdl_bb0 {
+	border-bottom: 0px !important;
+}
+
+/* wdl20190711 */
+tr select{
+	width:100%;
+	border:none;
+	line-height: 28px;
+	/*padding:5px 0;*/
+	height:28px;
+	float: left;
+}
+.wdl_pl{
+	padding-left:10px;
+}
+.wep_btn_dbtn:hover,.wep_btn_dbtn:active{
+	color: #fff;
+	text-decoration: none;
+}
+/*.wdl_cx{*/
+/*margin:10px;*/
+/*}*/
+.wdl_center{
+	text-align: center;
+}
+.wdl_cx input,.wdl_cx input:hover,.wdl_cx input:active,.wdl_cx input:focus{
+	width:100%;
+	border: #a5a5a5 solid 1px !important;
+	padding:0 10px;
+}
+.wdl_tl{
+	text-align: left;
+}
+.wdl_tr{
+	text-align: right;
+}
+.wdl_cb{
+	margin:0;
+	padding:0;
+	height:20px !important;
+	float: left;
+}
+.wdl_bgW{
+	background: #fff !important;
+}
+.layui-form-checkbox{
+	height: 20px;
+	width: 20px;
+	line-height: 20px;
+	padding-right: 20px;
+}
+.layui-form-checkbox i{
+	width:20px;
+	right: 6px;
+}
+.wdl_xz{
+	margin:100px auto 50px;
+}
+.wdl_xz h1{
+	line-height: 50px;
+	height: 50px;
+	text-align: center;
+	font-size: 24px;
+	margin-bottom: 90px;
+}
+.wdl_xz ul{
+	margin:50px;
+	text-align:center;
+	margin:0 auto;
+	width: 600px;
+	height: 50px;
+}
+.wdl_xz ul li{
+	float:left;
+	width:45%;
+	text-align:center;
+}
+.wdl_xz ul li:first-child{
+	margin-right:10%;
+}
+.wdl_xz ul a{
+	line-height: 50px;
+	height: 50px;
+	display:block;
+	float:none;
+	border-radius: 3px;
+}
+
+.wdl_dx .layui-form-checkbox{
+	width:125px;
+}
+.wdl_b0{
+	border:none !important;
+}
+.wdl_cx_cnt{
+	line-height: 50px;
+	height: 50px;
+}
+.wdl_tc input[type=text]{
+	text-align: center !important;
+}
+.wdl_btx {
+	background: #E0FCC2;
+}
+.wep_btn_dbtn:hover{
+	background:#1b96f1;
+}
+.wep_btn_dbtn:active{
+	background:#0b7cd0;
+}
+.layui-form-radio > i {
+	color:#333;
+}
+.layui-form-radioed>i, .layui-form-radio>i:hover {
+	color: #5FB878;
+}
+.layui-form-checkbox[lay-skin="primary"] span{
+	color: #000;
+	font-size: 12px;
+	padding-right: 26px;
+}

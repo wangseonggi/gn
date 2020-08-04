@@ -1,0 +1,38 @@
+@charset "utf-8";
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体"!important; }
+ul,li,ul li,ul li ul li{ list-style:none!important; list-style-position:none!important;}
+/* ----行高---- */
+.style_lh18 { line-height: 18px!important;}
+.style_lh20 { line-height: 20px!important;}
+.style_lh24 { line-height: 24px!important;}
+/* ----主色调---- */
+.style_cor1 { background-color:#0994DC!important;}
+.style_cor1:hover { background-color:#0885C5!important;}
+.style_fz_cor1 { background-color:#FFA533!important;}
+.style_fz_cor2 { background-color:#ff6633!important;}
+.style_fz_cor3 { background-color:#4ec87c!important;}
+/* ----文字色---- */
+.style_font1 { color: #333!important;}
+.style_font2 { color: #666!important;}
+.style_font3 { color: #999!important;}
+.style_font4 { color: #bbb!important;}
+.style_font5 { color: #fff!important;}
+/* ----常规字体---- */
+.style_cg_font1,.style_cg_font1_1 { color: #000!important; font-size: 18px!important; font-weight: bold!important;}
+.style_cg_font1_1 { font-size: 24px!important;}
+.style_cg_font2,.style_cg_font2_1 { color: #333!important;}
+.style_cg_font3,.style_cg_font3_1 { color: #666!important;}
+.style_cg_font4,.style_cg_font4_1 { color: #999!important;}
+.style_cg_font5,.style_cg_font5_1 { color: #aaa!important;}
+.style_cg_font6,.style_cg_font6_1 { color: #FF8939!important;}
+
+/* ----文字类提示---- */
+.style_fza1,.style_fza1_1 { color:#0994DC!important;}
+.style_fza1:hover,.style_fza1_1:hover { text-decoration: underline!important;}
+.style_fza2,.style_fza2_1 { color:#333!important;}
+.style_fza2:hover,.style_fza2_1:hover { color:#0994DC!important;}
+
+.style_cg_font2_1,.style_cg_font3_1,.style_cg_font6_1,.style_fza1_1,.style_fza2_1  { font-size: 20px!important;}
+.style_cg_font4_1,.style_cg_font5_1  { font-size: 18px!important;}
+.style_cg_font4,.style_cg_font5 {font-size: 12px!important;}
+.style_cg_font2,.style_cg_font3,.style_cg_font6,.style_fza1,.style_fza2 {font-size: 14px!important;}

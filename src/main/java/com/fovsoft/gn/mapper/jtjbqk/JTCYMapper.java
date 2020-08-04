@@ -30,6 +30,23 @@ public interface JTCYMapper {
     JtcyDO get(int id);
 
 
+
+
+    @Select({"<script>",
+            "SELECT id,fid,xm,xb,zjhm,yhzgx,mz,zzmm,whcd,zxsqk,sxhcxyy,jkzk,ldjn,sfhjpth,sfcjcxjmjbytlbx,sfcjsybcylbx,sfxsncjmzjshbz,sfcjcxjmybyanglbx,sfxsrsywbxbt,lxdh" +
+                    ",shzt,sgny,rklx,zdqk,zxjdxx,cjzh,cjdj,djbhdmxbk,mxbsm,dbjz,sfxszcdd,jyyy,jyqk,jycydw,wdjycydy,ylbxlx" +
+                    " FROM ym_jtjbqk_jtcy WHERE yhzgx = '02' ",
+            "<when test='name!=null'>",
+            "and xm like '%${name}%' ",
+            "</when>",
+            "<when test='sfzhm != null '>",
+            "and zjhm like '%${sfzhm}%' ",
+            "</when>",
+            " ORDER BY id desc",
+            "</script>"})
+    List<JtcyDO> getHouseholder(@Param("name") String name, @Param("sfzhm")String sfzhm);
+
+
     @Select("SELECT " +
             "  id," +
             "  fid," +
