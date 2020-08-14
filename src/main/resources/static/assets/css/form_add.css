@@ -349,21 +349,21 @@ body{
 	font-size: 8px;
 }
 
-.layui-btn-sm {
-	height: 18px;
-	line-height: 18px;
-	padding: 0 5px;
-	font-size: 12px;
-	font-family: "simSun";
-	font-weight: normal;
-	margin-bottom: 3px;
-}
+/*.layui-btn-sm {*/
+	/*height: 18px;*/
+	/*line-height: 18px;*/
+	/*padding: 0 5px;*/
+	/*font-size: 12px;*/
+	/*font-family: "simSun";*/
+	/*font-weight: normal;*/
+	/*margin-bottom: 3px;*/
+/*}*/
 
-.layui-btn-sm i {
-	font-size: 11px !important;
-	color: #000;
+/*.layui-btn-sm i {*/
+	/*font-size: 11px !important;*/
+	/*color: #000;*/
 
-}
+/*}*/
 
 .layui-btn + .layui-btn {
 	margin-left: 0px;

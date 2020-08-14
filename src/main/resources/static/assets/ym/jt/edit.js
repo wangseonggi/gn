@@ -29,7 +29,7 @@ var family_edit = (function () {
                 });
                 layui.form.render('select');
 
-                /*var id = $("#baseid").val();
+                var id = $("#baseid").val();
                 $.ajax({
                     url: '/yw/jt/get',
                     data: {id: id},
@@ -104,7 +104,7 @@ var family_edit = (function () {
 
                         form.render();
                     }
-                });*/
+                });
 
             }
         );
@@ -582,7 +582,6 @@ var family_edit = (function () {
 
         form.on('select(xzc)', function (data) {
             $.get("/xzqhdm/get", {sjxzqhdm: data.value}, function (data) {
-                $("#xzc").empty();
                 $.each(data, function (index, item) {
                     $("#xzc").append(new Option(item.xzqhmz, item.xzqhdm));
                 });

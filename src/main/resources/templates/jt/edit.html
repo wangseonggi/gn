@@ -98,15 +98,6 @@
                             <input type="text" name="yhkh" id="yhkh" autocomplete="off" class="layui-input"
                                    placeholder="（选填）" lay-filter="yhkh">
                         </td>
-                        <td class="fp_nrxt" colspan="2" rowspan="3"></td>
-                    </tr>
-                    <tr>
-                        <td class="fp_btbt">贫困户属性</td>
-                        <td class="fp_nrbt">
-                            <select name="pkhsx" id="pkhsx" lay-verify="required" lay-filter="pkhsx">
-                                <option value=""></option>
-                            </select>
-                        </td>
                         <td class="fp_btbt">计划脱贫年度</td>
                         <td class="fp_nrbt">
                             <input id="jhtpnd" type="text" name="jhtpnd"
@@ -115,6 +106,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="fp_btbt">贫困户属性</td>
+                        <td class="fp_nrbt">
+                            <select name="pkhsx" id="pkhsx" lay-verify="required" lay-filter="pkhsx">
+                                <option value=""></option>
+                            </select>
+                        </td>
                         <td class="fp_btbt">返贫年度</td>
                         <td class="fp_nrbt">
                             <input id="fpnd" type="text" name="fpnd"
@@ -163,7 +160,7 @@
                     </tbody>
                 </table>
                 <div class="layui-form-item" style="margin-top: 20px">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" style="text-align: center">
                         <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base1">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
                     </div>
@@ -224,7 +221,7 @@
                     </tbody>
                 </table>
                 <div sec:authorize-url="/yw/jt/addZpyy" class="layui-form-item" style="margin-top: 20px">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" style="text-align: center">
                         <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base3">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
                     </div>
@@ -267,9 +264,6 @@
                             <td class="fp_nrbt">
                                 <input name="smmj" class="layui-input"/>
                             </td>
-                            <td class="fp_nrxt" colspan="4"></td>
-                        </tr>
-                        <tr>
                             <td class="fp_btbt">是否加入农民专业合作社</td>
                             <td class="fp_nrbt">
                                 <select name="sfjrnmzyhzs" class="layui-input">
@@ -286,6 +280,8 @@
                                     <option value="N">否</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td class="fp_btbt">是否有致富带头人带动</td>
                             <td class="fp_nrbt">
                                 <select name="sfycyzfdtrdd" class="layui-input" >
@@ -302,8 +298,6 @@
                                     <option value="N">否</option>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
                             <td class="fp_btbt">是否通广播电视</td>
                             <td class="fp_nrbt">
                                 <select name="sftgbds" class="layui-input">
@@ -320,6 +314,8 @@
                                     <option value="N">否</option>
                                 </select>
                             </td>
+                        </tr>
+                        <tr>
                             <td class="fp_btbt">是否有卫生厕所</td>
                             <td class="fp_nrbt">
                                 <select name="sfywscs" class="layui-input" >
@@ -328,9 +324,6 @@
                                     <option value="N">否</option>
                                 </select>
                             </td>
-                            <td class="fp_nrxt" colspan="2"></td>
-                        </tr>
-                        <tr>
                             <td class="fp_btbt">与村主干路距离(公里)</td>
                             <td class="fp_nrbt">
                                 <input name="yczgljl" class="layui-input" style="width: 60px"/>
@@ -345,6 +338,8 @@
                             <td class="fp_nrbt">
                                 <input name="zfmj" class="layui-input" style="width: 60px"/>
                             </td>
+                        </tr>
+                        <tr>
                             <td class="fp_btbt">是否危房户</td>
                             <td class="fp_nrbt">
                                 <select name="sfwf" class="layui-input" style="width: 60px">
@@ -353,8 +348,6 @@
                                     <option value="N">否</option>
                                 </select>
                             </td>
-                        </tr>
-                        <tr>
                             <td class="fp_btbt">危房级别</td>
                             <td class="fp_nrbt">
                                 <select id="wfjb" name="wfjb" class="layui-input" style="width: 60px">
@@ -365,6 +358,10 @@
                             <td class="fp_nrbt">
                                 <input name="wgnd" class="layui-input" style="width: 60px"/>
                             </td>
+                            <td class="fp_nrxt" colspan="2"></td>
+                        </tr>
+                        <tr>
+
                             <td class="fp_btbt">主要燃料类型</td>
                             <td class="fp_nrbt">
                                 <select id="zyrllx" name="zyrllx" class="layui-input" lay-filter="zyrllx"
@@ -382,12 +379,13 @@
                                 <input id="jtrlmc" name="jtrlmc" autocomplete="off" lay-filter="jtrlmc"
                                        class="layui-input layui-disabled" disabled="" style="width: 160px"/>
                             </td>
+                            <td class="fp_nrxt" colspan="4"></td>
                         </tr>
                     </tbody>
                 </table>
 
                 <div sec:authorize-url="/yw/jt/addScshtj" class="layui-form-item" style="margin-top: 20px">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" style="text-align: center">
                         <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base4">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
                     </div>
@@ -400,11 +398,11 @@
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">变更情况说明</label>
                     <div class="layui-input-block">
-                        <textarea name="nr" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        <textarea name="nr" placeholder="请输入内容" class="layui-textarea" style="border: solid 1px #bdbdbd"></textarea>
                     </div>
                 </div>
                 <div sec:authorize-url="/yw/jt/addBgqksm" class="layui-form-item" style="margin-top: 20px">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" style="text-align: center">
                         <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base5">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
                     </div>
@@ -442,22 +440,21 @@
                         <td class="fp_btbt">自筹资金（元）</td>
                         <td class="fp_nrbt"><input id="zczj" name="zczj" lay-filter="zczj" type="text"/></td>
                     </tr>
+                    <tr>
                     <td class="fp_btbt">搬迁入住时间</td>
                     <td class="fp_nrbt"><input id="bqrzsj" name="bqrzsj" lay-filter="bqrzsj" type="text" autocomplete="off"/></td>
                     <td class="fp_btbt">实际入住时间</td>
                     <td class="fp_nrbt"><input id="sjrzsj" name="sjrzsj" lay-filter="sjrzsj" type="text" autocomplete="off"/></td>
-                    <td class="fp_nrxt" colspan="2" rowspan="3"></td>
-                    <tr>
-                        <td class="fp_btbt">原有住房（类型）</td>
-                        <td class="fp_nrbt"><input id="yyzf" name="yyzf" lay-filter="yyzf" type="text"/></td>
-                        <td class="fp_btbt">原有住房面积㎡</td>
-                        <td class="fp_nrbt"><input id="yyzfmj" name="yyzfmj" lay-filter="yyzfmj" type="text"/></td>
+                    <td class="fp_btbt">原有住房（类型）</td>
+                    <td class="fp_nrbt"><input id="yyzf" name="yyzf" lay-filter="yyzf" type="text"/></td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">拆除住房</td>
                         <td class="fp_nrbt"><input id="ccjf" name="ccjf" lay-filter="ccjf" type="text" autocomplete="off"/></td>
                         <td class="fp_btbt">保护住房种类</td>
                         <td class="fp_nrbt"><input id="bhzfzl" name="bhzfzl" lay-filter="bhzfzl" type="text" autocomplete="off"/></td>
+                        <td class="fp_btbt">原有住房面积㎡</td>
+                        <td class="fp_nrbt"><input id="yyzfmj" name="yyzfmj" lay-filter="yyzfmj" type="text"/></td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">拆除时间</td>
@@ -497,7 +494,7 @@
                     </tr>
                 </table>
                 <div sec:authorize-url="/yw/jt/updateQTXX" class="layui-form-item" style="margin-top: 20px">
-                    <div class="layui-input-block">
+                    <div class="layui-input-block" style="text-align: center">
                         <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base6">提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
                     </div>

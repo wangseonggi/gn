@@ -11,6 +11,8 @@
     <!-- layui css -->
     <link rel="stylesheet" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
     <link rel="stylesheet" th:href="@{/assets/css/form.css}" media="all">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}" media="all">
+    <link rel="stylesheet" th:href="@{/assets/css/form_add.css}" media="all">
     <script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
     <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
     <script th:src="@{/assets/ym/jt/cyAdd.js}"></script>
@@ -283,7 +285,7 @@
             </table>
         </div>
         <div sec:authorize-url="/yw/jt/cyAdd"  class="layui-form-item" style="margin-top: 20px">
-            <div class="layui-input-block">
+            <div class="layui-input-block" style="text-align: center">
                 <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="member">提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
             </div>

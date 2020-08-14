@@ -75,6 +75,7 @@ var income = (function () {
                     success: function () {
                         laydate.render({
                             elem : "#selectYear",
+                            trigger: 'click',
                             type: 'year'
                         });
                     },

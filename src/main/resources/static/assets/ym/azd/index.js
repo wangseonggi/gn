@@ -22,7 +22,7 @@ var azd = (function () {
                     var rowHtml = "<div class='row'>";
                     for(var j = (i * column); j < i * column + column; j++) {
                         var colHtml = '';
-                        colHtml += "<div class='col-xs-6 col-sm-4 col-md-3'>";
+                        colHtml += "<div class='col-xs-6 col-sm-4 col-md-3 col-lg-2'>";
                         colHtml += "<div class='thumbnail search-thumbnail'>";
                         if(j == 0) {
                             colHtml += '<span class="search-promotion label label-success arrowed-in arrowed-in-right">标记</span>'
@@ -41,7 +41,7 @@ var azd = (function () {
                     var rowHtml = "<div class='row'>";
                     for(var j = (column * (rowNum - 1)); j < column * (rowNum - 1) + yu; j++) {
                         var colHtml = '';
-                        colHtml += "<div class='col-xs-6 col-sm-4 col-md-3'>";
+                        colHtml += "<div class='col-xs-6 col-sm-4 col-md-3 col-lg-2'>";
                         colHtml += "<div class='thumbnail search-thumbnail'>";
                         if(j == 0) {
                             colHtml += '<span class="search-promotion label label-success arrowed-in arrowed-in-right">标记</span>'

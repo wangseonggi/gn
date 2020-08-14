@@ -79,6 +79,7 @@ var cyAdd = (function () {
 
         laydate.render({
             elem: '#sgny'
+            ,trigger: 'click' //添加这一行来处理
             ,type: 'month'
         });
 
