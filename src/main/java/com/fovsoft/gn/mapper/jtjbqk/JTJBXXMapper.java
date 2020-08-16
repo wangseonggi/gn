@@ -11,6 +11,7 @@ import java.util.List;
  * 家庭基本信息mapper
  */
 @Mapper
+
 public interface JTJBXXMapper {
 
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")

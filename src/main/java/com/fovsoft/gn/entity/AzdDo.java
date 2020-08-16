@@ -19,4 +19,5 @@ public class AzdDo {
     private String dz;
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date lrrq;
+    private String img;
 }

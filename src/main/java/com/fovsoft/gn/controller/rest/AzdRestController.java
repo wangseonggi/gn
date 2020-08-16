@@ -1,25 +1,32 @@
 package com.fovsoft.gn.controller.rest;
 
 import com.fovsoft.common.JsonResult;
+import com.fovsoft.gn.entity.AzdDo;
 import com.fovsoft.gn.entity.AzdFwxxDo;
 import com.fovsoft.gn.entity.holder.BfgxXXHolder;
 import com.fovsoft.gn.service.AzdSerivce;
+import com.fovsoft.gn.util.UUIDUtil;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 
 @RestController
 @RequestMapping("/yw/azd")
 public class AzdRestController {
+
+    private final Log logger = LogFactory.getLog(this.getClass());
+
+    @Value("${webappfile.uploadPath}")
+    private String uploadRootPath;
 
     @Autowired
     private AzdSerivce azdSerivce;
@@ -86,7 +93,6 @@ public class AzdRestController {
      *
      * 用于关联住房与家庭的关系
      *
-     * @param id
      * @return
      */
     @RequestMapping(value = "/rz", produces = "application/json;charset=UTF-8")
@@ -119,5 +125,43 @@ public class AzdRestController {
         int returnId = azdSerivce.del(id);
 
         return new JsonResult(Integer.valueOf(returnId));
+    }
+
+    /**
+     *
+     * @return
+     */
+    @RequestMapping(value = "/addAzd", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult addAzd(@RequestBody AzdDo azdDo) {
+        azdDo.setLrrq(new Date());
+        Integer count = azdSerivce.addAzd(azdDo);
+        return new JsonResult(count);
+    }
+
+    /**
+     * 上传安置点主题图片
+     *
+     * @param file
+     * @return
+     */
+    @RequestMapping(value = "/upload")
+    public JsonResult upload(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return new JsonResult(-1, "上传失败，请选择文件。");
+        }
+        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String fileName = UUIDUtil.getUUID() + suffix;
+        String ywPath = "/azd/";
+        File dest = new File(uploadRootPath + ywPath + fileName);
+        try {
+            if(!dest.getParentFile().exists()){
+                dest.getParentFile().mkdirs();
+            }
+            file.transferTo(dest);
+            return new JsonResult(ywPath + fileName);
+        } catch (IOException e) {
+            logger.error(e.toString(), e);
+        }
+        return new JsonResult(-1, "上传失败");
     }
 }

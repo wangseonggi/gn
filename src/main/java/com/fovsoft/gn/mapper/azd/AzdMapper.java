@@ -14,10 +14,13 @@ public interface AzdMapper {
 
     // 安置点相关
 
-    @Select("SELECT id, mc, jc, dz, lrrq FROM ym_azd")
+    @Select("SELECT id, mc, jc, dz, lrrq, img FROM ym_azd")
     public List<AzdDo> list();
 
-    public int add();
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
+    @Insert("INSERT INTO ym_azd (mc,jc,lrrq,img, dz)  " +
+            "VALUES (#{mc},#{jc},#{lrrq},#{img},#{dz})")
+    public int addAzd(AzdDo azdDo);
 
     public int edit();
 

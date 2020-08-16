@@ -25,6 +25,11 @@ public class AzdSerivce {
     @Resource
     private AzdMapper azdMapper;
 
+    public Integer addAzd(AzdDo azdDo) {
+        Integer affectRowCount = azdMapper.addAzd(azdDo);
+        return affectRowCount;
+    }
+
     public List getList(){
         List<AzdDo> list = azdMapper.list();
         return list;
