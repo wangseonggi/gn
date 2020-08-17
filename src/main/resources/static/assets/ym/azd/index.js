@@ -10,6 +10,7 @@ var azd = (function () {
                 type : 2,
                 content : ['/yw/azd/add','no'],
                 area: ['470px','420px'],
+                offset: '15%',
                 end : function(){
                     location.reload();
                 }
@@ -28,9 +29,7 @@ var azd = (function () {
                 var column = 4;  // 每行显示四列
                 var rowNum = Math.ceil(res.length / column); // 共有几行
                 var yu = res.length % column;  // 取余
-
                 var html = '';
-                debugger;
                 for(var i = 0; i < rowNum - 1; i++) {
                     var rowHtml = "<div class='row'>";
                     for(var j = (i * column); j < i * column + column; j++) {
@@ -92,11 +91,9 @@ var azd = (function () {
             }
             else {
                 // todo 处理无数据的情况
-
             }
         },
         error: function (res) {
-
         }
     });
     return {

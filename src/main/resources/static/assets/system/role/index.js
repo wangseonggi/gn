@@ -46,9 +46,9 @@ var role = (function () {
                     layer.open({
                         title: '新增角色',
                         type: 2,
-
-                        area: ['622px', '261px'], //宽高
+                        area: ['470px', '220px'], //宽高
                         content: '/xt/role/add',
+                        offset: '15%' ,
                         end: function () {
                             parent.layui.table.reload('familyListTable');
                         }
@@ -100,9 +100,9 @@ var role = (function () {
                 layer.open({
                     title: '授权',
                     type: 2,
-
-                    area: ['40%', '60%'], //宽高
+                    area: ['470px', '556px'], //宽高
                     content: '/xt/role/grant?id=' + data.id,
+                    offset: '10%',
                     success : function(layero, index) {
                     }
                 });

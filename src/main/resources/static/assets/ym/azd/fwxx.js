@@ -42,9 +42,9 @@ var fwxx = (function () {
                     layer.open({
                         title: '新增房屋信息',
                         type: 2,
-
                         area: ['622px', '261px'], //宽高
                         content: '/yw/azd/addFwxx',
+                        offset: '15%',
                         success : function(layero, index) {
                             var iframe = window['layui-layer-iframe' + index];
                             // todo 传入adi
@@ -138,9 +138,9 @@ var fwxx = (function () {
                 layer.open({
                     title: '关联住户',
                     type: 2,
-
-                    area: ['50%', '40%'], //宽高
+                    area: ['752px', '247px'], //宽高
                     content: '/yw/azd/glzh',
+                    offset: '15%',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
                         iframe.setBaseId(data.id);
@@ -154,9 +154,9 @@ var fwxx = (function () {
                 layer.open({
                     title: '编辑房屋信息',
                     type: 2,
-
                     area: ['622px', '261px'], //宽高
                     content: '/yw/azd/addFwxx',
+                    offset: '15%',
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
                         iframe.setBaseId(data.id);

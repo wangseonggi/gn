@@ -69,9 +69,10 @@ var income = (function () {
                 layer.open({
                     title: '选择登记表所属年份',
                     type: 1,
-                    area: ['600px', '200px'], //根据自己要求调整
+                    area: ['417px', '160px'], //根据自己要求调整
                     btn: ['确认', '取消'],
                     content: $('#showcf'),
+                    offset: '18%',
                     success: function () {
                         laydate.render({
                             elem : "#selectYear",
@@ -88,14 +89,10 @@ var income = (function () {
                             alert('请选择年份');
                         }
                         else {
-                            // todo
-                            // 如果该年度没有记录，可以加一个提示
+                            // todo 如果该年度没有记录，可以加一个提示
                             window.location.href = "/yw/sr/add?fid=" + obj.data.id + "&year=" + year;
                         }
-
-                        // layer.close(index);
                     }
-
                 });
             });
         });

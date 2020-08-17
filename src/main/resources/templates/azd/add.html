@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml" >
+<head>
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}" media="all">
+    <script th:src="@{/assets/js/jquery-1.11.3.min.js}"></script>
+    <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
+    <script th:src="@{/assets/ym/azd/add.js}"></script>
+</head>
+<style>
+    input::-webkit-input-placeholder{
+        color:#D6D0CA;
+    }
+    input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+        color:#D6D0CA;
+    }
+    input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+        color:#D6D0CA;
+    }
+    input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+        color:#D6D0CA;
+    }
+</style>
+<body>
+<form lay-filter="azdAdd">
+    <div class="layui-layer-content" >
+        <div class="layui-form" style="padding: 20px 0 0 0">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="mc" layer placeholder="请输入安置点详细名称" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">简称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="jc" placeholder="请输入安置点简称" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">地址</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="dz" placeholder="请输入安置点地址" autocomplete="off" class="layui-input"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图片</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="img" placeholder="请上传图片" autocomplete="off" class="layui-input"/>
+                </div>
+                <div class="layui-input-inline layui-btn-container" style="width: auto">
+                    <button style="float: right;" type="button" class="layui-btn" id="upImg">选择</button>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <div class="layui-input-inline">
+                    <input type="button" lay-submit value="确认" lay-filter="azdAdd" class="layui-btn"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

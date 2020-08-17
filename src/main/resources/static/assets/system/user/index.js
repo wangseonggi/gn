@@ -48,9 +48,9 @@ var family = (function () {
                     layer.open({
                         title: '新增用户',
                         type: 2,
-
-                        area: ['622px', '461px'], //宽高
+                        area: ['508px', '360px'], //宽高
                         content: '/xt/user/add',
+                        offset: ['15%'],
                         end: function () {
                             parent.layui.table.reload('familyListTable');
                         }
@@ -97,8 +97,9 @@ var family = (function () {
                 layer.open({
                     title: '编辑管理员信息',
                     type: 2,
-                    area: ['622px', '461px'], //宽高
+                    area: ['508px', '360px'], //宽高
                     content: '/xt/user/add',
+                    offset: ['15%'],
                     success : function(layero, index) {
                         var iframe = window['layui-layer-iframe' + index];
                         iframe.setBaseId(data.id);
@@ -112,9 +113,9 @@ var family = (function () {
                 layer.open({
                     title: '角色',
                     type: 2,
-
-                    area: ['40%', '50%'], //宽高
+                    area: ['562px', '235px'], //宽高
                     content: '/xt/user/setRole?id=' + data.id,
+                    offset: '15%',
                     success : function(layero, index) {
                     },
                     end: function () {

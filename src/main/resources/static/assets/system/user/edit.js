@@ -1,7 +1,7 @@
 $(document).ready(function () {
     edit.onload();
 });
-let edit = (function () {
+var edit = (function () {
 
     layui.use(['form', 'element',  'table', 'laydate'], function () {
         var element, laydate, form, table;
@@ -28,26 +28,31 @@ let edit = (function () {
             // 禁用用户名input
             $("#username").attr("disabled","disabled");
 
-            $.get('/xt/user/get', {id : id}, function (res) {
-                form.val('member11', {
-                    'username': res.data.username,
-                    'nc': res.data.nc,
-                    'dh': res.data.dh,
-                    'dzyx': res.data.dzyx,
-                    'zhyxq': res.data.zhyxq,
-                    'mmyxq': res.data.mmyxq,
-                    'zt': res.data.zt
-                });
-                form.render();
+            $.ajax({
+                url:'/xt/user/get',
+                method: 'get',
+                async : false,
+                data: {id : id},
+                contentType: "application/json",
+                success: function (res) {
+                    form.val('member11', {
+                        'username': res.data.username,
+                        'nc': res.data.nc,
+                        'dh': res.data.dh,
+                        'dzyx': res.data.dzyx,
+                        'zhyxq': res.data.zhyxq,
+                        'mmyxq': res.data.mmyxq,
+                        'zt': res.data.zt
+                    });
+                    form.render();
+                }
             });
         }
 
         /* ***** 表单提交开始 **** */
         form.on('submit(member)', function (data) {
-
             var password = $.trim($("#password").val());
             var opassword = $.trim($("#opassword").val());
-
             if(password !== opassword) {
                 layer.msg("两次输入的密码不一致。", function() {
                     $("#password").val();
@@ -55,7 +60,6 @@ let edit = (function () {
                 });
                 return;
             }
-
             $.ajax({
                 url: '/xt/user/add',
                 method: 'post',
