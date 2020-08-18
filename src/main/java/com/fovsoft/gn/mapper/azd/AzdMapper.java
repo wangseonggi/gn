@@ -17,12 +17,21 @@ public interface AzdMapper {
     @Select("SELECT id, mc, jc, dz, lrrq, img FROM ym_azd")
     public List<AzdDo> list();
 
+
+    @Select("SELECT mc, jc, dz, img FROM ym_azd WHERE id = #{id}")
+    public AzdDo getAzd(@Param("id")Integer id);
+
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     @Insert("INSERT INTO ym_azd (mc,jc,lrrq,img, dz)  " +
             "VALUES (#{mc},#{jc},#{lrrq},#{img},#{dz})")
     public int addAzd(AzdDo azdDo);
 
-    public int edit();
+
+    @Update("UPDATE ym_azd SET mc = #{mc}, jc = #{jc}, dz = #{dz}, img=#{img}, lrrq=#{lrrq} WHERE id = #{id} ")
+    public int updateAzd(AzdDo azdDo);
+
+    @Delete("DELETE FROM ym_azd WHERE id = #{id}")
+    public int delAzd(@Param("id")Integer id);
 
     // 详情相关
     @Select({"<script>",

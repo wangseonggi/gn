@@ -25,8 +25,23 @@ public class AzdSerivce {
     @Resource
     private AzdMapper azdMapper;
 
+    public AzdDo getAzd(Integer id) {
+        AzdDo azdDo = azdMapper.getAzd(id);
+        return azdDo;
+    }
+
     public Integer addAzd(AzdDo azdDo) {
         Integer affectRowCount = azdMapper.addAzd(azdDo);
+        return affectRowCount;
+    }
+
+    public Integer updateAzd(AzdDo azdDo) {
+        Integer affectRowCount = azdMapper.updateAzd(azdDo);
+        return affectRowCount;
+    }
+
+    public Integer delAzd(Integer id) {
+        Integer affectRowCount = azdMapper.delAzd(id);
         return affectRowCount;
     }
 

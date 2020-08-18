@@ -7,6 +7,18 @@ var add = (function () {
         var form = layui.form;
         var upload = layui.upload;
 
+        //
+        var id = $("#id").val();
+        if(id) {
+            $.get('/yw/azd/getAzd',{id : id}, function(res) {
+                $('#mc').val(res.data.mc);
+                $('#jc').val(res.data.jc);
+                $('#dz').val(res.data.dz);
+                $('#img').val(res.data.img);
+                form.render();
+            })
+        }
+
         var uploadInst = upload.render({
             elem: '#upImg' //绑定元素
             , url: '/yw/azd/upload'
@@ -40,24 +52,9 @@ var add = (function () {
                     }
                 }
             });
-
-            console.log(data.field);
             return false;
         });
     });
-
-    // 获取请求参数
-    function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) {
-                return pair[1];
-            }
-        }
-        return (false);
-    }
 
     return {
         onload: function () {

@@ -13,9 +13,6 @@
 <body class="no-skin">
 <div th:replace="common/common_headline :: headline"></div>
 
-<form id="subform" action="/logout" method="post">
-    <!--<input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }"/>-->
-</form>
 <div class="main-container ace-save-state" id="main-container">
     <script type="text/javascript">
         try {
@@ -95,7 +92,46 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- PAGE CONTENT BEGINS -->
-
+                            <style>
+                                .ss {
+                                    display: block;
+                                    position: relative;
+                                    overflow: hidden
+                                }
+                                .ss:hover .tools-top{
+                                    top : 0px;
+                                }
+                                .tools {
+                                    top:0;
+                                    position: absolute;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    background-color: rgba(0,0,0,.55);
+                                    -webkit-transition: all .2s ease;
+                                    -o-transition: all .2s ease;
+                                    transition: all .2s ease;
+                                }
+                                .tools-top {
+                                    width: auto;
+                                    height: 28px;
+                                    left: 0;
+                                    right: 0;
+                                    top: -30px;
+                                    bottom: auto;
+                                    padding: 6px;
+                                }
+                                .tools > a {
+                                    color: #FFF;
+                                    padding: 0 4px;
+                                }
+                                .fa {
+                                    display: inline-block;
+                                    font: normal normal normal 14px/1 FontAwesome;
+                                    font-size: 18px;
+                                    text-rendering: auto;
+                                    -webkit-font-smoothing: antialiased;
+                                }
+                            </style>
                             <div class="hr dotted"></div>
 
                             <div>
@@ -103,158 +139,29 @@
                                     <div class="col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12" id="items">
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hide">
-                                <div class="row search-page" id="search-page-2">
-                                    <div class="col-xs-12 col-md-10 col-md-offset-1">
-                                        <div class="search-area well no-margin-bottom">
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" name="search"
-                                                                   value="Hello World"/>
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary btn-sm">
-                                                                    <i class="ace-icon fa fa-search icon-on-right bigger-110"></i>
-                                                                </button>
+                                           <!--     <div class='row'>
+                                                    <div class='col-xs-6 col-sm-4 col-md-3 col-lg-2'>
+                                                        <div class='thumbnail search-thumbnail ss'>
+                                                            <img class="media-object" style="height: 149px" src="/assets/images/gallery/image-5.jpg" />
+                                                            <div class="caption"><div class="clearfix"><span class="pull-right label label-grey info-label">钦南区</span></div></div>
+                                                            <h3>123123</h3>
+                                                            <div class="tools tools-top">
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-pencil"></i>
+                                                                </a>
+                                                                <a href="#">
+                                                                    <i class="ace-icon fa fa-times red"></i>
+                                                                </a>
                                                             </div>
                                                         </div>
+
                                                     </div>
-                                                </div>
-                                            </form>
-
-                                            <div class="space space-6"></div>
-                                            <span class="grey">About 263,000,000 results (0.74 seconds)</span>
-                                        </div>
-
-                                        <div class="search-results">
-                                            <div class="search-result">
-                                                <h5 class="search-title">
-                                                    <a href="#">&quot;Hello, World!&quot; - Wikipedia, the free
-                                                        encyclopedia</a>
-                                                </h5>
-                                                <a class="text-success" href="#">en.wikipedia.org</a>
-
-                                                <p class="search-content">
-                                                    A &quot;
-                                                    <b>Hello</b>
-                                                    ,
-                                                    <b>World</b>
-                                                    !&quot; program is a computer program that outputs &quot;
-                                                    <b>Hello</b>
-                                                    ,
-                                                    <b>World</b>!&quot; (or some variant thereof) on a display device.
-                                                    Because it is typically one of the ...
-                                                </p>
+                                                </div>-->
                                             </div>
-
-                                            <div class="search-result">
-                                                <h5 class="search-title">
-                                                    <a href="#">Hello World! - GNU Project</a>
-                                                </h5>
-                                                <a class="text-success" href="#">www.gnu.org</a>
-
-                                                <p class="search-content">
-                                                    <b>Hello World</b>
-                                                    ! How the way people code “
-                                                    <b>Hello World</b>” varies depending on their age and job ...
-                                                </p>
-                                            </div>
-
-                                            <div class="search-result">
-                                                <h5 class="search-title">
-                                                    <a href="#">HelloWorld.java - Introduction to Programming in
-                                                        Java</a>
-                                                </h5>
-                                                <a class="text-success" href="#">introcs.cs.princeton.edu</a>
-
-                                                <p class="search-content">
-                                                    <b>HelloWorld</b>
-                                                    code in Java. ...
-                                                    <b>HelloWorld</b>
-                                                    .java. Below is the syntax highlighted version of
-                                                    <b>HelloWorld</b>.java from ...
-                                                </p>
-                                            </div>
-
-                                            <div class="search-result">
-                                                <h5 class="search-title">
-                                                    <a href="#">Hello, World! - Learn Python - Free Interactive Python
-                                                        Tutorial</a>
-                                                </h5>
-                                                <a class="text-success" href="#">www.learnpython.org</a>
-
-                                                <p class="search-content">
-                                                    <b>Hello</b>
-                                                    ,
-                                                    <b>World</b>! Python is a very simple language, and has a very
-                                                    straightforward syntax. It encourages programmers to program without
-                                                    boilerplate (prepared) ...
-                                                </p>
-                                            </div>
-
-                                            <div class="search-result">
-                                                <h5 class="search-title">
-                                                    <a href="#">Hello World · GitHub Guides</a>
-                                                </h5>
-                                                <a class="text-success" href="#">guides.github.com</a>
-
-                                                <p class="search-content">
-                                                    The
-                                                    <b>Hello World</b>
-                                                    project is a time-honored tradition in computer programming. It is a
-                                                    simple exercise that gets you started when learning something new.
-                                                    Let's get ...
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <div class="search-area well well-sm text-center">
-                                            <ul class="pagination">
-                                                <li class="disabled">
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-angle-double-left"></i>
-                                                    </a>
-                                                </li>
-
-                                                <li class="active">
-                                                    <a href="#">1</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">2</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">3</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">4</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">5</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#">
-                                                        <i class="ace-icon fa fa-angle-double-right"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <!-- PAGE CONTENT ENDS -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
@@ -290,28 +197,8 @@
 <!-- ace scripts -->
 <script th:src="@{/assets/js/ace-elements.min.js}"></script>
 <script th:src="@{/assets/js/ace.min.js}"></script>
-
 <!-- inline scripts related to this page -->
-
 <script th:src="@{/assets/layui/dist/layui.js}" charset="utf-8"></script>
-
-<script type="text/html" id="toolbarDemo">
-    <div class="layui-btn-container">
-        <button sec:authorize-url="/jt/add" class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增</button>
-        <button sec:authorize-url="/jt/delAll" class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除
-        </button>
-        <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>-->
-        <!--<button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>-->
-        <!--<button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>-->
-
-        <input sec:authorize-url="/yw/azd/getFwxxList" id="search_name" type="text" style="height: 33px;margin: 0 0 10px 120px;" class="layui-input-inline"
-               placeholder="请输入姓名">
-        <input sec:authorize-url="/yw/azd/getFwxxList" id="search_sfzhm" type="text" style="height: 33px;margin: 0 0 10px 10px;" class="layui-input-inline"
-               placeholder="请输入身份找号码">
-        <button sec:authorize-url="/yw/azd/getFwxxList" id="search_btn" style="margin-left: 20px" class="layui-btn layui-btn-sm" lay-event="search">搜索</button>
-    </div>
-</script>
-
 <script th:src="@{/assets/ym/azd/index.js}"></script>
 </body>
 </html>

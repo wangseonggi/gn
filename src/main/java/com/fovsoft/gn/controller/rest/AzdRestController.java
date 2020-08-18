@@ -128,15 +128,54 @@ public class AzdRestController {
     }
 
     /**
-     *
+     * 根据id查询安置点
+     * @return
+     */
+    @RequestMapping(value = "/getAzd", produces = "application/json;charset=UTF-8")
+    public JsonResult addAzd(@RequestParam Integer id) {
+        AzdDo azdDo = azdSerivce.getAzd(id);
+        return new JsonResult(azdDo);
+    }
+
+    /**
+     * 新增/编辑安置点
      * @return
      */
     @RequestMapping(value = "/addAzd", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addAzd(@RequestBody AzdDo azdDo) {
+        Integer count;
         azdDo.setLrrq(new Date());
-        Integer count = azdSerivce.addAzd(azdDo);
+        if(azdDo.getId() > 0) {
+            count = azdSerivce.updateAzd(azdDo);
+        }
+        else {
+            count = azdSerivce.addAzd(azdDo);
+        }
         return new JsonResult(count);
     }
+
+    /**
+     * 删除安置点
+     *
+     * 删除前先判断是否存在住房信息，存在则禁止删除并提示
+     *
+     * @return
+     */
+    @RequestMapping(value = "/delAzd", produces = "application/json;charset=UTF-8")
+    public JsonResult delAzd(@RequestParam Integer id) {
+
+        PageInfo pageInfo = azdSerivce.getFwxxList(0, 10, id, null, null, null, null, null);
+        Integer size = pageInfo.getSize();
+        if(size != 0) {
+            return new JsonResult(-1, "请先删除该安置点下的住房信息");
+        }
+        else {
+            Integer affectNum = azdSerivce.delAzd(id);
+            return new JsonResult(affectNum);
+        }
+
+    }
+
 
     /**
      * 上传安置点主题图片

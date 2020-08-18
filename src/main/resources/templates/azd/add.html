@@ -24,28 +24,29 @@
 <form lay-filter="azdAdd">
     <div class="layui-layer-content" >
         <div class="layui-form" style="padding: 20px 0 0 0">
+            <input type="hidden" id="id" name="id" th:value="${id}"/>
             <div class="layui-form-item">
                 <label class="layui-form-label">名称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="mc" layer placeholder="请输入安置点详细名称" autocomplete="off" class="layui-input"/>
+                    <input type="text" id="mc" name="mc" lay-verify="required" placeholder="请输入安置点详细名称" autocomplete="off" class="layui-input"/>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">简称</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="jc" placeholder="请输入安置点简称" autocomplete="off" class="layui-input"/>
+                    <input type="text" id="jc" name="jc" lay-verify="required" placeholder="请输入安置点简称" autocomplete="off" class="layui-input"/>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">地址</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="dz" placeholder="请输入安置点地址" autocomplete="off" class="layui-input"/>
+                    <input type="text" id="dz" name="dz" placeholder="请输入安置点地址" autocomplete="off" class="layui-input"/>
                 </div>
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">图片</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="img" placeholder="请上传图片" autocomplete="off" class="layui-input"/>
+                    <input type="text" id="img" name="img" placeholder="请上传图片" autocomplete="off" class="layui-input"/>
                 </div>
                 <div class="layui-input-inline layui-btn-container" style="width: auto">
                     <button style="float: right;" type="button" class="layui-btn" id="upImg">选择</button>
