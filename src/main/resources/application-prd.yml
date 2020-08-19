@@ -1,5 +1,5 @@
 webappfile:
-  uploadPath: /opt/jar/
+  uploadPath: /opt/jar/images/qn
 spring:
   datasource:
     username: ym_new
