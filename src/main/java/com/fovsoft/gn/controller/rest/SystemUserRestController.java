@@ -36,9 +36,9 @@ public class SystemUserRestController {
     }
 
     @RequestMapping("/del")
-    public int del(Integer id) {
-
-        return 0;
+    public JsonResult del(Integer id) {
+        int result = systemUserService.del(id);
+        return new JsonResult(result);
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -57,9 +57,15 @@ public class SystemUserRestController {
         }
         int affectRow = 0;
         if(systemUserHolders.getId() != 0) {
+            if(systemUserHolders.getAid() == 1) {
+                systemUserHolders.setZt(1);
+            }
             systemUserService.update(systemUserHolders);
         }
         else {
+            if(systemUserHolders.getZt() == null) {
+                systemUserHolders.setZt(0);
+            }
             systemUserService.add(systemUserHolders);
         }
         return new JsonResult(affectRow);

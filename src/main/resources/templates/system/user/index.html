@@ -140,10 +140,13 @@
 </script>
 
 <!--<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="detail">查看</a> 放上来-->
-<script type="text/html" id="barDemo">
+<script type="text/html" id="toolBar">
     <a sec:authorize-url="/xt/user/setRole" class="layui-btn layui-btn-normal layui-btn-xs" lay-event="setRole">角色</a>
     <a sec:authorize-url="/xt/user/add" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+
+    {{# if(d.username !='admin') { }}
     <a sec:authorize-url="/xt/user/del" class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    {{# } }}
 </script>
 
 <script th:src="@{/assets/system/user/index.js}"></script>

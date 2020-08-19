@@ -1,13 +1,11 @@
 $(document).ready(function () {
-    edit.onload();
+    add.onload();
 });
-var edit = (function () {
+var add = (function () {
 
     layui.use(['form', 'element',  'table', 'laydate'], function () {
-        var element, laydate, form, table;
-        element = layui.element;
+        var laydate, form;
         form = layui.form;
-        table = layui.table;
         laydate = layui.laydate;
 
         var id = $("#id").val();
@@ -60,6 +58,10 @@ var edit = (function () {
                 });
                 return;
             }
+            if(!data.field.zt) {    // 如果选禁用，则zt不存在
+                data.field.zt = 0;
+            }
+
             $.ajax({
                 url: '/xt/user/add',
                 method: 'post',

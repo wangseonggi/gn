@@ -34,7 +34,11 @@ public interface SystemUserMapper {
             " (#{username},#{password},#{nc},#{dh},#{dzyx},#{zhyxq},#{mmyxq},#{zt})")
     public int add(SystemUserHolder systemUserHolder);
 
+    @Delete("DELETE FROM sys_user WHERE id = #{id}")
     public int del(int id);
+
+    @Delete("DELETE FROM sys_user_role WHERE userid = #{id}")
+    public int delUserRole(int id);
 
     @Select("SELECT a.id,mc,sm,b.`userid` " +
             "FROM (" +

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -49,5 +50,12 @@ public class SystemUserService {
             result = systemUserMapper.removeRole(roleid,userid);
         }
         return result;
+    }
+
+    @Transactional
+    public int del(int id) {
+        int a = systemUserMapper.del(id);
+        int b = systemUserMapper.delUserRole(id);
+        return a > 0 && b > 0 ? 1 : 0;
     }
 }

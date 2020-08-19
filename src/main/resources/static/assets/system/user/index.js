@@ -24,7 +24,7 @@ var family = (function () {
                 , {field: 'zhyxq', title: '账户有效期'}
                 , {field: 'mmyxq', title: '密码有效期'}
                 , {field: 'zt', title: '状态', width: 80}
-                , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 200}
+                , {title: '操作', toolbar: '#toolBar', fixed: 'right', width: 200}
             ]],
             done: function (res, curr, count) {
                 $("[data-field='zt']").children().each(function () {
@@ -35,6 +35,7 @@ var family = (function () {
                         $(this).html("<span style='color: red'>禁用</span>")
                     }
                 });
+
             },
             skin: 'row'
         });
@@ -98,11 +99,11 @@ var family = (function () {
                     title: '编辑管理员信息',
                     type: 2,
                     area: ['508px', '360px'], //宽高
-                    content: '/xt/user/add',
+                    content: '/xt/user/add?id=' + data.id,
                     offset: ['15%'],
                     success : function(layero, index) {
-                        var iframe = window['layui-layer-iframe' + index];
-                        iframe.setBaseId(data.id);
+                        // var iframe = window['layui-layer-iframe' + index];
+                        // iframe.setBaseId(data.id);
                     },
                     end: function () {
                         parent.layui.table.reload('familyListTable');
