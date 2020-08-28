@@ -2,7 +2,6 @@ package com.fovsoft.gn.mapper.azd;
 
 import com.fovsoft.gn.entity.AzdDo;
 import com.fovsoft.gn.entity.AzdFwxxDo;
-import com.fovsoft.gn.entity.BfrDo;
 import com.fovsoft.gn.entity.holder.AzdFwxxHzHolder;
 import com.fovsoft.gn.entity.holder.BfgxXXHolder;
 import org.apache.ibatis.annotations.*;
@@ -15,23 +14,23 @@ public interface AzdMapper {
     // 安置点相关
 
     @Select("SELECT id, mc, jc, dz, lrrq, img FROM ym_azd")
-    public List<AzdDo> list();
+    List<AzdDo> list();
 
 
     @Select("SELECT mc, jc, dz, img FROM ym_azd WHERE id = #{id}")
-    public AzdDo getAzd(@Param("id")Integer id);
+    AzdDo getAzd(@Param("id")Integer id);
 
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     @Insert("INSERT INTO ym_azd (mc,jc,lrrq,img, dz)  " +
             "VALUES (#{mc},#{jc},#{lrrq},#{img},#{dz})")
-    public int addAzd(AzdDo azdDo);
+    Integer addAzd(AzdDo azdDo);
 
 
     @Update("UPDATE ym_azd SET mc = #{mc}, jc = #{jc}, dz = #{dz}, img=#{img}, lrrq=#{lrrq} WHERE id = #{id} ")
-    public int updateAzd(AzdDo azdDo);
+    Integer updateAzd(AzdDo azdDo);
 
     @Delete("DELETE FROM ym_azd WHERE id = #{id}")
-    public int delAzd(@Param("id")Integer id);
+    Integer delAzd(@Param("id")Integer id);
 
     // 详情相关
     @Select({"<script>",
@@ -49,18 +48,18 @@ public interface AzdMapper {
             " LEFT JOIN ym_azd_fwxx_rz m ON t.id = m.fwid",
             " LEFT JOIN (SELECT a.id,b.xm,b.zjhm FROM ym_jtjbqk_jtjbxx a LEFT JOIN ym_jtjbqk_jtcy b ON a.id = b.fid WHERE b.yhzgx = '02') tt ON m.fid = tt.id ORDER BY t.id DESC",
             "</script>"})
-    public List<AzdFwxxHzHolder> fwxxList(@Param("aid")int aid, @Param("ld")String ld , @Param("dy")String dy , @Param("fh") String fh);
+    List<AzdFwxxHzHolder> fwxxList(@Param("aid")Integer aid, @Param("ld")String ld , @Param("dy")String dy , @Param("fh") String fh);
 
     @Select("SELECT aid, ld, dy, fh, mc FROM ym_azd_fwxx WHERE id = #{id}")
-    public AzdFwxxDo fwxxGet(@Param("id")int id);
+    AzdFwxxDo fwxxGet(@Param("id")Integer id);
 
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     @Insert("INSERT INTO ym_azd_fwxx (aid,ld,dy,fh,mc)" +
             " VALUES (#{aid},#{ld},#{dy},#{fh},#{mc})")
-    public int fwxxAdd(AzdFwxxDo azdFwxxDo);
+    Integer fwxxAdd(AzdFwxxDo azdFwxxDo);
 
     @Update("UPDATE ym_azd_fwxx SET ld = #{ld}, dy = #{dy}, fh = #{fh}, mc=#{mc} WHERE id = #{id}")
-    public int fwxxUpdate(AzdFwxxDo azdFwxxDo);
+    Integer fwxxUpdate(AzdFwxxDo azdFwxxDo);
 
     @Select("SELECT aa.*,bb.num FROM ( " +
             "SELECT t.id,t.pkhsx, d.`xm`,d.`zjhm` " +
@@ -78,27 +77,27 @@ public interface AzdMapper {
             " AND d.`fid` = c.id " +
             ") bb " +
             "ON aa.id = bb.id ")
-    public BfgxXXHolder getGLZHXX(int id);
+    BfgxXXHolder getGLZHXX(Integer id);
 
 
     @Insert("INSERT INTO ym_azd_fwxx_rz (fwid, fid) VALUES (#{fwid},#{fid})")
-    public int rz(@Param("fwid")int fwid, @Param("fid")int fid);
+    Integer rz(@Param("fwid")Integer fwid, @Param("fid")Integer fid);
 
     @Select("SELECT id from ym_azd_fwxx_rz WHERE fwid = #{fwid}")
-    public int getRz(@Param("fwid")int fwid);
+    Integer getRz(@Param("fwid")Integer fwid);
 
     @Update("UPDATE ym_azd_fwxx_rz set fwid = #{fwid}, fid=#{fid} WHERE id = #{id}")
-    public int updateRz(@Param("id")int id, @Param("fwid")int fwid, @Param("fid")int fid);
+    Integer updateRz(@Param("id")Integer id, @Param("fwid")Integer fwid, @Param("fid")Integer fid);
 
     @Delete("DELETE FROM ym_azd_fwxx WHERE id = #{id}")
-    public int del(@Param("id")int id);
+    Integer del(@Param("id")Integer id);
 
     @Delete("DELETE FROM ym_azd_fwxx_rz WHERE fwid = #{fwid}")
-    public int delRz(@Param("fwid")int fwid);
+    Integer delRz(@Param("fwid")Integer fwid);
 
     @Delete("DELETE FROM ym_azd_fwxx WHERE id IN (#{id})")
-    public int delAll(@Param("id")String id);
+    Integer delAll(@Param("id")String id);
 
     @Delete("DELETE FROM ym_azd_fwxx_rz WHERE fwid IN (#{fwid})")
-    public int delAllRz(@Param("fwid")String fwid);
+    Integer delAllRz(@Param("fwid")String fwid);
 }

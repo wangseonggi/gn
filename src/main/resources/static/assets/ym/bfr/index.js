@@ -65,7 +65,7 @@ var bfr = (function () {
                         content: '/yw/bfr/add',
                         offset: '15%',
                         end: function () {
-                            parent.layui.table.reload('familyListTable');
+                            parent.layui.table.reload('sss');
                         }
                     });
                     break;
@@ -91,13 +91,10 @@ var bfr = (function () {
                             method: "POST",
                             contentType: 'application/json',
                             dataType: 'JSON',
-                            // beforeSend: function (xhr) {
-                            //     xhr.setRequestHeader($("meta[name='_csrf_header']").attr("content"), $("meta[name='_csrf']").attr("content"));
-                            // },
                             success: function (res) {
                                 if (res.code == 0) {
                                     layer.msg("✔ 删除成功!", {shift: -1, time: 2000}, function () {
-                                        parent.layui.table.reload('familyListTable');
+                                        parent.layui.table.reload('sss');
                                     });
                                 }
                                 else {
@@ -145,7 +142,7 @@ var bfr = (function () {
                     success : function(layero, index) {
                     },
                     end: function () {
-                        parent.layui.table.reload('id','familyListTable');
+                        parent.layui.table.reload('sss');
                     }
                 });
 
@@ -160,7 +157,7 @@ var bfr = (function () {
                     success : function(layero, index) {
                     },
                     end: function () {
-                        parent.layui.table.reload('id','familyListTable');
+                        parent.layui.table.reload('sss');
                     }
                 });
             }
