@@ -1,4 +1,4 @@
-package com.fovsoft.config;
+package com.fovsoft.gn.config;
 
 import com.github.pagehelper.PageHelper;
 import org.springframework.context.annotation.Bean;

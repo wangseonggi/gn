@@ -1,4 +1,4 @@
-package com.fovsoft.config;
+package com.fovsoft.gn.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
