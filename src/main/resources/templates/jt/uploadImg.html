@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" th:href="@{/assets/layui/dist/css/layui.css}"
+          media="all">
+    <script src="/assets/layui/dist/layui.all.js"></script>
+    <title></title>
+</head>
+<body class="no-skin">
+<style>
+    .layui-upload .mark_button {
+        text-align: center;
+    }
+    .upload-img {
+        position: relative;
+        display: inline-block;
+        width: 150px;
+        height: 100px;
+        margin: 0 10px 10px 0;
+        transition: box-shadow .25s;
+        border-radius: 4px;
+        box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+        transition: 0.25s;
+        -webkit-transition: 0.25s;
+        margin-top: 15px;
+    }
+
+    .layui-upload-img {
+        width: 150px;
+        height: 100px;
+        border-radius: 4px;
+    }
+
+    .upload-img:hover {
+        cursor: pointer;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 1);
+        transform: scale(1.2);
+        -webkit-transform: scale(1.05);
+    }
+
+    .upload-img input {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+
+    .upload-img button {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        border-radius: 6px;
+    }
+
+</style>
+
+<div class="layui-upload ">
+    <input type="hidden" id="fid" name="fid" th:value="${fid}"/>
+    <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+        预览：
+        <div class="layui-upload-list" id="imgs">
+        </div>
+    </blockquote>
+    <div class="mark_button" style="margin-bottom: 20px">
+        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius" style="margin-right: 15px" id="sele_imgs">选择图片</button>
+        <button type="button" class="layui-btn layui-btn-radius" id="upload_imgs" disabled>上传图片</button>
+    </div>
+</div>
+
+<script id="img_exists_template" type="text/html">
+    <div class="upload-img" id="{{ d.containerId1 }}">
+        <img src="{{ d.result }}" alt="{{ d.result }}" class="layui-upload-img" id="{{ d.imgId1 }}">
+        <input type="hidden" id="{{ d.index }}" value="{{ d.index }}">
+        <button id="{{ d.btnId1 }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+    </div>
+</script>
+<script id="img_template" type="text/html">
+    <div class="upload-img" filename="{{ d.index }}" id="{{ d.containerId }}">
+        <!--        <input type="checkbox" name="" lay-skin="primary">-->
+        <img src="{{ d.result }}" alt="{{ d.name }}" class="layui-upload-img" id="{{ d.imgId }}">
+        <button id="{{ d.btnId }}" class="layui-btn layui-btn-danger layui-btn-xs">删除</button>
+    </div>
+    </div>
+</script>
+<script th:src="@{/assets/ym/jt/uploadImg.js}"></script>
+</body>
+</html>

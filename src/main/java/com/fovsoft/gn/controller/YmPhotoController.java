@@ -1,7 +1,9 @@
 package com.fovsoft.gn.controller;
 
+import com.fovsoft.common.JsonResult;
 import com.fovsoft.gn.entity.JtcyDO;
 import com.fovsoft.gn.entity.YmPhotoDo;
+import com.fovsoft.gn.entity.YmYXZLDo;
 import com.fovsoft.gn.service.YmPhotoService;
 import com.fovsoft.gn.util.UUIDUtil;
 import com.github.pagehelper.PageHelper;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,10 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: by tpc
@@ -116,7 +116,7 @@ public class YmPhotoController {
             //文件写入路径
             String filePath = uploadPath + "/imgs/" + fid + "/" + fileName;
             writeFile = new File(filePath);
-            if(!writeFile.getParentFile().exists()){
+            if (!writeFile.getParentFile().exists()) {
                 writeFile.getParentFile().mkdirs();
             }
             file.transferTo(writeFile);
@@ -149,6 +149,45 @@ public class YmPhotoController {
         return map;
     }
 
+    /**
+     * 通用的上传接口
+     *
+     * @param file
+     * @param fid     家庭id
+     * @param type    所属业务
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/upload2")
+    @ResponseBody
+    public JsonResult commonUpload(MultipartFile file, Integer fid, String type, HttpServletRequest request) {
+        //获取上传的图片后缀格式名
+        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        //生产新的文件名
+        String fileName = UUIDUtil.getUUID() + suffix;
+        fileName = StringUtils.isEmpty(type) ?  fileName : type + "/" + fileName ;
+        fileName = StringUtils.isEmpty(fid) ?  fileName : fid + "/" + fileName ;
+        //写入数据库中的文件相对路径
+        String relativePath = "/imgs/" + fileName;
+        try{
+            File writeFile = new File(uploadPath + relativePath);
+            if (!writeFile.getParentFile().exists()) {
+                writeFile.getParentFile().mkdirs();
+            }
+            file.transferTo(writeFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new JsonResult(-1, e.getMessage());
+        }
 
+        YmYXZLDo ymYXZLDo = new YmYXZLDo();
+        ymYXZLDo.setFid(fid);
+        ymYXZLDo.setType(type);
+        ymYXZLDo.setUrl(relativePath);
+        ymYXZLDo.setLrrq(new Date());
+        // 写入数据库
+        int resultNum = ymPhotoService.add(ymYXZLDo);
 
+        return new JsonResult(resultNum);
+    }
 }

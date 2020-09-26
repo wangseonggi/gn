@@ -3,6 +3,7 @@ package com.fovsoft.gn.service;
 import com.fovsoft.gn.entity.*;
 import com.fovsoft.gn.entity.holder.JbxxHzHolder;
 import com.fovsoft.gn.mapper.jtjbqk.*;
+import com.fovsoft.gn.mapper.photo.YmPhotoMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -20,32 +21,19 @@ import java.util.List;
  */
 @Service
 public class JTJBQKSerivce {
-
     @Resource
     private JTJBXXMapper jtjbxxMapper;
-
     @Resource
     private JTCYMapper jtcyMapper;
-
-    /**
-     * 致贫原因
-     */
     @Resource
     private ZPYYMapper zpyyMapper;
-
     @Resource
     private SCSHTJMapper scshtjMapper;
-
-    /**
-     * 变更情况说明
-     */
     @Resource
     private BGQKSMMapper bgqksmMapper;
+    @Resource
+    private YmPhotoMapper ymPhotoMapper;
 
-    /**
-     *
-     * @return
-     */
     public PageInfo getList(Integer page, Integer limit, String name, String sfzhm) {
         PageHelper.startPage(page, limit);
 
@@ -56,11 +44,6 @@ public class JTJBQKSerivce {
         return new PageInfo(list);
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     */
     public int del(Integer id) {
         return jtjbxxMapper.delete(id);
     }
@@ -73,12 +56,6 @@ public class JTJBQKSerivce {
         return jtcyMapper.get(id);
     }
 
-    /**
-     * 新增或更新家庭基本信息表
-     *
-     * @param
-     * @return
-     */
     public int addOrUpdateFamilyBase(JtjbxxDO jtjbxxDO) {
         int id = 0;
         if(jtjbxxDO.getId() == 0) {
@@ -98,11 +75,6 @@ public class JTJBQKSerivce {
         return jtjbxxMapper.get(id);
     }
 
-    /**
-     *
-     *
-     * @return
-     */
     public int addOrUpdateFamilyBaseAddition(ZpyyDO zpyyDO) {
         int id = 0;
         if(zpyyDO.getId() == 0) {
@@ -116,8 +88,6 @@ public class JTJBQKSerivce {
         }
         return id;
     }
-
-
 
     public int addOrUpdateFamilyBaseCondition(ScshtjDO scshtjDO) {
         int id = 0;
@@ -192,5 +162,13 @@ public class JTJBQKSerivce {
     public BgqksmDO getBgqksm(Integer fid) {
         BgqksmDO bgqksmDO = bgqksmMapper.get(fid);
         return bgqksmDO;
+    }
+
+    public List<YmYXZLDo> getImgList(Integer fid, String type) {
+        return ymPhotoMapper.getImgList(fid, type);
+    }
+
+    public Integer delImg(Integer id) {
+        return ymPhotoMapper.delImg(id);
     }
 }

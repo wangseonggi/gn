@@ -151,8 +151,6 @@ var jt = (function () {
                 layer.open({
                     title: '编辑贫困户家庭基本信息',
                     type: 2,
-
-                    // skin: 'layui-layer-rim', //加上边框
                     area: ['100%', '100%'], //宽高
                     content: '/yw/jt/edit',
                     success : function(layero, index) {
@@ -162,6 +160,13 @@ var jt = (function () {
                     end: function () {
                         parent.layui.table.reload('indexTable');
                     }
+                });
+            } else if(obj.event === 'photo') {
+                layer.open({
+                    title: '图片',
+                    type: 2 ,
+                    area: ['100%', '100%'], //宽高
+                    content: '/yw/jt/photo?id=' + data.id + '&type=jt'
                 });
             }
         });

@@ -182,4 +182,21 @@ public class JtjbqkRestController {
         BgqksmDO bgqksmDO = service.getBgqksm(fid);
         return new JsonResult(bgqksmDO);
     }
+
+    @RequestMapping(value = "/getImgList", produces = "application/json;charset=UTF-8")
+    public JsonResult getImgList(Integer fid) {
+        List<YmYXZLDo> result = service.getImgList(fid, "jtjbqk");
+        return new JsonResult(result);
+    }
+
+    @RequestMapping(value = "/delImg", produces = "application/json;charset=UTF-8")
+    public JsonResult delImg(Integer id) {
+        int affectNumm = service.delImg(id);
+        if(affectNumm > 0) {
+            return new JsonResult(0, "");
+        } else {
+            return new JsonResult(1, "");
+        }
+
+    }
 }

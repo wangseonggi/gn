@@ -46,7 +46,7 @@ layui.use(['upload', 'laytpl', 'form'], function () {
             shadeClose: true,
             area:['90%','90%'],
             //area: [bigW + 'px', bigH + 'px'], //宽高
-            content:"<img src="+result+" />"
+            content: "<div style='text-align: center;'><img src=" + result + " /></div>"
             //content: "<img width='"+bigW+"' height='"+bigH+"' src=" + result + " />"
         });
 
@@ -176,7 +176,7 @@ layui.use(['upload', 'laytpl', 'form'], function () {
                             shadeClose: true,
                             area:['90%','90%'],
                             //area: [bigW + 'px', bigH + 'px'], //宽高
-                            content:"<img src="+result+" />"
+                            content: "<div style='text-align: center;'><img src=" + result + " /></div>"
                             //content: "<img width='"+bigW+"' height='"+bigH+"' src=" + result + " />"
                         });
 
@@ -243,7 +243,6 @@ layui.use(['upload', 'laytpl', 'form'], function () {
                 });
 
             }
-
 
 
 

@@ -143,7 +143,6 @@ var azd = (function () {
                 });
                 layer.close(layerid);
             }, function(){
-                alert("取消删除");
             });
         }
     };

@@ -2,6 +2,7 @@ package com.fovsoft.gn.service;
 
 import com.fovsoft.gn.entity.JtcyDO;
 import com.fovsoft.gn.entity.YmPhotoDo;
+import com.fovsoft.gn.entity.YmYXZLDo;
 import com.fovsoft.gn.mapper.jtjbqk.JTCYMapper;
 import com.fovsoft.gn.mapper.photo.YmPhotoMapper;
 import org.springframework.stereotype.Service;
@@ -24,31 +25,31 @@ public class YmPhotoService {
     @Resource
     private YmPhotoMapper ymPhotoMapper;
 
-
-    public List<JtcyDO> getHouseholder(String name,String sfzhm){
-        return jtcyMapper.getHouseholder(name,sfzhm);
+    public List<JtcyDO> getHouseholder(String name, String sfzhm) {
+        return jtcyMapper.getHouseholder(name, sfzhm);
     }
 
-    public List<YmPhotoDo> getHouseholderPhoto(Integer familyId){
+    public List<YmPhotoDo> getHouseholderPhoto(Integer familyId) {
         return ymPhotoMapper.getHouseholderPhoto(familyId);
     }
 
-
-    public int getHouseholderPhotoCount(Integer familyId){
+    public int getHouseholderPhotoCount(Integer familyId) {
         return ymPhotoMapper.getHouseholderPhotoCount(familyId);
     }
 
-
-
-    public YmPhotoDo getHouseholderPhotoMax(Integer familyId){
-        return  ymPhotoMapper.getHouseholderPhotoMax(familyId);
+    public YmPhotoDo getHouseholderPhotoMax(Integer familyId) {
+        return ymPhotoMapper.getHouseholderPhotoMax(familyId);
     }
 
-    public int delHouseholderPhotoById(Integer id){
+    public int delHouseholderPhotoById(Integer id) {
         return ymPhotoMapper.delHouseholderPhotoById(id);
     }
 
-    public int addHouseHolderPhoto(YmPhotoDo ymPhotoDo){
+    public int addHouseHolderPhoto(YmPhotoDo ymPhotoDo) {
         return ymPhotoMapper.addHouseHolderPhoto(ymPhotoDo);
+    }
+
+    public int add(YmYXZLDo YmYXZLDo) {
+        return ymPhotoMapper.add(YmYXZLDo);
     }
 }

@@ -37,11 +37,17 @@ public class JTJBQKController {
         return "jt/cyAdd";
     }
 
-//    @RequestMapping(value = "/cyAdd")
-//    public String memberAdd(Model model, int id) {
-//        if(id > 0) {
-//            model.addAttribute("id", id);
-//        }
-//        return "jt/cy_add";
-//    }
+    @RequestMapping(value = "/photo")
+    public String photo(Model model, Integer id, String type) {
+        model.addAttribute("id", id);
+        model.addAttribute("type", type);
+
+        return "jt/photo";
+    }
+
+    @RequestMapping(value = "/uploadImg")
+    public String uploadImg(Model model, Integer fid) {
+        model.addAttribute("fid", fid);
+        return "jt/uploadImg";
+    }
 }
