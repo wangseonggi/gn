@@ -70,8 +70,8 @@
                         </td>
                         <td class="fp_btbt">自然村（屯）</td>
                         <td class="fp_nrbt">
-                            <input type="zrct" name="zrct" lay-verify="required" autocomplete="off"
-                                   value="测试自然村屯"
+                            <input type="zrct" name="zrct" autocomplete="off"
+                                   value=""
                                    class="layui-input" lay-filter="zrct"/>
                         </td>
                         <td class="fp_btbt">联系电话</td>
@@ -94,57 +94,53 @@
                             <input type="text" name="yhkh" id="yhkh" autocomplete="off" class="layui-input"
                                    placeholder="（选填）" lay-filter="yhkh">
                         </td>
-                        <td class="fp_nrxt" colspan="2" rowspan="3"></td>
+                        <td class="fp_btbt">计划脱贫年度</td>
+                        <td class="fp_nrbt">
+                            <input id="jhtpnd" type="text" name="jhtpnd"
+                                   autocomplete="off" value="2020"
+                                   class="layui-input"  lay-filter="jhtpnd">
+                        </td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">贫困户属性</td>
                         <td class="fp_nrbt">
                             <select name="pkhsx" id="pkhsx" lay-verify="required" lay-filter="pkhsx">
                                 <option value=""></option>
-                                <option value="1">一般贫困户</option>
-                                <option value="2">低保贫困户</option>
-                                <option value="3">特困供养贫困户</option>
                             </select>
                         </td>
-                        <td class="fp_btbt">计划脱贫年度</td>
-                        <td class="fp_nrbt">
-                            <input id="jhtpnd" type="text" name="jhtpnd" lay-verify="required"
-                                   autocomplete="off" value="2020"
-                                   class="layui-input" placeholder="yyyy" lay-filter="jhtpnd">
-                        </td>
-                    </tr>
-                    <tr>
                         <td class="fp_btbt">返贫年度</td>
                         <td class="fp_nrbt">
                             <input id="fpnd" type="text" name="fpnd"
                                    autocomplete="off" value="2018"
-                                   class="layui-input" placeholder="yyyy" lay-filter="fpnd">
+                                   class="layui-input" lay-filter="fpnd">
                         </td>
                         <td class="fp_btbt">返贫原因</td>
                         <td class="fp_nrbt">
-                            <input type="text" id="fpyy" name="fpyy"
-                                   autocomplete="off" value=""
-                                   class="layui-input" lay-filter="fpyy">
+                            <select name="fpyy" id="fpyy" lay-verify="required" lay-filter="fpyy">
+                                <option value=""></option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">是否军烈属</td>
                         <td class="fp_nrbt">
-                            <select name="sfjls" id="sfjls" lay-verify="required" lay-filter="sfjls">
-                                <option value="0">否</option>
-                                <option value="1">是</option>
+                            <select name="sfjls" id="sfjls"  lay-filter="sfjls">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">是否易地扶贫搬迁户</td>
                         <td class="fp_nrbt">
-                            <select name="sfbqh" id="sfbqh" lay-verify="required" autocomplete="off" lay-filter="sfbqh">
-                                <option value="1">是</option>
-                                <option value="0">否</option>
+                            <select name="sfbqh" id="sfbqh"  autocomplete="off" lay-filter="sfbqh">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
                             </select>
                         </td>
                         <td class="fp_btbt">搬迁方式</td>
                         <td class="fp_nrbt">
-                            <input type="text" id="bqfs" name="bqfs" lay-verify="required"
+                            <input type="text" id="bqfs" name="bqfs"
                                    autocomplete="off"
                                    class="layui-input" value="测试搬迁方式" lay-filter="bqfs"/>
                         </td>
@@ -152,14 +148,19 @@
                     <tr>
                         <td class="fp_btbt">搬迁地址</td>
                         <td class="fp_nrbt" colspan="5">
-                            <input type="text" id="bqdz" name="bqdz" lay-verify="required"
+                            <input type="text" id="bqdz" name="bqdz"
                                    placeholder="" autocomplete="off"
                                    class="layui-input" value="测试搬迁地址" lay-filter="bqdz"/>
                         </td>
                     </tr>
                     </tbody>
                 </table>
-
+                <div class="layui-form-item" style="margin-top: 20px">
+                    <div class="layui-input-block" style="text-align: center">
+                        <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base1">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+                    </div>
+                </div>
             </form>
         </div>
         <!-- 家庭成员 -->
@@ -418,7 +419,7 @@
             <form class="layui-form" lay-filter="form6">
                 <table width="100%" class="fp_zdtb" style=" border-collapse: collapse;" border=1 cellSpacing=0 cellPadding=0>
                     <tr>
-                        <td class="jg_btbt_title" colspan="6">其他</td>
+                        <td class="jg_btbt_title" colspan="6">附加信息</td>
                     </tr>
                     <tr class="fp_btbt">
                         <td class="fp_btbt">安置点</td>
@@ -426,7 +427,7 @@
                         <td class="fp_btbt">楼栋房号</td>
                         <td class="fp_nrbt"><input id="ldfh" name="ldfh" lay-filter="ldfh" type="text"/></td>
                         <td class="fp_btbt">年度搬迁任务</td>
-                        <td class="fp_nrbt"><input id="ndbqrw" name="ndbqrw" lay-filter="ndbqrw" type="text"/></td>
+                        <td class="fp_nrbt"><input id="ndbqrw" name="ndbqrw" lay-filter="ndbqrw" type="text" autocomplete="off"/></td>
                     </tr>
                     <tr>
                         <td class="fp_btbt">迁出地详细地址</td>
@@ -444,26 +445,25 @@
                         <td class="fp_btbt">自筹资金（元）</td>
                         <td class="fp_nrbt"><input id="zczj" name="zczj" lay-filter="zczj" type="text"/></td>
                     </tr>
-                        <td class="fp_btbt">搬迁入住时间</td>
-                        <td class="fp_nrbt"><input id="bqrzsj" name="bqrzsj" lay-filter="bqrzsj" type="text"/></td>
-                        <td class="fp_btbt">实际入住时间</td>
-                        <td class="fp_nrbt"><input id="sjrzsj" name="sjrzsj" lay-filter="sjrzsj" type="text"/></td>
-                        <td class="fp_nrxt" colspan="2" rowspan="3"></td>
                     <tr>
+                        <td class="fp_btbt">搬迁入住时间</td>
+                        <td class="fp_nrbt"><input id="bqrzsj" name="bqrzsj" lay-filter="bqrzsj" type="text" autocomplete="off"/></td>
+                        <td class="fp_btbt">实际入住时间</td>
+                        <td class="fp_nrbt"><input id="sjrzsj" name="sjrzsj" lay-filter="sjrzsj" type="text" autocomplete="off"/></td>
                         <td class="fp_btbt">原有住房（类型）</td>
                         <td class="fp_nrbt"><input id="yyzf" name="yyzf" lay-filter="yyzf" type="text"/></td>
+                    </tr>
+                    <tr>
+                        <td class="fp_btbt">拆除住房</td>
+                        <td class="fp_nrbt"><input id="ccjf" name="ccjf" lay-filter="ccjf" type="text" autocomplete="off"/></td>
+                        <td class="fp_btbt">保护住房种类</td>
+                        <td class="fp_nrbt"><input id="bhzfzl" name="bhzfzl" lay-filter="bhzfzl" type="text" autocomplete="off"/></td>
                         <td class="fp_btbt">原有住房面积㎡</td>
                         <td class="fp_nrbt"><input id="yyzfmj" name="yyzfmj" lay-filter="yyzfmj" type="text"/></td>
                     </tr>
                     <tr>
-                        <td class="fp_btbt">拆除住房</td>
-                        <td class="fp_nrbt"><input id="ccjf" name="ccjf" lay-filter="ccjf" type="text"/></td>
-                        <td class="fp_btbt">保护住房种类</td>
-                        <td class="fp_nrbt"><input id="bhzfzl" name="bhzfzl" lay-filter="bhzfzl" type="text"/></td>
-                    </tr>
-                    <tr>
                         <td class="fp_btbt">拆除时间</td>
-                        <td class="fp_nrbt"><input id="ccsj" name="ccsj" lay-filter="ccsj" type="text"/></td>
+                        <td class="fp_nrbt"><input id="ccsj" name="ccsj" lay-filter="ccsj" type="text" autocomplete="off"/></td>
                         <td class="fp_btbt">拆除旧房面积㎡</td>
                         <td class="fp_nrbt"><input id="ccjfmj" name="ccjfmj" lay-filter="ccjfmj" type="text"/></td>
                         <td class="fp_btbt">兑现拆房奖励（元）</td>
@@ -481,9 +481,29 @@
                         <td class="fp_btbt">脱贫情况</td>
                         <td class="fp_nrbt"><input id="tpqk" name="tpqk" lay-filter="tpqk" type="text"/></td>
                         <td class="fp_btbt">户口迁移</td>
-                        <td class="fp_nrbt" colspan="3"><input id="hkqy" name="hkqy" lay-filter="hkqy" type="text"/></td>
+                        <td class="fp_nrbt">
+                            <select name="hkqy" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
+                        <td class="fp_btbt">房产证办理获取</td>
+                        <td class="fp_nrbt">
+                            <select name="fczblhq" class="layui-input" style="width: 60px">
+                                <option value="">请选择</option>
+                                <option value="Y">是</option>
+                                <option value="N">否</option>
+                            </select>
+                        </td>
                     </tr>
                 </table>
+                <div sec:authorize-url="/yw/jt/updateQTXX" class="layui-form-item" style="margin-top: 20px">
+                    <div class="layui-input-block" style="text-align: center">
+                        <button type="button" class="layui-btn layui-btn-sm" lay-submit lay-filter="base6">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

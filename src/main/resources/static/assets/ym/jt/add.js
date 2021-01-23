@@ -14,20 +14,20 @@ var family_add = (function () {
         var zpyy1_value, zpyy2_value, zpyy3_value;
 
         // 提交限制
-        element.on('tab(addBaseInfo)', function (data) {
-            if (!$("#baseid").val() && data.index != 0) {
-                layer.open('请先保存基本信息', {btn: ['确定']}, function () {
-                });
-                layer.open({
-                    title: '提示',
-                    skin: 'layui-layer-lan',
-                    content: '请先提交基本信息', btn: ['确定'],
-                    end: function (index, layero) {
-                        element.tabChange('addBaseInfo', '1');
-                    }
-                });
-            }
-        });
+        // element.on('tab(addBaseInfo)', function (data) {
+        //     if (!$("#baseid").val() && data.index != 0) {
+        //         layer.open('请先保存基本信息', {btn: ['确定']}, function () {
+        //         });
+        //         layer.open({
+        //             title: '提示',
+        //             skin: 'layui-layer-lan',
+        //             content: '请先提交基本信息', btn: ['确定'],
+        //             end: function (index, layero) {
+        //                 element.tabChange('addBaseInfo', '1');
+        //             }
+        //         });
+        //     }
+        // });
 
         laydate.render({
             elem: '#jhtpnd',
@@ -357,24 +357,23 @@ var family_add = (function () {
             title: '家庭成员表',
             cols: [[
                  {field: 'memberid', title: 'ID'}
-                , {field: 'xm', title: '姓名',minWidth:100}
+                , {field: 'xm', title: '姓名',minWidth:90}
                 , {field: 'xb', title: '性别'}
-                , {field: 'zjhm', title: '证件号码', minWidth:180}
-                , {field: 'yhzgx', title: '与户主关系'}
+                , {field: 'zjhm', title: '证件号码',minWidth:195}
+                , {field: 'yhzgx', title: '关系'}
                 , {field: 'mz', title: '民族'}
                 , {field: 'zzmm', title: '政治面貌'}
                 , {field: 'whcd', title: '文化程度'}
-                , {field: 'zxsqk', title: '在校生情况'}
-                , {field: 'sxhcxyy', title: '失学或辍学原因'}
+                , {field: 'zxsqk', title: '在校生'}
+                , {field: 'sxhcxyy', title: '失学原因'}
                 , {field: 'jkzk', title: '健康状况'}
                 , {field: 'ldjn', title: '劳动技能'}
-                , {field: 'sfhjpth', title: '是否会讲普通话'}
-                , {field: 'sfcjcxjmjbytlbx', title: '是否参加城乡居民医疗保险'}
-                , {field: 'sfcjsybcylbx', title: '是否参加商业补充医疗保险'}
-                , {field: 'sfxsncjmzjshbz', title: '是否享受农村居民最低生活保障'}
-                , {field: 'sfcjcxjmybyanglbx', title: '是否参加城乡居民基本养老保险'}
-                , {field: 'sfxsrsywbxbt', title: '是否享受人身意外保险补贴'}
-                , {field: 'lxdh', title: '联系电话',minWidth:130}
+                , {field: 'sfhjpth', title: '普通话'} // 是否会讲普通话
+                , {field: 'sfcjcxjmjbytlbx', title: '城乡医保'} // 是否参加城乡居民医疗保险
+                , {field: 'sfcjsybcylbx', title: '商业医保'} // 是否参加商业补充医疗保险
+                , {field: 'sfxsncjmzjshbz', title: '低保'} // 是否享受农村居民最低生活保障
+                , {field: 'sfcjcxjmybyanglbx', title: '养老保险'} // 是否参加城乡居民基本养老保险
+                , {field: 'sfxsrsywbxbt', title: '意外保险'} // 是否享受人身意外保险补贴
                 , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}
             ]]
             , done: function (res, curr, count) {

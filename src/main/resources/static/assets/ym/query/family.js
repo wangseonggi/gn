@@ -15,17 +15,17 @@ var family = (function () {
             even: true,
             title: '贫困户家庭基本情况',
             cols: [[
-                {type: 'checkbox'}
-                , {field: 'id', title: '家庭ID', width: 90, unresize: true, sort: true}
-                , {field: 'pkhsx', title: '贫困户属性'}
-                , {field: 'hzxm', title: '户主姓名', width: 120}
-                , {field: 'zjhm', title: '户主证件号码'}
+                // {type: 'checkbox'}
+                // , {field: 'id', title: '家庭ID', width: 90, unresize: true, sort: true}
+                 {field: 'pkhsx', title: '贫困户属性'}
+                , {field: 'hzxm', title: '户主姓名', minWidth:90}
+                , {field: 'zjhm', title: '户主证件号码', minWidth:195}
                 , {field: 'tpqk', title: '脱贫情况'}
                 , {field: 'ndbqrw', title: '年度搬迁任务'}
                 , {field: 'sjrzsj', title: '实际入住时间'}
                 , {field: 'zfmj', title: '住房面积m²'}
                 , {field: 'syrk', title: '受益人口'}
-                , {title: '操作', toolbar: '#barDemo', fixed: 'right', width: 160}
+                , {title: '操作', toolbar: '#barDemo', fixed: 'right'}
             ]],
             done: function (res, curr, count) {
                 $("[data-field='pkhsx']").children().each(function () {
@@ -79,7 +79,7 @@ var family = (function () {
                 });
             } else if (obj.event === 'edit') {
                 layer.open({
-                    title: '编辑贫困户家庭基本信息',
+                    title: '贫困户家庭基本信息',
                     type: 2,
                     // skin: 'layui-layer-rim', //加上边框
                     area: ['100%', '100%'], //宽高
